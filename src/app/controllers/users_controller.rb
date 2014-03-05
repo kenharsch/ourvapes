@@ -9,11 +9,12 @@ end
 
 class UsersController < ApplicationController
 	def new
+		@user = User.new
 	end
 
 	def show
 		# comment this out once DB is set up
 		#@user = User.find(params[:id])
-	 	@user = UserMock.new(params[:id])
+		@user = UserMock.new(params[:id])
 	end
 end
