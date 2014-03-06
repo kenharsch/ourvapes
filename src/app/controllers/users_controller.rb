@@ -14,26 +14,24 @@ class UsersController < ApplicationController
 
 	def show
 		# comment this out once DB is set up
-		#@user = User.find(params[:id])
-		@user = UserMock.new(params[:id])
+		@user = User.find(params[:id])
+		#@user = UserMock.new(params[:id])
 	end
 
 	def create
-		@user = User.new
-		@user.name = "Evan"
-		@user.email = "e@email.com"
-		#@user.password = "qwer1234"
-		#@user.password_confirmation = "qwer1234"
-		#@user = User.new(params[:user])
-		puts params[:user]
-		
-		
-
-    	# Not the final implementation!
-#		if @user.save
-	# Handle a successful save.
-#		else
+		@user = User.new(user_params)
+		if @user.save
+			flash[:success] = "Welcome to the Sample App!"
+			redirect_to @user
+		else
 			render 'new'
-#		end
-  	end
+		end
+	end
+
+	private
+
+	def user_params
+		params.require(:user).permit(:name, :email, :password,
+			:password_confirmation)
+	end
 end
