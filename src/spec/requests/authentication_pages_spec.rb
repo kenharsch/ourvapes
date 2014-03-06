@@ -15,9 +15,9 @@ describe "Authentication" do
 			it { should have_selector('div.alert.alert-error') }
 		end
 		describe "with valid information" do
-			let(:user) { User.create(name: "testuser", email: "test@test.com", password: "qwerty", password_digest: "qwerty") }
+			let(:user) { User.create(name: "Ken H", email: "test@test.com", password: "qwerty", password_digest: "qwerty") }
 			before do
-				fill_in "Email",    with: user.email.upcase
+				fill_in "Email",    with: user.email.downcase
 				fill_in "Password", with: user.password
 				click_button "Sign in"
 			end

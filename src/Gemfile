@@ -12,6 +12,14 @@ gem 'bcrypt-ruby'
 gem "capybara"
 gem 'selenium-webdriver'
 
+group :development, :test do
+	gem 'capybara'
+	gem 'selenium-webdriver'
+end
+
+# Bootstrap scss
+#gem 'bootstrap-sass', '2.3.2.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
