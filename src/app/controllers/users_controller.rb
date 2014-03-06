@@ -17,4 +17,18 @@ class UsersController < ApplicationController
 		#@user = User.find(params[:id])
 		@user = UserMock.new(params[:id])
 	end
+
+	def create
+		@user = User.new(params[:user])
+		puts params[:user]
+		
+		
+
+    	# Not the final implementation!
+#		if @user.save
+	# Handle a successful save.
+#		else
+			render 'new'
+#		end
+  	end
 end
