@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Welcome to VapeRater!"
 			redirect_to @user
 		else
+			flash[:error] = "Invalid entry. Try again."
 			render 'new'
 		end
 	end
