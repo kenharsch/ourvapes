@@ -19,7 +19,12 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(params[:user])
+		@user = User.new
+		@user.name = "Evan"
+		@user.email = "e@email.com"
+		#@user.password = "qwer1234"
+		#@user.password_confirmation = "qwer1234"
+		#@user = User.new(params[:user])
 		puts params[:user]
 		
 		
