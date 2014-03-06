@@ -9,6 +9,8 @@ gem 'rb-readline'
 gem 'rspec-rails'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
+gem "capybara"
+gem 'selenium-webdriver'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
