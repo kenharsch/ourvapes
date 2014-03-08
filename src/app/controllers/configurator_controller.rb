@@ -2,11 +2,18 @@ class ConfiguratorController < ApplicationController
 	#before_action :generate, only: index end
 
 	def index
-		self.generate
-		wick = Product.find(1)
+		#self.generate
+		@wobj = []
+		Product.create!(name:"button01",type:"Button")
 
+		Product.all.each do |prod|
+		end
+			 obj = Product.find(Product.last.id - 1)
+			@wobj << obj
+				nobj = Product.find(obj.id + 1)
+			@wobj << nobj
 
-		drop_all
+		#drop_all
 	end
 
 	def is_compatible(part)
@@ -27,11 +34,13 @@ class ConfiguratorController < ApplicationController
 
 	def generate
 		(1..10).each do |wick|
-			Product.create(type:"wick",name:("wick" + wick.to_s),wick_id:wick.to_s)
+			obj = Wick.new(name:("wick" + wick.to_s),type:"Wick")
+			obj.save
 		end
 
 		(1..10).each do |tank|
-			Product.create(type:"tank",name:("tank" + tank.to_s),tank_id:tank.to_s)
+			obj = Tank.new(name:("tank" + tank.to_s),type:"Tank")
+			obj.save
 		end
 	end
  
@@ -39,7 +48,6 @@ class ConfiguratorController < ApplicationController
 		Product.all.each do |product|
 			product.destroy
 		end
-
 	end
 
 end
