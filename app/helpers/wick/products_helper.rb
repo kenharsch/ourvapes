@@ -1,0 +1,2 @@
+module Wick::ProductsHelper
+end

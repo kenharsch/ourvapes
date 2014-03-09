@@ -1,0 +1,2 @@
+class Wick < Product
+end
