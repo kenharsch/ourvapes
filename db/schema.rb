@@ -11,14 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309002355) do
+ActiveRecord::Schema.define(version: 20140309051920) do
 
   create_table "products", force: true do |t|
+    t.string   "type"
     t.string   "title"
     t.string   "descripton"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "wick_id"
+    t.integer  "tank_id"
   end
+
+  add_index "products", ["tank_id"], name: "index_products_on_tank_id"
+  add_index "products", ["wick_id"], name: "index_products_on_wick_id"
 
 end
