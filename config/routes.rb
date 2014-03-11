@@ -1,4 +1,6 @@
 Src::Application.routes.draw do
+  resources :config_controllers
+
   get "main/configuration"
   get "main/search"
   # The priority is based upon order of creation: first created -> highest priority.

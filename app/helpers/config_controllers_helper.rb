@@ -1,0 +1,2 @@
+module ConfigControllersHelper
+end
