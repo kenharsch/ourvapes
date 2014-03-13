@@ -22,7 +22,6 @@ class Product < ActiveRecord::Base
 			super() || send("build_#{association_name}")
 		end
 
-
 		attributes.each do |attribute_name|
 		    # Getter, setter, and boolean getter (in case it's a boolean attribute)
 		    def_delegators association_name,
