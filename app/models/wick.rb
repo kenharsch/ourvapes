@@ -3,4 +3,8 @@ class Wick < Product
 	#has_one :wick_dets, foreign_key: "details_id"
 	#belongs_to :connector, through: :wick_dets
 	delegate_details :resistance_in_ohm, to: :wick_dets
+
+	def wick_dets
+		details
+	end
 end

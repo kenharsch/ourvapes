@@ -1,4 +1,4 @@
 class WickDet < ActiveRecord::Base
-	belongs_to :product
+	#has_one :wick
 	belongs_to :connector
 end

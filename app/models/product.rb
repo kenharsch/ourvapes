@@ -10,9 +10,16 @@ class Product < ActiveRecord::Base
 			raise ArgumentError.new "You must specify the name of the details association"
 		}
 
-		define_method association_name do
-			super() || send("build_#{association_name}")
-		end
+		# puts "***************** association name: #{association_name}"
+
+		# def "#{association_name}" do
+		# 	puts "********* I was just called"
+		# end
+
+		# define_method association_name do
+		# 	super() || send("build_#{association_name}")
+		# end
+
 
 		attributes.each do |attribute_name|
 		    # Getter, setter, and boolean getter (in case it's a boolean attribute)
@@ -21,4 +28,7 @@ class Product < ActiveRecord::Base
 		end
 	end
 	# end http://nathanmlong.com/2013/05/better-single-table-inheritance/
+	# def wick_dets
+	# 	details
+	# end
 end

@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140313172823) do
   end
 
   create_table "wick_dets", force: true do |t|
-    t.integer  "product_id"
+    t.integer  "wick_id"
     t.float    "resistance_in_ohm"
     t.integer  "connector_id"
     t.datetime "created_at"

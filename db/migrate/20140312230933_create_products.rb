@@ -7,6 +7,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description
       t.string :picture_path
       t.string :type
+      #t.integer :details_id
 
       t.timestamps
     end
