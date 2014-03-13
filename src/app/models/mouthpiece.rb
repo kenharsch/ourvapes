@@ -1,0 +1,3 @@
+class Mouthpiece < Product
+
+end

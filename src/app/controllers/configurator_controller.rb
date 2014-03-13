@@ -4,7 +4,7 @@ class ConfiguratorController < ApplicationController
 	def index
 		#self.generate
 		@wobj = []
-		Product.create!(name:"button01",type:"Button")
+		Product.create!(name:"battery01",type:"Battery")
 
 		Product.all.each do |prod|
 		end

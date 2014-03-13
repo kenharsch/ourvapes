@@ -1,0 +1,3 @@
+class Button < Product
+
+end

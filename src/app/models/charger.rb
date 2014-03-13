@@ -1,0 +1,3 @@
+class Charger < Product
+
+end
