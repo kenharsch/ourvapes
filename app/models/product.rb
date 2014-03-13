@@ -3,10 +3,14 @@ class Product < ActiveRecord::Base
 	# needed to use the def_delegators method
 	extend Forwardable
 
-	# start http://nathanmlong.com/2013/05/better-single-table-inheritance/
 	# Use in subclasses like:
-	# has_one :wrestling_details, class_name: 'WrestlingDetails'
-	# delegate_details :win_ratio, :tanning_time, to: :wrestling_details
+	# class Wick < Product
+	# 	has_one :wick_details, class_name: 'WickDet'
+	# 	delegate_details :resistance_in_ohm, to: :wick_details
+	# 	default_scope joins(:wick_det)
+	# end
+
+	# start http://nathanmlong.com/2013/05/better-single-table-inheritance/
 	def self.delegate_details(*attributes)
 		options = attributes.extract_options!
 
