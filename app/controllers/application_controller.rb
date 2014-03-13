@@ -4,4 +4,3 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 end
-#?kit[battery]=114&kit[mouthpiece]=167&kit[tank]=645

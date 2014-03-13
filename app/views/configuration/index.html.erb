@@ -1,34 +1,12 @@
 <h1>Configuration</h1>
 <br />
 <div>
-	<h2>Mouthpiece:
-	<%= @kit["mouthpiece"] %>
-	</h2>
+	<% @partslist.each do |part| %>
+		<h2> <%= part.capitalize %>
+			<%= @kit[part] %>
+			<% if !@kit[part].nil? %>
+				<%= button_to "Remove", "/configuration" + create_kit_url(params["kit"],part), :method => :post  %>
+			<% end %>
+		</h2>
+	<% end %>
 </div>
-<div>
-	<h2>Tank:
-	<%= @kit["tank"] %>
-	</h2>
-</div>
-<div>
-	<h2>Wick:
-	<%= @kit["wick"] %>
-	</h2>
-</div>
-<div>
-	<h2>Button:
-	<%= @kit["button"] %>
-	</h2>
-</div>
-<div>
-	<h2>Battery:
-	<%= @kit["battery"] %>
-	</h2>
-</div>
-<div>
-	<h2>Charger:
-	<%= @kit["charger"] %>
-	</h2>
-</div>
-
-<p>Find me in app/views/main/configuration.html.erb</p>
