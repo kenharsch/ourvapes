@@ -867,3 +867,56 @@ Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2014-03-07 20:25:30 -
 
 
 Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2014-03-07 20:25:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateConfigControllers (20140310235038)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (37.6ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (13.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140310235038"]]
+  [1m[36m (33.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProducts (20140312230933)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (35.8ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "subtype" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (13.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312230933"]]
+  [1m[36m (24.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMouthpieces (20140312231326)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (26.7ms)[0m  [1mCREATE TABLE "mouthpieces" ("product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (9.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231326"]]
+  [1m[36m (14.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTanks (20140312231438)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (34.3ms)[0m  [1mCREATE TABLE "tanks" ("product_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231438"]]
+  [1m[36m (23.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWicks (20140312231752)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (23.2ms)[0m  [1mCREATE TABLE "wicks" ("product_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231752"]]
+  [1m[36m (10.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateButtons (20140312231813)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (35.2ms)[0m  [1mCREATE TABLE "buttons" ("product_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231813"]]
+  [1m[36m (27.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBatteries (20140312231824)
+  [1m[35m (0.7ms)[0m  begin transaction
+  [1m[36m (43.5ms)[0m  [1mCREATE TABLE "batteries" ("product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (6.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231824"]]
+  [1m[36m (26.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateChargers (20140312231832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "chargers" ("product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231832"]]
+  [1m[36m (21.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCartridges (20140312231913)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (41.2ms)[0m  [1mCREATE TABLE "cartridges" ("product_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (11.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312231913"]]
+  [1m[36m (14.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateKits (20140312232033)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (34.4ms)[0m  [1mCREATE TABLE "kits" ("product_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312232033"]]
+  [1m[36m (19.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (2.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.4ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
