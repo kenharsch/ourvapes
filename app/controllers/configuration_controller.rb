@@ -1,10 +1,7 @@
 class ConfigurationController < ApplicationController
 
-	def initialize
-		@partslist = ["mouthpiece","tank","wick","button","battery","charger"]
-	end
-
 	def index
+		@partslist = ["mouthpiece","tank","wick","button","battery","charger"]
 		@kit = {}
 		params["kit"] ||= {}
 		@partslist.each do |part|
