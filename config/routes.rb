@@ -1,6 +1,7 @@
 Src::Application.routes.draw do
-  get "main/configuration"
-  get "main/search"
+  get "/configuration" => "configuration#index"
+  post "/configuration" => "configuration#index"
+  get "/configuration/show" => "configuration#show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
