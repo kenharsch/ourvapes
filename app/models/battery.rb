@@ -1,3 +1,4 @@
-class Battery < ActiveRecord::Base
-	inherits_from :product
+class Battery < Product
+	has_one :details, class_name: 'BatteryDet'
+	delegate_details :voltage, :wattage
 end

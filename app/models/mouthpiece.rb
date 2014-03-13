@@ -1,3 +1,3 @@
-class Mouthpiece < ActiveRecord::Base
-	inherits_from :product
+class Mouthpiece < Product
+	has_one :details, class_name: 'MouthpieceDet'
 end

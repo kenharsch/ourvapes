@@ -11,29 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312232033) do
+ActiveRecord::Schema.define(version: 20140313172823) do
 
-  create_table "batteries", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "battery_dets", force: true do |t|
+    t.string   "voltage"
+    t.string   "wattage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "buttons", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "button_dets", force: true do |t|
     t.integer  "connector_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "cartridges", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "cartridge_dets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "chargers", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "charger_dets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,8 +42,13 @@ ActiveRecord::Schema.define(version: 20140312232033) do
     t.datetime "updated_at"
   end
 
-  create_table "kits", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "connectors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kit_dets", force: true do |t|
     t.integer  "mouthpiece_id"
     t.integer  "tank_id"
     t.integer  "wick_id"
@@ -57,8 +60,19 @@ ActiveRecord::Schema.define(version: 20140312232033) do
     t.datetime "updated_at"
   end
 
-  create_table "mouthpieces", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "kits", force: true do |t|
+    t.integer  "mouthpiece_id"
+    t.integer  "tank_id"
+    t.integer  "wick_id"
+    t.integer  "button_id"
+    t.integer  "battery_id"
+    t.integer  "charger_id"
+    t.integer  "cartridge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mouthpiece_dets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,32 +83,19 @@ ActiveRecord::Schema.define(version: 20140312232033) do
     t.integer  "rating_count"
     t.string   "description"
     t.string   "picture_path"
-    t.string   "subtype"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tanks", id: false, force: true do |t|
-    t.integer  "product_id"
+  create_table "tank_dets", force: true do |t|
     t.float    "volume_in_ml"
     t.integer  "connector_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "remember_token"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-
-  create_table "wicks", id: false, force: true do |t|
+  create_table "wick_dets", force: true do |t|
     t.integer  "product_id"
     t.float    "resistance_in_ohm"
     t.integer  "connector_id"
