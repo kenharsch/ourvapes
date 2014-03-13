@@ -1,6 +1,6 @@
-class CreateWicks < ActiveRecord::Migration
+class CreateWickDets < ActiveRecord::Migration
   def change
-    create_table :wicks do |t|
+    create_table :wick_dets do |t|
       t.float :resistance_in_ohm
       t.integer :connector_id
 
