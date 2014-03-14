@@ -1559,3 +1559,21 @@ SQLite3::SQLException: no such column: resistance_in_ohm: SELECT COUNT(*) FROM "
 DEPRECATION WARNING: Calling #default_scope without a block is deprecated. For example instead of `default_scope where(color: 'red')`, please use `default_scope { where(color: 'red') }`. (Alternatively you can just redefine self.default_scope.). (called from <class:Wick> at /vagrant/VapeRater/app/models/wick.rb:5)
   [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') AND (resistance_in_ohm > 2)[0m
   [1m[35mProduct Load (3.2ms)[0m  SELECT "products".* FROM "products"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (18.7ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 00:43:19 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 00:43:19 UTC +00:00]]
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "wick_dets" ("created_at", "resistance_in_ohm", "updated_at", "wick_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 00:43:19 UTC +00:00], ["resistance_in_ohm", 12.0], ["updated_at", Fri, 14 Mar 2014 00:43:19 UTC +00:00], ["wick_id", 5]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36mWick Load (3.0ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35mWickDet Load (1.9ms)[0m  SELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1  [["wick_id", 1]]
+  [1m[36mWick Load (3.0ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35mWick Load (2.6ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36mWickDet Load (2.4ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 1]]
+  [1m[35mWick Load (2.4ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36mWickDet Load (1.9ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 1]]
+  [1m[35mWick Load (3.3ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36mWickDet Load (2.1ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 1]]
+  [1m[35mWick Load (2.2ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mWick Load (3.0ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35mWickDet Load (2.6ms)[0m  SELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1  [["wick_id", 1]]
