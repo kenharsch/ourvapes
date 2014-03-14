@@ -15,6 +15,33 @@ class BatteryTest < ActiveSupport::TestCase
 			BatteryDet.count.must_equal (@det_count_before)
 		end
 
+		it "stores common attributes in the products table" do
+			@b.name = "Super Battery 14"
+			@b.save
+			id = @b.id
+			b2 = Product.find(id)
+			b2.name.must_equal "Super Battery 14"
+		end
+
+		it "stores individual attributes in a separate table" do
+			@b.voltage = "22-44"
+			@b.save
+			details_id = @b.details.id
+
+			details = BatteryDet.find(details_id)
+			details.voltage.must_equal "22-44"
+		end
+
+		it "allows queries referring to individual attributes from the host class" do
+			@b.voltage = "43-44"
+			@b.save
+			id = @b.id
+
+			results = Battery.where("voltage = '43-44'")
+			results.size.must_equal 1
+			results.first.id.must_equal id
+		end
+
 		describe "interacts with associated details object" do
 
 			before do

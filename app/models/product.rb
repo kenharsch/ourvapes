@@ -29,9 +29,15 @@ class Product < ActiveRecord::Base
 		# Getter, setter, and boolean getter (in case it's a boolean attribute)
 		# for each delegated attribute
 		attributes.each do |attribute_name|
-		    def_delegators association_name,
-		    :"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
-		  end
+			def_delegators association_name,
+			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
 		end
+	end
 	# end http://nathanmlong.com/2013/05/better-single-table-inheritance/
+
+	# for some reasone delete does not forward deletion to associated objects
+	# although the "dependent: :delete" flag is set; this solves the problem for now
+	def delete
+		destroy
+	end
 end
