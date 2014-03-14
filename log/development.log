@@ -1577,3 +1577,151 @@ DEPRECATION WARNING: Calling #default_scope without a block is deprecated. For e
   [1m[35m (0.1ms)[0m  rollback transaction
   [1m[36mWick Load (3.0ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
   [1m[35mWickDet Load (2.6ms)[0m  SELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1  [["wick_id", 1]]
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (7.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateConfigControllers (20140310235038)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140310235038"]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProducts (20140312230933)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140312230933"]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBatteryDets (20140313165931)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313165931"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMouthpieceDets (20140313165955)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313165955"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTankDets (20140313170008)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313170008"]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWickDets (20140313170424)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313170424"]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateChargerDets (20140313170805)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313170805"]]
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCartridgeDets (20140313170817)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313170817"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateKitDets (20140313170835)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313170835"]]
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateButtonDets (20140313171321)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313171321"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateConnectors (20140313172823)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140313172823"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (2.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (2.5ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (20.1ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:40:17 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:40:17 UTC +00:00]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "wick_dets" ("created_at", "resistance_in_ohm", "updated_at", "wick_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 01:40:17 UTC +00:00], ["resistance_in_ohm", 2.0], ["updated_at", Fri, 14 Mar 2014 01:40:17 UTC +00:00], ["wick_id", 1]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (2.6ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36mSQL (8.5ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" IN (SELECT "products"."id" FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') AND "products"."id" = 1)[0m
+  [1m[35m (2.4ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
+  [1m[36m (2.5ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[36m (4.0ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (1.9ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36mWickDet Load (3.6ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" ORDER BY "wick_dets"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (13.6ms)[0m  [1mDELETE FROM "wick_dets" WHERE "wick_dets"."id" = ?[0m  [["id", 1]]
+  [1m[35m (2.9ms)[0m  commit transaction
+  [1m[36m (3.4ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (13.1ms)[0m  [1mINSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 01:48:11 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:48:11 UTC +00:00]]
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "wick_dets" ("created_at", "resistance_in_ohm", "updated_at", "wick_id") VALUES (?, ?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:48:11 UTC +00:00], ["resistance_in_ohm", 12.0], ["updated_at", Fri, 14 Mar 2014 01:48:11 UTC +00:00], ["wick_id", 2]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (3.0ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
+  [1m[36m (2.6ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[35mWick Load (6.9ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36mWickDet Load (6.1ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 2]]
+  [1m[35mWick Load (2.9ms)[0m  SELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mWickDet Load (3.6ms)[0m  SELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1  [["wick_id", 2]]
+  [1m[36mSQL (3.1ms)[0m  [1mDELETE FROM "wick_dets" WHERE "wick_dets"."id" = ?[0m  [["id", 2]]
+  [1m[35m (27.0ms)[0m  rollback transaction
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (10.9ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36mWick Load (2.7ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mWickDet Load (2.8ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 2]]
+  [1m[35mSQL (2.2ms)[0m  DELETE FROM "wick_dets" WHERE "wick_dets"."id" = ?  [["id", 2]]
+  [1m[36m (2.9ms)[0m  [1mrollback transaction[0m
+  [1m[35mSQL (7.1ms)[0m  DELETE FROM "products" WHERE "products"."id" IN (SELECT "products"."id" FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') AND "products"."id" = 2)
+  [1m[36m (2.3ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36mWickDet Load (3.0ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" ORDER BY "wick_dets"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (5.2ms)[0m  [1mDELETE FROM "wick_dets" WHERE "wick_dets"."id" = ?[0m  [["id", 2]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (2.9ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (20.0ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:52:44 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:52:44 UTC +00:00]]
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "wick_dets" ("created_at", "resistance_in_ohm", "updated_at", "wick_id") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 01:52:44 UTC +00:00], ["resistance_in_ohm", 12.0], ["updated_at", Fri, 14 Mar 2014 01:52:44 UTC +00:00], ["wick_id", 3]]
+  [1m[35m (6.5ms)[0m  commit transaction
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (2.8ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36mWick Load (2.6ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (7.3ms)[0m  DELETE FROM "products" WHERE "products"."id" IN (SELECT "products"."id" FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick') AND "products"."id" = 3)
+  [1m[36m (2.8ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')[0m
+  [1m[35m (3.3ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.7ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:53:51 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:53:51 UTC +00:00]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mWickDet Load (2.4ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 4]]
+  [1m[35mSQL (3.7ms)[0m  DELETE FROM "products" WHERE "products"."type" IN ('Wick') AND "products"."id" = ?  [["id", 4]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
+  [1m[36m (3.2ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[35mWickDet Load (2.4ms)[0m  SELECT "wick_dets".* FROM "wick_dets" ORDER BY "wick_dets"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.7ms)[0m  DELETE FROM "wick_dets" WHERE "wick_dets"."id" = ?  [["id", 3]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (3.0ms)[0m  SELECT COUNT(*) FROM "wick_dets"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:54:36 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:54:36 UTC +00:00]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mWickDet Load (1.9ms)[0m  [1mSELECT "wick_dets".* FROM "wick_dets" WHERE "wick_dets"."wick_id" = ? ORDER BY "wick_dets"."id" ASC LIMIT 1[0m  [["wick_id", 5]]
+  [1m[35mSQL (2.7ms)[0m  DELETE FROM "products" WHERE "products"."type" IN ('Wick') AND "products"."id" = ?  [["id", 5]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (5.5ms)[0m  [1mINSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 01:55:44 UTC +00:00], ["type", "Wick"], ["updated_at", Fri, 14 Mar 2014 01:55:44 UTC +00:00]]
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "wick_dets" ("created_at", "resistance_in_ohm", "updated_at", "wick_id") VALUES (?, ?, ?, ?)  [["created_at", Fri, 14 Mar 2014 01:55:44 UTC +00:00], ["resistance_in_ohm", 12.0], ["updated_at", Fri, 14 Mar 2014 01:55:44 UTC +00:00], ["wick_id", 6]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (2.3ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
+  [1m[36m (2.3ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (4.8ms)[0m  [1mDELETE FROM "wick_dets" WHERE "wick_dets"."id" = 4[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "products" WHERE "products"."type" IN ('Wick') AND "products"."id" = ?  [["id", 6]]
+  [1m[36m (20.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (2.5ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
+  [1m[36m (2.6ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m

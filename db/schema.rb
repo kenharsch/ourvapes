@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20140313172823) do
 
   create_table "battery_dets", force: true do |t|
+    t.integer  "battery_id"
     t.string   "voltage"
     t.string   "wattage"
     t.datetime "created_at"
@@ -21,17 +22,20 @@ ActiveRecord::Schema.define(version: 20140313172823) do
   end
 
   create_table "button_dets", force: true do |t|
+    t.integer  "button_id"
     t.integer  "connector_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cartridge_dets", force: true do |t|
+    t.integer  "cartridge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "charger_dets", force: true do |t|
+    t.integer  "charger_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,18 +53,7 @@ ActiveRecord::Schema.define(version: 20140313172823) do
   end
 
   create_table "kit_dets", force: true do |t|
-    t.integer  "mouthpiece_id"
-    t.integer  "tank_id"
-    t.integer  "wick_id"
-    t.integer  "button_id"
-    t.integer  "battery_id"
-    t.integer  "charger_id"
-    t.integer  "cartridge_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "kits", force: true do |t|
+    t.integer  "kit_id"
     t.integer  "mouthpiece_id"
     t.integer  "tank_id"
     t.integer  "wick_id"
@@ -73,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140313172823) do
   end
 
   create_table "mouthpiece_dets", force: true do |t|
+    t.integer  "mouthpiece_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140313172823) do
   end
 
   create_table "tank_dets", force: true do |t|
+    t.integer  "tank_id"
     t.float    "volume_in_ml"
     t.integer  "connector_id"
     t.datetime "created_at"
