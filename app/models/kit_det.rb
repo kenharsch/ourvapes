@@ -1,9 +1,9 @@
 class KitDet < ActiveRecord::Base
-	has_one :mouthpiece, class_name: 'Product'
-	has_one :tank, class_name: 'Product'
-	has_one :wick, class_name: 'Product'
-	has_one :button, class_name: 'Product'
-	has_one :battery, class_name: 'Product'
-	has_one :charger, class_name: 'Product'
-	has_one :cartridge, class_name: 'Product'
+	belongs_to :mouthpiece
+	belongs_to :tank
+	belongs_to :wick
+	belongs_to :button
+	belongs_to :battery
+	belongs_to :charger
+	belongs_to :cartridge
 end

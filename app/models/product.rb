@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
 
+	# make sure that a product object always has a details object
+	after_initialize :create_details_obj_if_needed
+
 	# needed to use the def_delegators method
 	extend Forwardable
 
@@ -9,7 +12,7 @@ class Product < ActiveRecord::Base
 	# end
 
 	# the following method is inspired by this great article:
-	# start http://nathanmlong.com/2013/05/better-single-table-inheritance/
+	# http://nathanmlong.com/2013/05/better-single-table-inheritance/
 	def self.delegate_details(*attributes)
 		options = attributes.extract_options!
 
@@ -18,26 +21,32 @@ class Product < ActiveRecord::Base
 			raise ArgumentError.new "You must specify the name of the details association"
 		}
 
-		has_one :details, class_name: class_name, dependent: :delete
+		has_one :details, class_name: class_name, dependent: :delete, autosave: true
 		default_scope {joins(:details)}
 
-		# returns the object containing the type specific details;
-		# if the details objcect is not set yet, this creates a new details object
-		# and sets the foreign keys appropriately to make it accessible from here
+		# defines the details getter
+		# needed for calls like Tank.create(volume_in_ml: 12)
+		# where the after_initialize method was not called yet
 		define_method :details do
-			super() || build_details
+			build_details if super().nil? # if there is no associated details object
+			super()
 		end
 
 		define_accessors attributes
 	end
 
-	# for some reasone delete does not forward deletion to associated objects
+
+	# for some reason delete does not forward deletion to associated objects
 	# although the "dependent: :delete" flag is set; this solves the problem for now
 	def delete
 		destroy
 	end
 
 	private
+
+	def create_details_obj_if_needed
+		build_details if details.nil?
+	end
 
 	# Getter, setter, and boolean getter (in case it's a boolean attribute)
 	# for each delegated attribute

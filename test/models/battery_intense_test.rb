@@ -3,23 +3,24 @@ require 'test_helper'
 class BatteryTest < ActiveSupport::TestCase
 	describe "battery" do
 		before do
-			@bat_count_before = Product.count
+			@bat_count_before = Battery.count
 			@det_count_before = BatteryDet.count
 			@b = Battery.create
 		end
 
-		it "creates no details object if not needed" do
+		it "always has details object, even if not needed" do
 			@b.name = "Super Battery"
 			@b.description = "really cool"
-			Product.count.must_equal (@bat_count_before + 1)
-			BatteryDet.count.must_equal (@det_count_before)
+			@b.save
+			Battery.count.must_equal (@bat_count_before + 1)
+			BatteryDet.count.must_equal (@det_count_before + 1)
 		end
 
 		it "stores common attributes in the products table" do
 			@b.name = "Super Battery 14"
 			@b.save
 			id = @b.id
-			b2 = Product.find(id)
+			b2 = Battery.find(id)
 			b2.name.must_equal "Super Battery 14"
 		end
 
@@ -50,19 +51,19 @@ class BatteryTest < ActiveSupport::TestCase
 			end
 
 			it "creates and associates a details object if needed" do
-				Product.count.must_equal (@bat_count_before + 1)
+				Battery.count.must_equal (@bat_count_before + 1)
 				BatteryDet.count.must_equal (@det_count_before + 1)
 			end
 
 			it "deletes associated details object if host object gets deleted" do
 				@b.delete
-				Product.count.must_equal @bat_count_before
+				Battery.count.must_equal @bat_count_before
 				BatteryDet.count.must_equal @det_count_before
 			end
 
 			it "destroys associated details object if host object gets deleted" do
 				@b.destroy
-				Product.count.must_equal @bat_count_before
+				Battery.count.must_equal @bat_count_before
 				BatteryDet.count.must_equal @det_count_before
 			end
 
