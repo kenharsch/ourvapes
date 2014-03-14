@@ -1,19 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  mouthpiece_id: 1
-  tank_id: 1
-  wick_id: 1
-  button_id: 1
-  battery_id: 1
-  charger_id: 1
-  cartridge_id: 1
-
-two:
-  mouthpiece_id: 1
-  tank_id: 1
-  wick_id: 1
-  button_id: 1
-  battery_id: 1
-  charger_id: 1
-  cartridge_id: 1
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

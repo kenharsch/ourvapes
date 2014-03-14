@@ -1,7 +1,4 @@
 class MainController < ApplicationController
-  
-  require_relative "elements/mouthpiece"
-  require_relative "elements/tank"
 
   def configuration
   end
@@ -9,8 +6,8 @@ class MainController < ApplicationController
   def search
   	@products = []
   	(0..5).each do |x|
-  		@products << Mouthpiece.new("MP #{x}", "test description")
-  		@products << Tank.new("TANK #{x}", "test description")
+  		@products << Mouthpiece.new(name: "MP #{x}", description: "test description")
+  		@products << Tank.new(name: "TANK #{x}", description: "test description")
   	end
   end
 end
