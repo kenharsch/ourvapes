@@ -1,6 +1,8 @@
 class CreateKitDets < ActiveRecord::Migration
 	def change
 		create_table :kit_dets do |t|
+			t.integer :kit_id
+
 			t.integer :mouthpiece_id
 			t.integer :tank_id
 			t.integer :wick_id
