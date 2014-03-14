@@ -1,4 +1,5 @@
 class Button < Product
 	has_one :details, class_name: 'ButtonDet'
-	has_one :connector, through: :button_dets
+	delegate_details :connector, to: :details
+	default_scope joins(:details)
 end

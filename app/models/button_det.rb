@@ -1,3 +1,3 @@
 class ButtonDet < ActiveRecord::Base
-	has_one :connector
+	belongs_to :connector
 end
