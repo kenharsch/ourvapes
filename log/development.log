@@ -1725,3 +1725,40 @@ Migrating to CreateConnectors (20140313172823)
   [1m[36m (20.0ms)[0m  [1mcommit transaction[0m
   [1m[35m (2.5ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "wick_dets" ON "wick_dets"."wick_id" = "products"."id" WHERE "products"."type" IN ('Wick')
   [1m[36m (2.6ms)[0m  [1mSELECT COUNT(*) FROM "wick_dets"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateJuiceDets (20140314020549)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140314020549"]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice')[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (24.8ms)[0m  INSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 14 Mar 2014 02:10:43 UTC +00:00], ["type", "Juice"], ["updated_at", Fri, 14 Mar 2014 02:10:43 UTC +00:00]]
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "juice_dets" ("created_at", "juice_id", "nicotine_in_ml", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 02:10:43 UTC +00:00], ["juice_id", 7], ["nicotine_in_ml", 20], ["updated_at", Fri, 14 Mar 2014 02:10:43 UTC +00:00]]
+  [1m[35m (11.3ms)[0m  commit transaction
+  [1m[36m (3.5ms)[0m  [1mSELECT COUNT(*) FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice')[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM "juice_dets"
+  [1m[36mJuice Load (2.2ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35mJuiceDet Load (2.8ms)[0m  SELECT "juice_dets".* FROM "juice_dets" WHERE "juice_dets"."juice_id" = ? ORDER BY "juice_dets"."id" ASC LIMIT 1  [["juice_id", 7]]
+  [1m[36mJuice Load (3.0ms)[0m  [1mSELECT "products".* FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice') ORDER BY "products"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mJuiceDet Load (2.6ms)[0m  [1mSELECT "juice_dets".* FROM "juice_dets" WHERE "juice_dets"."juice_id" = ? ORDER BY "juice_dets"."id" ASC LIMIT 1[0m  [["juice_id", 7]]
+  [1m[35mSQL (4.4ms)[0m  DELETE FROM "juice_dets" WHERE "juice_dets"."id" = 1
+  [1m[36m (5.3ms)[0m  [1mrollback transaction[0m
+  [1m[35mJuice Load (2.7ms)[0m  SELECT "products".* FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice') ORDER BY "products"."id" ASC LIMIT 1
+  [1m[36mSQL (7.9ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" IN (SELECT "products"."id" FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice') AND "products"."id" = 7)[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM "products" INNER JOIN "juice_dets" ON "juice_dets"."juice_id" = "products"."id" WHERE "products"."type" IN ('Juice')
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM "juice_dets"[0m
+  [1m[35mJuiceDet Load (2.1ms)[0m  SELECT "juice_dets".* FROM "juice_dets" ORDER BY "juice_dets"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.1ms)[0m  DELETE FROM "juice_dets" WHERE "juice_dets"."id" = ?  [["id", 1]]
+  [1m[36m (18.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "products" ("created_at", "type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Fri, 14 Mar 2014 02:13:19 UTC +00:00], ["type", "Juice"], ["updated_at", Fri, 14 Mar 2014 02:13:19 UTC +00:00]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "juice_dets" ("created_at", "juice_id", "nicotine_in_ml", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Fri, 14 Mar 2014 02:13:19 UTC +00:00], ["juice_id", 8], ["nicotine_in_ml", 22], ["updated_at", Fri, 14 Mar 2014 02:13:19 UTC +00:00]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (4.7ms)[0m  [1mDELETE FROM "juice_dets" WHERE "juice_dets"."id" = 2[0m
+  [1m[35mSQL (1.4ms)[0m  DELETE FROM "products" WHERE "products"."type" IN ('Juice') AND "products"."id" = ?  [["id", 8]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m

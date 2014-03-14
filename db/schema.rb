@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313172823) do
+ActiveRecord::Schema.define(version: 20140314020549) do
 
   create_table "battery_dets", force: true do |t|
     t.integer  "battery_id"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20140313172823) do
 
   create_table "connectors", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "juice_dets", force: true do |t|
+    t.integer  "juice_id"
+    t.integer  "nicotine_in_ml"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
