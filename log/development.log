@@ -2406,3 +2406,199 @@ Migrating to CreateJuiceDets (20140314020549)
   [1m[35m (8.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
   [1m[36m (7.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
   [1m[35mActiveRecord::SchemaMigration Load (1.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.4ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.5ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.0ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.3ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.1ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.8ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (17.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (10.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (2.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (11.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (10.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (9.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (11.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (12.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (8.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (8.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (8.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (31.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (11.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (11.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (2.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.6ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.5ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (9.7ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (9.9ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (9.4ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.0ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (42.2ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (16.1ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (10.2ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.7ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (6.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (6.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (6.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (7.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (7.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (7.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (6.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (8.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (8.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (7.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (7.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (7.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (2.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.8ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.4ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (9.3ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (6.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (6.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (6.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (6.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (8.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (6.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (7.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (7.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (8.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (6.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (7.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (6.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.8ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.5ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.6ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.9ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.3ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.6ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (6.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (7.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (7.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (6.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (7.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (30.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (8.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (7.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (6.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (6.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (6.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.8ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.1ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.3ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.6ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (8.6ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (26.5ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (9.3ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.6ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.6ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (7.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (6.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (7.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (6.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (6.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (7.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (7.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (7.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (6.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (6.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (7.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (7.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.6ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (5.5ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.5ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.4ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.2ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (6.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (6.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (7.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (6.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (7.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (5.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (6.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (6.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (6.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (6.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (7.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (2.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (7.6ms)[0m  [1mCREATE TABLE "battery_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "battery_id" integer, "voltage" varchar(255), "wattage" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "button_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "button_id" integer, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "cartridge_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "charger_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "charger_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "config_controllers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "show" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.1ms)[0m  CREATE TABLE "connectors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "juice_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "juice_id" integer, "nicotine_in_ml" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (6.8ms)[0m  CREATE TABLE "kit_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kit_id" integer, "mouthpiece_id" integer, "tank_id" integer, "wick_id" integer, "button_id" integer, "battery_id" integer, "charger_id" integer, "cartridge_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (7.1ms)[0m  [1mCREATE TABLE "mouthpiece_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "mouthpiece_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.9ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "rating" float, "rating_count" integer, "description" varchar(255), "picture_path" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (9.5ms)[0m  [1mCREATE TABLE "tank_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tank_id" integer, "volume_in_ml" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (7.2ms)[0m  CREATE TABLE "wick_dets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "wick_id" integer, "resistance_in_ohm" float, "connector_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (8.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (7.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (6.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140314020549')
+  [1m[36m (7.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140310235038')[0m
+  [1m[35m (7.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140312230933')
+  [1m[36m (7.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313165931')[0m
+  [1m[35m (6.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313165955')
+  [1m[36m (7.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170008')[0m
+  [1m[35m (7.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170424')
+  [1m[36m (7.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170805')[0m
+  [1m[35m (7.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313170817')
+  [1m[36m (7.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313170835')[0m
+  [1m[35m (6.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140313171321')
+  [1m[36m (7.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140313172823')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
