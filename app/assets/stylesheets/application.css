@@ -11,3 +11,36 @@
  *= require_self
  *= require_tree .
  */
+.inline
+{
+	display:inline;
+}
+
+.left
+{
+	float:left;
+}
+
+#parts-list
+{
+	display:inline-block;
+	border:2px solid;
+	border-radius:25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center
+{
+	text-align: center;
+}
+
+#parts-list table
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+#parts-list td, th
+{
+	padding: 10px;
+}
