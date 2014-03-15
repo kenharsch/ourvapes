@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
+  <title>VapeRater</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= button_to "Configuration", "/configuration" + create_kit_url, :method => :post  %>
+<%= button_to "Home", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
+<%= button_to "Search", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
+<%= button_to "Configuration", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
+<br />
 <%= yield %>
 
 </body>
