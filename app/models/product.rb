@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 
 	# make sure that a product object always has a details object
+	validates :details, presence: true
 	after_initialize :create_details_obj_if_needed
 
 	# needed to use the def_delegators method
