@@ -19,10 +19,6 @@ class ConfigurationController < ApplicationController
 		@partslist = ["mouthpiece","tank","wick","button","battery","charger"]
 		@kit = {}
 		params["kit"] ||= {}
-	#	@partslist.each do |part|
-	#		if Product.find()
-	#		@kit[part] = params["kit"][part]
-	#	end
 
 		params["kit"].each do |part_type, part_id|
 			model = part_type.capitalize.constantize
