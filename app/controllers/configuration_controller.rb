@@ -15,18 +15,37 @@ class ConfigurationController < ApplicationController
 
 	end
 
+
+
+	def add
+		@data = params["data"]
+		conf = {tank: 70}
+		hash = {conf: conf}
+		redirect_to "/configuration?#{hash.to_param}"
+	end
+
+	def remove
+		conf = params["conf"] || {}
+		conf.delete(params["remove"])
+		hash = {conf: conf}
+		redirect_to "/configuration?#{hash.to_param}"
+
+	end
+
+
+
 	def find_parts
 		@partslist = ["mouthpiece","tank","wick","button","battery","charger"]
-		@kit = {}
-		params["kit"] ||= {}
+		@conf = {}
+		params["conf"] ||= {}
 
-		params["kit"].each do |part_type, part_id|
+		params["conf"].each do |part_type, part_id|
 			model = part_type.capitalize.constantize
 			if model.exists?(part_id)
-				@kit[part_type] = model.find(part_id).name
+				@conf[part_type] = model.find(part_id).name
 			else
 				flash[:notice] = "Invalid "+ part_type +" selection"
-				params["kit"].delete(params["kit"].index(part_type))
+				params["conf"].delete(params["conf"].index(part_type))
 			end
 		end
 
