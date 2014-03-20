@@ -1,10 +1,11 @@
 class CreateCompatPairs < ActiveRecord::Migration
-  def change
-    create_table :compat_pairs, id: false do |t|
-      t.integer :prod1_id
-      t.integer :prod2_id
+	def change
+		create_table :compat_pairs, id: false do |t|
+			t.integer :prod1_id
+			t.integer :prod2_id
+			t.timestamps
+		end
 
-      t.timestamps
-    end
-  end
+		add_index :compat_pairs, [:prod1_id, :prod2_id], :unique => true
+	end
 end
