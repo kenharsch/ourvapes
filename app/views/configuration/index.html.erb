@@ -2,29 +2,6 @@
 <br />
 <div class = "center">
 	<span id="parts-list">
-<<<<<<< HEAD
-		<table>
-			<% @partslist.each do |part_type| %>
-			<% present = !@conf_objects[part_type].nil? %>
-			<tr>
-				<td><%= part_type.capitalize %>:</td>
-				<td><% if present %><%= @conf_objects[part_type].name %><% end %></td>
-				<td>
-					<% if present %>
-					<% @add_or_change = "Change" %>
-					<%= button_to "Remove", {action: "remove", controller: "configuration", remove: part_type, conf: @conf_objects}, class: "btn btn-primary"%>
-					<% else %>
-					<% @add_or_change = "Add" %>
-					<% end %>
-				</td>
-				<td>
-					<%= button_to @add_or_change, {action: "add", controller: "configuration", conf: @conf_objects, add_type: part_type, add_id: part_type.capitalize.constantize.all.sample.id}, class: "btn btn-primary"%>
-				</td>
-			</tr>
-			<% end %>
-		</table>
-=======
-		<h3>
 			<table>
 				<% @partslist.each do |part_type| %>
 				<% present = !@conf_objects[part_type].nil? %>
@@ -45,8 +22,6 @@
 				</tr>
 				<% end %>
 			</table>
-		</h3>
->>>>>>> master
 	</span>
 <%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-primary", confirm: "Are you sure you want to clear all products?"%>
 
