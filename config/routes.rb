@@ -1,5 +1,7 @@
 Src::Application.routes.draw do
 
+  resources :product_lists
+
   get "configuration" => "configuration#index"
   post "configuration" => "configuration#index"
   get "configuration/show"

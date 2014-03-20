@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314020549) do
+ActiveRecord::Schema.define(version: 20140320000230) do
 
   create_table "battery_dets", force: true do |t|
     t.integer  "battery_id"
@@ -74,6 +74,11 @@ ActiveRecord::Schema.define(version: 20140314020549) do
 
   create_table "mouthpiece_dets", force: true do |t|
     t.integer  "mouthpiece_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_lists", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
