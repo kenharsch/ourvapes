@@ -1,0 +1,19 @@
+<h1 class = "center">All Parts</h1>
+<div class = "center">
+	<span id="parts-list">
+		<h3>
+			<table>
+				<% @newprod.each do |id, type, name, description, details| %>
+				<tr>
+					<td><%= id %>:</td>
+					<td><%= type %>:</td>
+					<td><%= name %>:</td>
+					<td><%= description %>:</td>
+					<td><%= details %>:</td>
+				</tr>
+				<% end %>
+			</table>
+		</h3>
+	</span>
+</div>
+<%#= @newprod %>
