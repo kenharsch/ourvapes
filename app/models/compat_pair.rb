@@ -4,14 +4,11 @@ class CompatPair < ActiveRecord::Base
 
 	validates :prod1, :prod2, presence: true
 	validates_uniqueness_of :prod1, :scope => [:prod2]
-	validates_with ProdOrderValidator
-end
+	validate :prod_order_must_be_asc
 
-
-class ProdOrderValidator < ActiveModel::Validator
-	def validate(record)
-		if record.prod1_id > record.prod2_id
-			record.errors[:base] << "prod1 must have a lower id than prod2"
+	def prod_order_must_be_asc
+		if prod1_id > prod2_id
+			errors[:base] << "prod1 must have a lower id than prod2"
 		end
 	end
 end
