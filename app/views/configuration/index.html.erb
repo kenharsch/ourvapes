@@ -2,7 +2,6 @@
 <br />
 <div class = "center">
 	<span id="parts-list">
-		<h3>
 			<table>
 				<% @partslist.each do |part_type| %>
 				<% present = !@conf_objects[part_type].nil? %>
@@ -23,7 +22,6 @@
 				</tr>
 				<% end %>
 			</table>
-		</h3>
 	</span>
 <%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-primary", confirm: "Are you sure you want to clear all products?"%>
 

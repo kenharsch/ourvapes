@@ -16,7 +16,7 @@ class ConfigChecker
 			return true if [c.prod1.type, c.prod2.type].member?(prod_type)
 		end
 
-		false
+		return false
 	end
 
 	def all_conflicts
@@ -26,10 +26,10 @@ class ConfigChecker
 	private
 
 	def check(prod1, prod2)
-		return unless prod1 && prod2
-		return if DBHelper.are_compat?(prod1, prod2)
-		@conflicts << "The #{prod1.type.downcase} #{prod1.name} and
+		return if prod1.nil? || prod2.nil? || Product.are_compat?(prod1, prod2)
+		@conflicts << Conflict.new(prod1, prod2,
+			"The #{prod1.type.downcase} #{prod1.name} and
 			the #{prod2.type.downcase} #{prod2.name} are
-			not compatible to each other."
+			not compatible to each other.")
 	end
 end
