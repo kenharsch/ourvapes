@@ -29,18 +29,26 @@ class ConfigurationController < ApplicationController
 
 	def find_parts
 		@conf_objects = {} #conf_objects is used in the configuration view to see product info
+		###
+		@kit_obj = Kit.new
+		###
 		params["conf"] ||= {}
 
 		params["conf"].each do |part_type, part_id| #go through full array
 			part_class = part_type.capitalize.constantize
+
 			if part_class.exists?(part_id) #validate existence
 				@conf_objects[part_type] = part_class.find(part_id)
+				###
+				@kit_obj.update(part_type => part_class.find(part_id)) 
+				###
 			else #could not find 
 				flash[:notice] = "Invalid " + part_type + " selection"
 				remove(part_type) #remove and redirect
 			end
 		end
 
+		@checker = ConfigChecker.new(@kit_obj)
 
 	end
 

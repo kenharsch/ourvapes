@@ -1,8 +1,10 @@
 class ConfigChecker
-	def set_parts(kit)
+	def initialize(kit)
 		@kit = kit
 		@conflicts = []
 
+		# compatibility rules to check
+		# this is the only instance of these rules, caution if changing
 		check(kit.mouthpiece, kit.tank)
 		check(kit.tank, kit.wick)
 		check(kit.tank, kit.button)
@@ -26,7 +28,8 @@ class ConfigChecker
 	private
 
 	def check(prod1, prod2)
-		return if prod1.nil? || prod2.nil? || Product.are_compat?(prod1, prod2)
+		return if prod1.nil? || prod2.nil? # return if one is nil
+		return if Product.are_compat?(prod1, prod2) # return if no conflicts
 		@conflicts << Conflict.new(prod1, prod2,
 			"The #{prod1.type.downcase} #{prod1.name} and
 			the #{prod2.type.downcase} #{prod2.name} are
