@@ -5,11 +5,11 @@ class ConfigurationController < ApplicationController
 
 		#populate_database(100)
 		#empty_database
-
-		@newprod = []
-		Product.all.each do |prod|
-			@newprod << [prod.name, prod.id]
-		end
+		@newprod = Product.all
+		#@newprod = [] 
+		#Product.all.each do |prod|
+		#	@newprod << [prod.name, prod.id]
+		#end
 
 		find_parts
 
