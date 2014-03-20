@@ -3,13 +3,13 @@
 	<span id="parts-list">
 		<h3>
 			<table>
-				<% @newprod.each do |id, type, name, description, details| %>
+				<% @all_prods.each do |prod| %>
 				<tr>
-					<td><%= id %>:</td>
-					<td><%= type %>:</td>
-					<td><%= name %>:</td>
-					<td><%= description %>:</td>
-					<td><%= details %>:</td>
+					<td><%= prod.id %>:</td>
+					<td><%= prod.type %>:</td>
+					<td><%= prod.name %>:</td>
+					<td><%= prod.description %>:</td>
+					<td><%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%><%= prod.type %></td>
 				</tr>
 				<% end %>
 			</table>

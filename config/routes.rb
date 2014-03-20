@@ -4,6 +4,9 @@ Src::Application.routes.draw do
   post "configuration" => "configuration#index"
   get "configuration/show"
 
+  get "product_list/list"
+  post "product_list/list"
+
 #  resources :config_controllers
 
   get "main/configuration"

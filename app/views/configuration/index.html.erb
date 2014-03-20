@@ -18,7 +18,7 @@
 						<% end %>
 					</td>
 					<td>
-						<%= button_to @add_or_change, {action: "add", controller: "configuration", conf: @conf_objects, add_type: part_type, add_id: part_type.capitalize.constantize.all.sample.id}, class: "btn btn-primary"%>
+						<%= button_to @add_or_change, {action: "list", controller: "product_list", conf: @conf_objects}, class: "btn btn-primary"%>
 					</td>
 				</tr>
 				<% end %>
