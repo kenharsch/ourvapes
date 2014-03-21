@@ -23,6 +23,9 @@ class Product < ActiveRecord::Base
 		}
 
 		has_one :details, class_name: class_name, dependent: :delete, autosave: true
+
+		# needed for queries like Tanks.where(volume_in_ml: '> 12')
+		# because this accesses attributes stored in the details object
 		default_scope {joins(:details)}
 
 		# defines the details getter
@@ -56,5 +59,19 @@ class Product < ActiveRecord::Base
 			def_delegators :details,
 			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
 		end
+	end
+
+	def self.are_compat?(prod1, prod2)
+		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
+		return !CompatPair.find_by(prod1_id: prod1.id, prod2_id: prod2.id).nil?
+	end
+
+	def self.set_compat(prod1, prod2)
+		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
+		CompatPair.create(prod1: prod1, prod2: prod2)
+	end
+
+	def self.clear_compat
+		CompatPair.delete_all
 	end
 end
