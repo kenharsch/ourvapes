@@ -8,4 +8,8 @@ class DBHelper
 		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
 		CompatPair.create(prod1: prod1, prod2: prod2)
 	end
+
+	def self.clear_compat
+		CompatPair.delete_all
+	end
 end
