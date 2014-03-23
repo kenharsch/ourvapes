@@ -40,38 +40,72 @@ class Product < ActiveRecord::Base
 	end
 
 
-	# for some reason delete does not forward deletion to associated objects
-	# although the "dependent: :delete" flag is set; this solves the problem for now
+	# for some reason delete does not forward deletion to associated objects although the
+	# +dependent: :delete+ flag is set; this solves the problem for now
 	def delete
 		destroy
 	end
 
-	private
-
-	def create_details_obj_if_needed
-		build_details if details.nil?
+	# Returns +true+ if this product is compatible (physically fits with) +other_product+,
+	# otherwise +false+.
+	def compat_to?(other_product)
+		return CompatPair.find_by(pair_order(self, other_product)).exists?
 	end
 
-	# Getter, setter, and boolean getter (in case it's a boolean attribute)
-	# for each delegated attribute
-	def self.define_accessors(attributes)
-		attributes.each do |attribute_name|
-			def_delegators :details,
-			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
+	# Stores whether this product is compatible (physically fits with) +other_product+.
+	# +compat == true+ means it is compatible whereas +compat == false+ means it is not.
+	def set_compat_to(other_product, compat)
+		if compat
+			CompatPair.create(pair_order(self, other_product))
+		else
+			CompatPair.delete(pair_order(self, other_product))
 		end
 	end
 
-	def self.are_compat?(prod1, prod2)
-		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
-		return CompatPair.where(prod1: prod1, prod2: prod2).exists?
+	# Returns +true+ if both, this product is compatible (physically fits with) +other_product+
+	# and this pairs is defined as "working well"; Otherwise this returns +false+.
+	def works_well_with?(other_product)
+		pair = CompatPair.find_by(pair_order(self, other_product))
+		return false if pair.nil?
+		return pair.works_well?
 	end
 
-	def self.set_compat(prod1, prod2)
-		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
-		CompatPair.create(prod1: prod1, prod2: prod2)
+	# Stores whether this product works well with +other_product+. +well == true+ means it
+	# works well whereas +well == false+ means it doesn't.
+	#
+	# Use +set_compat_to(other_product, false)+ instead if this product is not compatible at all
+	# with +other_product+, means if these two physically do not fit together.
+	def set_works_well_with(other_product, well)
+		pair = CompatPair.find_by(pair_order(self, other_product))
+		CompatPair.create(pair_order(self, other_product)) if pair.nil?
+		pair.works_well = well
 	end
 
 	def self.clear_compat
 		CompatPair.delete_all
 	end
-end
+
+
+private
+
+		# Returns a hash which can be used for CompatPair ActiveRecord actions. This ensures
+		# that +prod1+ has a lower id than +prod2+ as it is required for	+CompatPair+ to
+		# avoid redundant pair storage.
+		def pair_order(prod1, prod2)
+			prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
+			return {prod1: prod1, prod2: prod2}
+		end
+
+		def create_details_obj_if_needed
+			build_details if details.nil?
+		end
+
+		# Getter, setter, and boolean getter (in case it's a boolean attribute)
+		# for each delegated attribute
+		def self.define_accessors(attributes)
+			attributes.each do |attribute_name|
+				def_delegators :details,
+				:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
+			end
+		end
+	end
