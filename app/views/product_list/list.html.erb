@@ -3,13 +3,21 @@
 	<span id="parts-list">
 		<h3>
 			<table>
+				<tr>
+					<th class = "center">Picture</th>
+					<th>ID</th>
+					<th>Type</th>
+					<th>Product Name</th>
+					<th class = "center">Description</th>
+				</tr>
 				<% @all_prods.each do |prod| %>
 				<tr>
-					<td><%= prod.id %>:</td>
+					<td><%= image_tag(prod.picture_path, class: 'list_image') %></td>
+					<td><%= prod.id %></td>
 					<td><%= prod.type %>:</td>
-					<td><%= prod.name %>:</td>
-					<td><%= prod.description %>:</td>
-					<td><%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%><%= prod.type %></td>
+					<td><%= prod.name %></td>
+					<td><%= prod.description %></td>
+					<td><%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%></td>
 				</tr>
 				<% end %>
 			</table>

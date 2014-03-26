@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314020549) do
+ActiveRecord::Schema.define(version: 20140320032542) do
 
   create_table "battery_dets", force: true do |t|
     t.integer  "battery_id"
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(version: 20140314020549) do
     t.datetime "updated_at"
   end
 
-  create_table "config_controllers", force: true do |t|
-    t.string   "show"
+  create_table "compat_pairs", id: false, force: true do |t|
+    t.integer  "prod1_id"
+    t.integer  "prod2_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "compat_pairs", ["prod1_id", "prod2_id"], name: "index_compat_pairs_on_prod1_id_and_prod2_id", unique: true
 
   create_table "connectors", force: true do |t|
     t.string   "name"
