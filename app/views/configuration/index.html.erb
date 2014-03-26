@@ -26,5 +26,6 @@
 	<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-primary", confirm: "Are you sure you want to clear all products?"%>
 </div>
 <br><br>
-<%= @checker %>
 <br>
+<%= flash %>
+<%= @kit_obj.to_url %>

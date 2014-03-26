@@ -1,8 +1,9 @@
 class ConfigurationController < ApplicationController
-	before_action :build_kit
+	before_action :build_kit, only: [:index, :add, :remove]
 
 	def index
 		@add_or_change = "Add"
+		check_compatibility
 	end
 
 	def add(add_type = params["add_type"], add_id = params["add_id"])
@@ -27,6 +28,7 @@ class ConfigurationController < ApplicationController
 		@partslist = Kit::HW_TYPES
 		@kit_obj = Kit.new
 		params["conf"] ||= {}
+		error = false;
 
 		params["conf"].each do |part_type, part_id| #go through full array
 			part_class = part_type.capitalize.constantize
@@ -34,13 +36,18 @@ class ConfigurationController < ApplicationController
 			if part_class.exists?(part_id) #validate existence
 				@kit_obj.update(part_type => part_class.find(part_id)) 
 			else #could not find 
-				flash[:notice] = "Invalid " + part_type + " selection"
-				remove(part_type) #remove and redirect
+				flash[:error] = "Invalid " + part_type + " selection"
+				error = true
 			end
 		end
+		go_to_config if error
 		@conf_objects = @kit_obj.to_hash
-		@checker = ConfigChecker.new(@kit_obj)
 
+	end
+
+	def check_compatibility
+		@checker = ConfigChecker.new(@kit_obj)
+		@kit_obj
 	end
 
 	def show
