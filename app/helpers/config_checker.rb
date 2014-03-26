@@ -92,6 +92,6 @@ class ConfigChecker
 
 	# returns the type of the given product as a symbol
 	def type_sym(product)
-		return prod1.type.downcase.to_sym
+		return product.type.downcase.to_sym
 	end
 end

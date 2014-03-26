@@ -48,13 +48,13 @@ class Product < ActiveRecord::Base
 
 	# Returns +true+ if this product is compatible (physically fits with) +other_product+,
 	# otherwise +false+.
-	def compat_to?(other_product)
+	def compat_with?(other_product)
 		return find_pair(self, other_product) != nil
 	end
 
 	# Stores whether this product is compatible (physically fits with) +other_product+.
 	# +compat == true+ means it is compatible whereas +compat == false+ means it is not.
-	def set_compat_to(other_product, compat)
+	def set_compat_with(other_product, compat)
 		if compat
 			CompatPair.create(pair_order(self, other_product))
 		else
