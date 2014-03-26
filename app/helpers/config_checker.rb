@@ -40,7 +40,7 @@ class ConfigChecker
 	#
 	# prod_type:: a symbol representing the product type of interest
 	def compat_conflicts(prod_type)
-		return single_compat_conflicts[prod_type]
+		return @single_compat_conflicts[prod_type.downcase]
 	end
 
 	# Returns a list of strings according to the given product type. Each entry states that the
@@ -51,7 +51,7 @@ class ConfigChecker
 	#
 	# prod_type:: a symbol representing the product type of interest
 	def works_badly_conflicts(prod_type)
-		return single_compat_conflicts[prod_type]
+		return @single_works_badly_conflicts[prod_type.downcase]
 	end
 
 
@@ -70,20 +70,20 @@ class ConfigChecker
 		return if prod1.nil? || prod2.nil?
 
 		if !prod1.compat_with?(prod2)
-			@pair_compat_conflicts << "The #{prod1.type.downcase} #{prod1.name} and"\
+			@pair_compat_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
 			"the #{prod2.type.downcase} #{prod2.name} are not compatible at all."
 
-			@single_compat_conflicts[type_sym(prod1)] << "not compatible with"\
+			@single_compat_conflicts[type_sym(prod1)] << "not compatible with "\
 			"#{prod2.type.downcase} #{prod2.name} at all"
 
-			@single_compat_conflicts[type_sym(prod2)] << "not compatible with"\
+			@single_compat_conflicts[type_sym(prod2)] << "not compatible with "\
 			"#{prod1.type.downcase} #{prod1.name} at all"
 
 			return
 		end
 
 		if !prod1.works_well_with?(prod2)
-			@pair_works_badly_conflicts << "The #{prod1.type.downcase} #{prod1.name} and"\
+			@pair_works_badly_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
 			"the #{prod2.type.downcase} #{prod2.name} do not work well together."
 
 			@single_works_badly_conflicts[type_sym(prod1)] << "does not work well with "\

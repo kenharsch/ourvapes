@@ -28,7 +28,7 @@ class ConfigurationController < ApplicationController
 		@partslist = Kit::HW_TYPES
 		@kit_obj = Kit.new
 		params["conf"] ||= {}
-		error = false;
+		error_flag = false;
 
 		params["conf"].each do |part_type, part_id| #go through full array
 			part_class = part_type.capitalize.constantize
@@ -37,10 +37,10 @@ class ConfigurationController < ApplicationController
 				@kit_obj.update(part_type => part_class.find(part_id)) 
 			else #could not find 
 				flash[:error] = "Invalid " + part_type + " selection"
-				error = true
+				error_flag = true
 			end
 		end
-		go_to_config if error
+		go_to_config if error_flag
 		@conf_objects = @kit_obj.to_hash
 
 	end
