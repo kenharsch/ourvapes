@@ -6,7 +6,6 @@ class ProductListController < ApplicationController
 		# since we really only need data from the products table;
 		# increases performance
 		@all_prods = Product.unscoped.all
-		binding.pry
 		@conf_objects = params["conf"] || {}
 		#find_parts
 	end

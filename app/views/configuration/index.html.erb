@@ -11,7 +11,7 @@
 				<td>
 					<% if present %>
 					<% @add_or_change = "Change" %>
-					<%= button_to "Remove", {action: "remove", controller: "configuration", remove: part_type, conf: @kit_obj.attributes}, class: "btn btn-primary"%>
+					<%= button_to "Remove", {action: "remove", controller: "configuration", remove: part_type, conf: @conf_objects}, class: "btn btn-primary"%>
 					<% else %>
 					<% @add_or_change = "Add" %>
 					<% end %>
@@ -28,4 +28,3 @@
 <br><br>
 <%= @checker %>
 <br>
-<%= @kit_obj.wick %>

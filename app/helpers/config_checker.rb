@@ -63,14 +63,6 @@ class ConfigChecker
 	# a corresponding entry in pair_works_badly_conflicts as well as two corresponding entries
 	# in single_works_badly_conflicts.
 	def check(prod1, prod2)
-<<<<<<< HEAD
-		return if prod1.nil? || prod2.nil? # return if one is nil
-		return if Product.are_compat?(prod1, prod2) # return if no conflicts
-		@conflicts << Conflict.new(prod1, prod2,
-			"The #{prod1.type.downcase} #{prod1.name} and
-			the #{prod2.type.downcase} #{prod2.name} are
-			not compatible to each other.")
-=======
 		return if prod1.nil? || prod2.nil?
 
 		if !prod1.compat_with?(prod2)
@@ -101,6 +93,5 @@ class ConfigChecker
 	# returns the type of the given product as a symbol
 	def type_sym(product)
 		return prod1.type.downcase.to_sym
->>>>>>> 1917b89f4bd919152663e3a10771b5e356dd26fd
 	end
 end
