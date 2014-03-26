@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 20140320032542) do
     t.datetime "updated_at"
   end
 
-  create_table "compat_pairs", id: false, force: true do |t|
+  create_table "compat_pairs", force: true do |t|
     t.integer  "prod1_id"
     t.integer  "prod2_id"
-    t.boolean  "works_well", default: true
+    t.boolean  "works_well", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,9 +1,9 @@
 class CreateCompatPairs < ActiveRecord::Migration
 	def change
-		create_table :compat_pairs, id: false do |t|
+		create_table :compat_pairs do |t|
 			t.integer :prod1_id
 			t.integer :prod2_id
-			t.boolean :works_well, default: true
+			t.boolean :works_well, default: false
 			t.timestamps
 		end
 

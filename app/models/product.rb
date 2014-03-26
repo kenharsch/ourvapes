@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
 
 	# make sure that a product object always has a details object
+	before_validation :create_details_obj_if_none_yet
 	validates :details, presence: true
-	after_initialize :create_details_obj_if_needed
 
 	# needed to use the def_delegators method
 	extend Forwardable
@@ -49,7 +49,7 @@ class Product < ActiveRecord::Base
 	# Returns +true+ if this product is compatible (physically fits with) +other_product+,
 	# otherwise +false+.
 	def compat_to?(other_product)
-		return CompatPair.find_by(pair_order(self, other_product)) != nil
+		return find_pair(self, other_product) != nil
 	end
 
 	# Stores whether this product is compatible (physically fits with) +other_product+.
@@ -58,14 +58,15 @@ class Product < ActiveRecord::Base
 		if compat
 			CompatPair.create(pair_order(self, other_product))
 		else
-			CompatPair.delete(pair_order(self, other_product))
+			pair = find_pair(self, other_product)
+			pair.delete if pair != nil
 		end
 	end
 
 	# Returns +true+ if both, this product is compatible (physically fits with) +other_product+
 	# and this pairs is defined as "working well"; Otherwise this returns +false+.
 	def works_well_with?(other_product)
-		pair = CompatPair.find_by(pair_order(self, other_product))
+		pair = find_pair(self, other_product)
 		return false if pair.nil?
 		return pair.works_well?
 	end
@@ -76,9 +77,10 @@ class Product < ActiveRecord::Base
 	# Use +set_compat_to(other_product, false)+ instead if this product is not compatible at all
 	# with +other_product+, means if these two physically do not fit together.
 	def set_works_well_with(other_product, well)
-		pair = CompatPair.find_by(pair_order(self, other_product))
-		CompatPair.create(pair_order(self, other_product)) if pair.nil?
+		pair = find_pair(self, other_product)
+		pair = CompatPair.create(pair_order(self, other_product)) if pair.nil?
 		pair.works_well = well
+		pair.save
 	end
 
 	def self.clear_compat
@@ -86,26 +88,30 @@ class Product < ActiveRecord::Base
 	end
 
 
-private
+	private
 
-		# Returns a hash which can be used for CompatPair ActiveRecord actions. This ensures
-		# that +prod1+ has a lower id than +prod2+ as it is required for	+CompatPair+ to
-		# avoid redundant pair storage.
-		def pair_order(prod1, prod2)
-			prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
-			return {prod1: prod1, prod2: prod2}
-		end
+	def find_pair(prod1, prod2)
+		return CompatPair.find_by(pair_order(prod1, prod2))
+	end
 
-		def create_details_obj_if_needed
-			build_details if details.nil?
-		end
+	# Returns a hash which can be used for CompatPair ActiveRecord actions. This ensures
+	# that +prod1+ has a lower id than +prod2+ as it is required for	+CompatPair+ to
+	# avoid redundant pair storage.
+	def pair_order(prod1, prod2)
+		prod1, prod2 = prod2, prod1 if prod2.id < prod1.id
+		return {prod1: prod1, prod2: prod2}
+	end
 
-		# Getter, setter, and boolean getter (in case it's a boolean attribute)
-		# for each delegated attribute
-		def self.define_accessors(attributes)
-			attributes.each do |attribute_name|
-				def_delegators :details,
-				:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
-			end
+	def create_details_obj_if_none_yet
+		build_details if details.nil?
+	end
+
+	# Getter, setter, and boolean getter (in case it's a boolean attribute)
+	# for each delegated attribute
+	def self.define_accessors(attributes)
+		attributes.each do |attribute_name|
+			def_delegators :details,
+			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
 		end
 	end
+end
