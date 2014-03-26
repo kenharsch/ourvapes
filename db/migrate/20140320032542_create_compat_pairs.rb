@@ -7,6 +7,7 @@ class CreateCompatPairs < ActiveRecord::Migration
 			t.timestamps
 		end
 
-		add_index :compat_pairs, [:prod1_id, :prod2_id], :unique => true
+		add_index(:compat_pairs, :prod1_id)
+		add_index(:compat_pairs, :prod2_id)
 	end
 end
