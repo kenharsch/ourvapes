@@ -51,12 +51,6 @@ ActiveRecord::Schema.define(version: 20140320032542) do
   add_index "compat_pairs", ["prod1_id"], name: "index_compat_pairs_on_prod1_id"
   add_index "compat_pairs", ["prod2_id"], name: "index_compat_pairs_on_prod2_id"
 
-  create_table "config_controllers", force: true do |t|
-    t.string   "show"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "connectors", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

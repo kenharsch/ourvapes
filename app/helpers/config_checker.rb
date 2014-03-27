@@ -11,6 +11,7 @@ class ConfigChecker
 	# If there are no conflicts of this type this returns an empty list.
 	attr_reader :pair_works_badly_conflicts
 
+
 	def initialize(kit)
 		@pair_compat_conflicts = []
 		@single_compat_conflicts = Hash.new { |hash, key| hash[key] = [] }
@@ -90,7 +91,7 @@ class ConfigChecker
 			"#{prod2.type.downcase} #{prod2.name}"
 
 			@single_works_badly_conflicts[type_sym(prod2)] << "does not work well with "\
-			"#{prod1.type.downcase} #{prod2.name}"
+			"#{prod1.type.downcase} #{prod1.name}"
 		end
 	end
 
