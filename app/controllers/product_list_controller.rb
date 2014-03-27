@@ -2,10 +2,7 @@ class ProductListController < ApplicationController
 	def list
 		@add_or_change = "Add"
 
-		# 'unscoped' makes sure that no joins are used for this query
-		# since we really only need data from the products table;
-		# increases performance
-		@all_prods = Product.unscoped.all
+		@all_prods = Product.where.not(type: "Kit")
 		@conf_objects = params["conf"] || {}
 		#find_parts
 	end

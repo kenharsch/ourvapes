@@ -1,45 +1,17 @@
 <h1 class = "center">All Parts</h1>
-<div class = "center">
-	<span id="parts-list">
-		<h3>
-			<table>
-				<tr>
-					<th class = "center">Picture</th>
-					<th>ID</th>
-					<th>Type</th>
-					<th>Product Name</th>
-					<th class = "center">Description</th>
-				</tr>
-				<% @all_prods.each do |prod| %>
-				<tr>
-					<td><%= image_tag(prod.picture_path, class: 'list_image') %></td>
-					<td><%= prod.id %></td>
-					<td><%= prod.type %>:</td>
-					<td><%= link_to(prod.name, "", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
 
-						<div class="modal fade" id="modalID<%= prod.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel"><%= prod.name %></h4>
-									</div>
-									<div class="modal-body">
-										<%= image_tag(prod.picture_path, class: 'product_image') %><br/><br/>
-										<strong>Name:</strong> <%= prod.name %><br/>
-										<strong>ID:</strong> <%= prod.id %><br/>
-										<strong>Type:</strong> <%= prod.type %><br/><br/>
-										<strong>Description:</strong> <%= prod.description %><br/><br/>
-										<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%>
-									</div>
-								</div>
-							</div>
-						</div>
-					</td>
-					<td><%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%></td>
-				</tr>
-				<% end %>
-			</table>
-		</h3>
-	</span>
+<div class = "container-fluid center">
+	<% @all_prods.each do |prod| %>
+	<div class = "row">
+		<%= render "product_list_entry", {prod: prod} %>
+		<div class = "col-sm-1">
+			<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary btn-block"%>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-sm-12">
+			<hr>
+		</div>
+	</div>
+	<% end %>
 </div>
