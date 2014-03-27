@@ -1,0 +1,38 @@
+<div class = "col-sm-2">
+	<%= image_tag(prod.picture_path, class: 'list_image') %>
+</div>
+<div class = "col-sm-8">
+	<div class = "prod_title">
+		<%= link_to(prod.name, "", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
+
+		<div class="modal fade" id="modalID<%= prod.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel"><%= prod.name %></h4>
+					</div>
+					<div class="modal-body">
+						<%= image_tag(prod.picture_path, class: 'product_image') %><br/><br/>
+						<strong>Name:</strong> <%= prod.name %><br/>
+						<strong>ID:</strong> <%= prod.id %><br/>
+						<strong>Type:</strong> <%= prod.type %><br/><br/>
+						<strong>Description:</strong> <%= prod.description %><br/><br/>
+						<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%>
+					</div>
+				</div>
+			</div>
+		</div>
+		by <%= prod.manufacturer %>
+	</div>
+<!-- 	<span class = "prod_price">
+		<strong>$<%= "$%.2f".format(prod.price) %></strong>
+		<p><strong>Product Features</strong> <br>
+			<%= prod.description %>
+		</p>
+		<span class = "prod_type">
+			<%= prod.type %>
+		</span>
+		<%= link_to("See all 123 items", "") %>
+	</span> -->
+</div>
