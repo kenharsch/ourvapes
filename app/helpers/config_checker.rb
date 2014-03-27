@@ -72,7 +72,8 @@ class ConfigChecker
 
 		if !prod1.compat_with?(prod2)
 			@pair_compat_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
-			"the #{prod2.type.downcase} #{prod2.name} are not compatible at all."
+			"the #{prod2.type.downcase} #{prod2.name} are not compatible at all. " \
+			"Replace or remove one of them."
 
 			@single_compat_conflicts[type_sym(prod1)] << "not compatible with "\
 			"#{prod2.type.downcase} #{prod2.name} at all"
@@ -85,7 +86,8 @@ class ConfigChecker
 
 		if !prod1.works_well_with?(prod2)
 			@pair_works_badly_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
-			"the #{prod2.type.downcase} #{prod2.name} do not work well together."
+			"the #{prod2.type.downcase} #{prod2.name} do not work well together. " \
+			"Replace or remove one of them."
 
 			@single_works_badly_conflicts[type_sym(prod1)] << "does not work well with "\
 			"#{prod2.type.downcase} #{prod2.name}"
