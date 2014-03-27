@@ -28,6 +28,11 @@
 	margin-bottom:3px;
 }
 
+body
+{
+	background-color: #E3F1FA !important
+}
+
 #configurator .btn-size
 {
 	width:5em;
@@ -59,7 +64,7 @@
 	border:3px solid;
 	border-radius:5px;
 	border-color: #7B8F8F;
-
+	background-color: white;
 	vertical-align: center;
 
 }
