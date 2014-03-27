@@ -20,23 +20,32 @@
 					<%= button_to @add_or_change, {action: "list", controller: "product_list", conf: @conf_objects}, class: "btn btn-primary"%>
 				</td>
 			</tr>
-				<% if @checker.compat_conflicts(part_type.to_sym).any? %>
-				<tr>
-					<td colspan="5">
-						<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
-							<%= message %><br />
-						<% end %>
-					</td>
-				</tr>
-				<% end %>
-				<% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
-				<tr>
-					<td colspan="5">
-						<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
-							<%= message %><br />
-						<% end %>
-					</td>
-				</tr>
+				<% if present %>
+					<% if @checker.compat_conflicts(part_type.to_sym).any? %>
+					<tr>
+						<td colspan="5">
+							<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
+								<%= message %><br />
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+					<% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
+					<tr>
+						<td colspan="5">
+							<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
+								<%= message %><br />
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+					<% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
+					<tr>
+						<td colspan="5">
+							No conflicts!<br />
+						</td>
+					</tr>
+					<% end %>
 				<% end %>
 			<% end %>
 		</table>
