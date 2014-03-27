@@ -1,25 +1,23 @@
 <% if @checker.pair_compat_conflicts.any? %>
-<tr>
-	<td colspan="5">
-		<% @checker.pair_compat_conflicts.each do |message| %>
-		<%= message %><br />
-		<% end %>
-	</td>
-</tr>
+<% @checker.pair_compat_conflicts.each do |message| %>
+<div class = "col-xs-12 bg-danger compat-message">
+	<%= message %>
+</div>
 <% end %>
+<% end %>
+
 <% if @checker.pair_works_badly_conflicts.any? %>
-<tr>
-	<td colspan="5">
-		<% @checker.pair_works_badly_conflicts.each do |message| %>
-		<%= message %><br />
-		<% end %>
-	</td>
-</tr>
+
+<% @checker.pair_works_badly_conflicts.each do |message| %>
+<div class = "col-xs-12 bg-warning compat-message">
+	<%= message %>
+</div>
 <% end %>
+
+<% end %>
+
 <% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? %>
-<tr>
-	<td colspan="5">
-		No conflicts!<br />
-	</td>
-</tr>
+<div class = "col-xs-12 bg-success compat-message">
+	No conflicts!
+</div>
 <% end %>

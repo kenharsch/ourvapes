@@ -1,25 +1,20 @@
 <% if @checker.compat_conflicts(part_type.to_sym).any? %>
-<tr>
-	<td colspan="5">
-		<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
-		<%= message %><br />
-		<% end %>
-	</td>
-</tr>
+<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
+<div class = "col-xs-12 bg-danger compat-message">
+	<%= message %>
+</div>
+<% end %>
+
 <% end %>
 <% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
-<tr>
-	<td colspan="5">
-		<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
-		<%= message %><br />
-		<% end %>
-	</td>
-</tr>
+<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
+<div class = "col-xs-12 bg-warning compat-message">
+	<%= message %>
+</div>
+<% end %>
 <% end %>
 <% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
-<tr>
-	<td colspan="5">
-		No conflicts!<br />
-	</td>
-</tr>
+<div class = "col-xs-12 bg-success compat-message">
+	No conflicts!
+</div>
 <% end %>
