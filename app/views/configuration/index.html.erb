@@ -14,7 +14,7 @@
 			<%= part_type.capitalize %>:
 		</div>
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
-			<% if present %><%= @conf_objects[part_type].name %>
+			<% if present %><%= render 'shared/product_list_entry', prod: @conf_objects[part_type] %>
 			<% @add_or_change = "Change" %>
 			<% else %>
 			<% @add_or_change = "Choose" %>
