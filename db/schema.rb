@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 20140320032542) do
     t.string   "description"
     t.string   "picture_path"
     t.string   "type"
+    t.string   "manufacturer"
+    t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
