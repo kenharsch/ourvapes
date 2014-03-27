@@ -1,7 +1,7 @@
-	<div class = "col-sm-3">
+	<div class = "col-sm-<%= pic_width %>">
 		<%= image_tag(prod.picture_path, class: 'list_image') %>
 	</div>
-	<div class = "col-sm-9" align = "left">
+	<div class = "col-sm-<%= details_width %>" align = "left">
 		<div>
 			<%= link_to(prod.name, "", 'class' => "prod_title", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
 

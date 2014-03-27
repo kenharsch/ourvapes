@@ -15,6 +15,6 @@
 <% end %>
 <% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
 <div class = "col-xs-12 bg-success compat-message">
-	No conflicts!
+	works well with all selected parts
 </div>
 <% end %>
