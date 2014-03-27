@@ -33,11 +33,11 @@ body
 	background-color: #E3F1FA !important
 }
 
-#configurator .btn-size
+#configurator .btn
 {
-	width:5em;
+	font-weight:bold;
+	color: white;
 }
-
 
 .compat-message
 {
