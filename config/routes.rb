@@ -3,6 +3,7 @@ Src::Application.routes.draw do
   get "configuration" => "configuration#index"
   get "configuration/show"
 
+  get "product/show/:id" => "product#show"
   get "product_list/list"
   post "product_list/list"
 
