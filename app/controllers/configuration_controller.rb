@@ -1,5 +1,5 @@
 class ConfigurationController < ApplicationController
-	before_action :build_kit, only: [:index, :add, :remove]
+	before_action :build_kit, only: [:index, :add, :remove, :show]
 
 	def index
 		@add_or_change = "Add"
@@ -21,7 +21,11 @@ class ConfigurationController < ApplicationController
 	end
 
 	def go_to_config
-		redirect_to "/configuration?#{@kit_obj.to_url}"
+		if @kit_obj.nil?
+			redirect_to "/configuration"
+		else
+			redirect_to "/configuration?#{@kit_obj.to_url}"
+		end
 	end
 
 	def build_kit
@@ -51,7 +55,7 @@ class ConfigurationController < ApplicationController
 	end
 
 	def show
-
+		go_to_config
 	end
 
 =begin

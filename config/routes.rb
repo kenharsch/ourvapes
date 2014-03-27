@@ -13,6 +13,7 @@ Src::Application.routes.draw do
   get "main/search"
   post "configuration/add"
   post "configuration/remove"
+  post "configuration/show"
   get "configuration/clear"
 
   # The priority is based upon order of creation: first created -> highest priority.

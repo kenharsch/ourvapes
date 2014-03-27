@@ -11,6 +11,33 @@
  *= require_self
  *= require_tree .
  */
+.title-button
+{
+	color: white;
+	height:50px;
+	font-size: 2em;
+	background-color: black;
+	font-weight: bold;
+	border-style: none;
+}
+.title-button:hover
+{
+	background-color: #404040;
+}
+.title-spacer
+{
+	height:50px;
+	width: 100%;
+}
+#title-bar
+{
+	position:fixed;
+	top:0;
+	height:50px;
+	width:100%;
+	background-color: black;
+	z-index: 9999;
+}
 
 #parts-list
 {
@@ -39,6 +66,11 @@ body
 	color: white;
 }
 
+#configurator .part-name
+{
+	font-size: 1.5em;
+}
+
 .compat-message
 {
 	border-radius:25px;
@@ -65,11 +97,14 @@ body
 	border-radius:5px;
 	border-color: #7B8F8F;
 	background-color: white;
-	vertical-align: center;
-
 }
 
+.padded
+{
+	padding-top:10px;
+	padding-bottom:10px;
 
+}
 .center
 {
 	text-align: center;
