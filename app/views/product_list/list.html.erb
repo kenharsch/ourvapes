@@ -4,9 +4,14 @@
 	<% @all_prods.each do |prod| %>
 	<div class = "row">
 		<%= render "product_list_entry", {prod: prod} %>
-	<div class = "col-sm-2">
-		<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary btn-block"%>
+		<div class = "col-sm-1">
+			<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary btn-block"%>
+		</div>
 	</div>
+	<div class = "row">
+		<div class = "col-sm-12">
+			<hr>
+		</div>
 	</div>
 	<% end %>
 </div>
