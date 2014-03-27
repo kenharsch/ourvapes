@@ -1,0 +1,25 @@
+<% if @checker.compat_conflicts(part_type.to_sym).any? %>
+<tr>
+	<td colspan="5">
+		<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
+		<%= message %><br />
+		<% end %>
+	</td>
+</tr>
+<% end %>
+<% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
+<tr>
+	<td colspan="5">
+		<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
+		<%= message %><br />
+		<% end %>
+	</td>
+</tr>
+<% end %>
+<% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
+<tr>
+	<td colspan="5">
+		No conflicts!<br />
+	</td>
+</tr>
+<% end %>

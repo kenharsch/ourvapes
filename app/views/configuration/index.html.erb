@@ -1,6 +1,7 @@
 <h1 class = "center">Configuration</h1>
 <br />
 <div class = "center">
+	<%= render "pair_compat_messages" %>
 	<span id="parts-list">
 		<table>
 			<% @partslist.each do |part_type| %>
@@ -21,31 +22,7 @@
 				</td>
 			</tr>
 				<% if present %>
-					<% if @checker.compat_conflicts(part_type.to_sym).any? %>
-					<tr>
-						<td colspan="5">
-							<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
-								<%= message %><br />
-							<% end %>
-						</td>
-					</tr>
-					<% end %>
-					<% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
-					<tr>
-						<td colspan="5">
-							<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
-								<%= message %><br />
-							<% end %>
-						</td>
-					</tr>
-					<% end %>
-					<% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
-					<tr>
-						<td colspan="5">
-							No conflicts!<br />
-						</td>
-					</tr>
-					<% end %>
+					<%= render "single_compat_messages", {part_type: part_type} %>
 				<% end %>
 			<% end %>
 		</table>

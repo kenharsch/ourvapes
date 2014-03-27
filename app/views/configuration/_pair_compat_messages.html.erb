@@ -1,0 +1,25 @@
+<% if @checker.pair_compat_conflicts.any? %>
+<tr>
+	<td colspan="5">
+		<% @checker.pair_compat_conflicts.each do |message| %>
+		<%= message %><br />
+		<% end %>
+	</td>
+</tr>
+<% end %>
+<% if @checker.pair_works_badly_conflicts.any? %>
+<tr>
+	<td colspan="5">
+		<% @checker.pair_works_badly_conflicts.each do |message| %>
+		<%= message %><br />
+		<% end %>
+	</td>
+</tr>
+<% end %>
+<% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? %>
+<tr>
+	<td colspan="5">
+		No conflicts!<br />
+	</td>
+</tr>
+<% end %>
