@@ -7,6 +7,8 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description
       t.string :picture_path
       t.string :type
+      t.string :manufacturer
+      t.float :price
 
       t.timestamps
     end
