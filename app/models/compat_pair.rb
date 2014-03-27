@@ -7,8 +7,8 @@ class CompatPair < ActiveRecord::Base
 	validate :prod_order_must_be_asc
 
 	def prod_order_must_be_asc
-		if prod1_id > prod2_id
-			errors[:base] << "prod1 must have a lower id than prod2"
+		if prod1_id >= prod2_id
+			errors.add(:base, "prod1 must have a lower id than prod2")
 		end
 	end
 end

@@ -57,7 +57,7 @@ def self.populate_test_compats(i)
 	types = [Tank, Mouthpiece, Charger, Cartridge, Button, Battery]
 	6.times do
 		t = types.pop
-		DBHelper.set_compat(w, t.find(counter))
+		w.set_compat_with(t.find(counter), true)
 		counter += 1
 	end
 end

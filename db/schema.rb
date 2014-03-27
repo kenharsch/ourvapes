@@ -40,14 +40,16 @@ ActiveRecord::Schema.define(version: 20140320032542) do
     t.datetime "updated_at"
   end
 
-  create_table "compat_pairs", id: false, force: true do |t|
+  create_table "compat_pairs", force: true do |t|
     t.integer  "prod1_id"
     t.integer  "prod2_id"
+    t.boolean  "works_well", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "compat_pairs", ["prod1_id", "prod2_id"], name: "index_compat_pairs_on_prod1_id_and_prod2_id", unique: true
+  add_index "compat_pairs", ["prod1_id"], name: "index_compat_pairs_on_prod1_id"
+  add_index "compat_pairs", ["prod2_id"], name: "index_compat_pairs_on_prod2_id"
 
   create_table "connectors", force: true do |t|
     t.string   "name"

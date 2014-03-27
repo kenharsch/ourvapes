@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -18,11 +18,11 @@ gem 'coffee-rails', '~> 4.0.0'
 # readline
 gem 'rb-readline'
 
+# Better Errors
+gem 'better_errors', '~> 1.1.0'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# table-print
-gem 'table_print'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,8 +38,24 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# for running minitest tests
-gem 'minitest-rails'
+group :development do
+	gem 'pry-rails'
+	gem 'pry-debugger'
+
+	# table-print
+	gem 'table_print'
+end
+
+group :test do
+	gem 'pry-rails'
+	gem 'pry-debugger'
+
+	# table-print
+	gem 'table_print'
+
+	# for running minitest tests
+	gem 'minitest-rails'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

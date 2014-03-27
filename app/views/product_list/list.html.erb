@@ -15,13 +15,8 @@
 					<td><%= image_tag(prod.picture_path, class: 'list_image') %></td>
 					<td><%= prod.id %></td>
 					<td><%= prod.type %>:</td>
-					<td>
-						<%= link_to(prod.name, "", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
-						<!-- Button trigger modal -->
-<!-- 						<button class="product_button" data-toggle="modal" data-target="#modalID<%= prod.id %>">
-							<%= prod.name %>
-						</button> -->
-						<!-- Modal -->
+					<td><%= link_to(prod.name, "", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
+
 						<div class="modal fade" id="modalID<%= prod.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">

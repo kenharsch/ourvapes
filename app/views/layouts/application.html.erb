@@ -2,17 +2,17 @@
 <html>
 <head>
 	<title>VapeRater</title>
-	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<%= button_to "Home", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
-	<%= button_to "Search", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
-	<%= button_to "Configuration", "/configuration" + create_kit_url, :method => :post , :class => "btn btn-default left"%>
+	<%= button_to "Home", "/configuration", :method => :post , :class => "btn btn-default left"%>
+	<%= button_to "Search", "/configuration", :method => :post , :class => "btn btn-default left"%>
+	<%= button_to "Configuration", "/configuration", :method => :post , :class => "btn btn-default left"%>
 	<br />
-	<% if flash[:notice] %>
-		<div class="flash error"><%= flash[:notice] %></div>
+	<% if flash[:error] %>
+		<div class="flash error"><%= flash[:error] %></div>
 		<br />
 	<% end %>
 	<%= yield %>
