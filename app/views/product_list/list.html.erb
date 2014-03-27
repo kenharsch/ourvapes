@@ -32,9 +32,6 @@
 										<strong>Description:</strong> <%= prod.description %><br/><br/>
 										<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
 								</div>
 							</div>
 						</div>
