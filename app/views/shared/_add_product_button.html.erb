@@ -1,6 +1,6 @@
 <% if @conf_objects[prod.type.downcase].nil? %>
 <% confirm_message = nil %>
 <% else %>
-<% confirm_message = "Are you stupid?" %>
+<% confirm_message = "Do you want to overwrite your existing #{prod.type}?" %>
 <% end %>
 <%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary btn-block", confirm: confirm_message %>
