@@ -15,14 +15,31 @@
 					<td><%= image_tag(prod.picture_path, class: 'list_image') %></td>
 					<td><%= prod.id %></td>
 					<td><%= prod.type %>:</td>
-					<td><%= prod.name %></td>
-					<td><%= prod.description %></td>
-					<td><%= button_to "Add", {action: "add", controller: "configuration",
-						conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%></td>
+					<td><%= link_to(prod.name, "", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
+
+						<div class="modal fade" id="modalID<%= prod.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel"><%= prod.name %></h4>
+									</div>
+									<div class="modal-body">
+										<%= image_tag(prod.picture_path, class: 'product_image') %><br/><br/>
+										<strong>Name:</strong> <%= prod.name %><br/>
+										<strong>ID:</strong> <%= prod.id %><br/>
+										<strong>Type:</strong> <%= prod.type %><br/><br/>
+										<strong>Description:</strong> <%= prod.description %><br/><br/>
+										<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td><%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%></td>
 				</tr>
 				<% end %>
 			</table>
 		</h3>
 	</span>
 </div>
-<%#= @newprod %>
