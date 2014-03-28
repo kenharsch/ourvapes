@@ -7,19 +7,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="title-bar">
-		<div style="float:left;margin-right:10px;">
-			<%= button_to "VapeRater", "/configuration", :method => :get , :class => "title-button"%>
-		</div>
-		<div style="float:left;margin-right:10px;">
-			<%= button_to "Products", {action: "list", controller: "product_list", conf: @conf_objects}, class: "title-button" %>
-		</div>
-		<div style="float:left;margin-right:10px;">
-		<%= button_to "Configuration", {controller: "configuration", action: "show", conf: params[:conf]}, class: "title-button"%>
-		</div>
-	</div>
-	<div class="title-space">&nbsp</div>
-	<br />
+	<%= render 'layouts/nav_bar' %>
 	<% if flash[:error] %>
 	<div class="flash error"><%= flash[:error] %></div>
 	<br />

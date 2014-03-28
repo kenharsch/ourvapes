@@ -1,16 +1,12 @@
 Src::Application.routes.draw do
 
+  root "main#splash"
   get "configuration" => "configuration#index"
   get "configuration/show"
 
-  get "product/show/:id" => "product#show"
   get "product_list/list"
   post "product_list/list"
 
-#  resources :config_controllers
-
-  get "main/configuration"
-  get "main/search"
   post "configuration/add"
   post "configuration/remove"
   post "configuration/show"

@@ -11,6 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+ .fixed
+ {
+ 	position:fixed !important;
+ }
+
 .title-button
 {
 	color: white;
