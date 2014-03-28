@@ -19,7 +19,9 @@
 							<strong>Price:</strong> <%= prod.price %><br/>
 							<strong>Type:</strong> <%= prod.type %><br/><br/>
 							<strong>Description:</strong> <%= prod.description %><br/><br/>
-							<%= button_to "Add", {action: "add", controller: "configuration", conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id}, class: "btn btn-primary"%>
+							<% if request.env['PATH_INFO'] != "/configuration" %>
+							<%= render 'shared/add_product_button', prod: prod%>
+							<% end %>
 						</div>
 					</div>
 				</div>
