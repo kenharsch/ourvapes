@@ -1,7 +1,7 @@
 <h1 class = "center">All Parts</h1>
 
 <div class = "container-fluid center">
-	<% @all_prods.each do |prod| %>
+	<% @prods.each do |prod| %>
 	<div class = "row">
 		<%= render 'shared/product_list_entry', prod: prod, pic_width: 2, details_width: 9 %>
 		<div class = "col-sm-1">
