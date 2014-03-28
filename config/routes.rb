@@ -1,5 +1,6 @@
 Src::Application.routes.draw do
 
+  root "main#splash"
   get "configuration" => "configuration#index"
   get "configuration/show"
 
