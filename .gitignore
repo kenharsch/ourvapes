@@ -12,11 +12,8 @@
 /db/*.sqlite3-journal
 
 # ignore all logfiles and tempfiles
-/log/*.log
+/log
 /tmp
 
 # ignore the mac directory management files
 *.DS_Store
-
-# ignore all temp files
-tmp/*

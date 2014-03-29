@@ -1,13 +1,11 @@
 <h1 class = "center">All Parts</h1>
 
 <div class = "container-fluid center">
-	<% @all_prods.each do |prod| %>
+	<% @prods.each do |prod| %>
 	<div class = "row">
 		<%= render 'shared/product_list_entry', prod: prod, pic_width: 2, details_width: 9 %>
 		<div class = "col-sm-1">
-			<%= button_to "Add", {action: "add", controller: "configuration",
-				conf: @conf_objects, add_type: prod.type.downcase, add_id: prod.id},
-				class: "btn btn-primary btn-block"%>
+			<%= render 'shared/add_product_button', prod: prod%>
 		</div>
 	</div>
 	<div class = "row">
