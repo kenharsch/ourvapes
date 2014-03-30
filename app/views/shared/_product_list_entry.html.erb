@@ -1,19 +1,21 @@
-<div class = "col-sm-3">
-	<%= image_tag(prod.picture_path, class: 'list_image') %>
+<div class = "imageBox">
+	<%= image_tag(prod.picture_path, class: 'img-responsive') %>
 </div>
-<div class = "col-sm-6" align = "left">
-	<%= render 'shared/modal_details', prod: prod %>
-	by <%= prod.manufacturer %>
-	<span class = "prod_price">
-		<strong>$<%= "%.2f" % prod.price %></strong>
-	</span>
+<div class = "details">
+	<p>
+		<%= render 'shared/modal_details', prod: prod %>
+		by <%= prod.manufacturer %>
+		<span class = "prod_price">
+			<strong>$<%= "%.2f" % prod.price %></strong>
+		</span>
+	</p>
+
 	<p><strong>Product Features</strong> <br>
-		<%= prod.description %>
+		<%= truncate(prod.description, length: 200, separator: ' ') %>
 	</p>
 	<span class = "prod_type">
 		<%= prod.type %>
 	</span>
 	<
 	<%= link_to("See all 123 items", "") %>
-
 </div>

@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "product_list_entry" %>
+
 <div class = "container center" id = "configurator">
 	<div class = "row">
 		<h1>
@@ -15,7 +17,7 @@
 		</div>
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
 			<% if present %><%= render 'shared/product_list_entry',
-				prod: @conf_objects[part_type], pic_width: 3, details_width: 9 %>
+				prod: @conf_objects[part_type] %>
 			<% @add_or_change = "Change" %>
 			<% else %>
 			<% @add_or_change = "Choose" %>
