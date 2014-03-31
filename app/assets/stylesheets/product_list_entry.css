@@ -1,0 +1,28 @@
+.imageBox {
+	width: 160px;
+	height: 160px;
+	margin-right: 20px;
+	float: left;
+	/*max-width:100%;*/
+}
+
+.details {
+	text-align: left;
+}
+
+.prod_title {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #004B91;
+}
+
+.prod_price {
+	font-size: 14px;
+	color: #900;
+	font-weight: bold;
+}
+
+.prod_type {
+	color: #C60;
+	font-weight: bold;
+}

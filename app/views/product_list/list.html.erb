@@ -1,11 +1,15 @@
+<%= stylesheet_link_tag "product_list_entry" %>
+
 <h1 class = "center">All Parts</h1>
 
 <div class = "container-fluid center">
-	<% @all_prods.each do |prod| %>
+	<% @prods.each do |prod| %>
 	<div class = "row">
-		<%= render 'shared/product_list_entry', prod: prod, pic_width: 2, details_width: 9 %>
+		<div class = "col-sm-11">
+			<%= render 'shared/product_list_entry', prod: prod %>
+		</div>
 		<div class = "col-sm-1">
-			<%= render 'shared/add_product_button', prod: prod%>
+			<%= render 'shared/add_product_button', prod: prod %>
 		</div>
 	</div>
 	<div class = "row">

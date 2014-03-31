@@ -45,22 +45,6 @@
 	z-index: 950;
 }
 
-.prod_title {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #004B91;
-}
-
-.prod_price {
-    font-size: 14px;
-    color: #900;
-    font-weight: bold;
-}
-
-.prod_type {
-    color: #C60;
-    font-weight: bold;
-}
 .inline
 {
 	display:inline;
