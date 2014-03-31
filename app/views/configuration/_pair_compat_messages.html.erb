@@ -1,4 +1,4 @@
-<% if @checker.pair_compat_conflicts.any? %>
+<% if @checker.pair_compat_conflicts.any?%>
 <% @checker.pair_compat_conflicts.each do |message| %>
 <div class = "col-xs-12 bg-danger compat-message">
 	<%= message %>
@@ -16,7 +16,7 @@
 
 <% end %>
 
-<% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? %>
+<% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? && @conf_objects.size >= 2 %>
 <div class = "col-xs-12 bg-success compat-message">
 	all selected parts work well with each other
 </div>
