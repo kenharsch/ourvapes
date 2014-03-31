@@ -88,6 +88,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.3)
       sprockets-rails (~> 2.0.0)
+    rails-rateit (0.2)
     railties (4.0.3)
       actionpack (= 4.0.3)
       activesupport (= 4.0.3)
@@ -143,6 +144,7 @@ DEPENDENCIES
   pry-debugger
   pry-rails
   rails (= 4.0.3)
+  rails-rateit
   rb-readline
   sass-rails (~> 4.0.0)
   sdoc
