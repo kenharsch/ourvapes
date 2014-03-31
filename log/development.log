@@ -20699,3 +20699,119 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-27 16:53:50
 
 
 Started GET "/assets/wick1.png" for 127.0.0.1 at 2014-03-27 16:53:50 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-31 17:19:26 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MainController#splash as HTML
+  Rendered main/splash.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_nav_bar.html.erb (7.7ms)
+Completed 200 OK in 846ms (Views: 807.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap-theme.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap-theme.css.map.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap.css.map.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/config_controllers.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/configuration.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/flashes.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/product_list.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/product.css?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/config_controllers.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/configuration.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/product.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/product_list.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-31 17:19:28 -0400
