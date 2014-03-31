@@ -1,5 +1,7 @@
 class ProductListController < ApplicationController
 	def list
+		@page = Constants::PAGE_PROD_LIST
+
 		@add_or_change = "Add"
 
 		# limit to 20 items for faster loading during development;

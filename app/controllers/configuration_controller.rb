@@ -2,6 +2,8 @@ class ConfigurationController < ApplicationController
 	before_action :build_kit, only: [:index, :add, :remove, :show]
 
 	def index
+		@page = Constants::PAGE_CONFIG
+
 		@add_or_change = "Add"
 		check_compatibility
 	end
@@ -38,8 +40,8 @@ class ConfigurationController < ApplicationController
 			part_class = part_type.capitalize.constantize
 
 			if part_class.exists?(part_id) #validate existence
-				@kit_obj.update(part_type => part_class.find(part_id)) 
-			else #could not find 
+				@kit_obj.update(part_type => part_class.find(part_id))
+			else #could not find
 				flash[:error] = "Invalid " + part_type + " selection"
 				error_flag = true
 			end
@@ -62,7 +64,7 @@ class ConfigurationController < ApplicationController
 	def populate_database(num = 10)
 		descriptions = ["sour","crazy","cool","agonizing","painful","slippery","damp","humid","fresh-squeezed","upside-down","inside-out","super", "ultra", "happy", "evil", "fantastic", "splendid", "turbo", "insatiable", "fastidious", "fetid", "arctic", "fortunate", "powerful", "simple", "complicated", "angry", "artery-clogging", "gastric", "smart", "short", "tall", "slow", "aggressive", "soft", "squishy", "yummy", "annoying", "lively", "friendly", "gross", "colorful", "sleepy", "orange", "blue", "green", "yellow", "heavy", "warm", "cold", "intrepid", "enthusiastic", "frustrating", "jive", "tired", "smelly", "flirty", "drunk", "tart", "sweet", "jumpy", "nervous", "strange", "crappy", "stupid", "idiotic", "tiny", "corn-fed", "collapsible", "pocket-sized", "supreme", "delicious", "belligerent", "sublime", "helvetica", "Greek","Italian","Spanish","Mexican","French","German","bovine","Guatamalan","Cuban","Canadian","Dutch","Egyptian","Israeli","Russian","Ukranian","lavender","indigo","Chinese","Japanese","Korean","Thai","spicy","mango","peanut","avocado","apple","pear","cherry","tomato","potato","kiwi","lemon","lime","peach","blueberry","fuschia","cerulean","veridian","unfortunate","tragic","crooked","barbaric","intense","groovy","Indian","Pakistani","Nepalese","Brazilian","Peruvian","perverted","Slavic"]
 		types = ["wick","tank","cartridge","juice","mouthpiece","battery","button","charger"]
-		
+
 		(0..num).each do
 			prefix = descriptions.sample.capitalize + " " + descriptions.sample
 			ptype = types.sample.capitalize
@@ -76,5 +78,5 @@ class ConfigurationController < ApplicationController
 		end
 	end
 =end
-	
+
 end
