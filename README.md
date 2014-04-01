@@ -4,22 +4,22 @@ this readme is not meant to be read by the public since this project is currentl
 
 ## Testing
 
-### run a single test file
-e.g. the file `test/models/product_blackbox_test.rb`
+I am not sure if the `bundle exec` is necessary but stackoverflow says it should be used if we
+use bundler to manage gem dependencies, which we do
+
+run a single test file
 ```
 	bundle exec ruby -I test test/models/product_blackbox_test.rb
-	I am not sure if the “bundle exec” is necessary but stackoverflow says it should be used if we use
-	bundler to manage gem dependencies, which we do
 ```
 
-### running the full-text search test
+run the full-text search test
 ```
 	RAILS_ENV=test rake sunspot:solr:start
 	bundle exec ruby -I test test/models/product_search_test.rb
 	RAILS_ENV=test rake sunspot:solr:stop
 ```
 
-### running all tests
+run all tests
 ```
 	RAILS_ENV=test rake sunspot:solr:start
 	rake test:prepare
