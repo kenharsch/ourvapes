@@ -11,7 +11,6 @@
 	
 	<%= render "pair_compat_messages" %>
 
-
 	<% @partslist.each do |part_type| %>
 
 	<div class = "product-tile row">
@@ -26,32 +25,34 @@
 		</div>
 
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
-			<% if present %><%= render 'shared/product_list_entry',
-				prod: @conf_objects[part_type] %>
-
+			<% if present %><%= render 'shared/product_list_entry', prod: @conf_objects[part_type] %>
 				<% @add_or_change = "Change" %>
-				<% else %>
+			<% else %>
 				<% @add_or_change = "Choose" %>
-				<% end %>
-			</div>
-			<div class = "col-sm-2 col-xs-12">
-				<% if present %><%= button_to "Remove", {action: "remove",
-					controller: "configuration", remove: part_type, conf: @conf_objects},
-					class: "btn btn-primary btn-block"%>
-					<% end %>
+			<% end %>
+		</div>
 
-					<%= button_to @add_or_change, {action: "list", controller: "product_list",
-						conf: @conf_objects, type: part_type}, class: "btn btn-primary btn-block"%>
-					</div>
-					<% if present %>
-					<%= render "single_compat_messages", {part_type: part_type} %>
-					<% end %>
-				</div>
-				<% if present %><% else %> <% end %>
-				<% end %>
-				<div class = "col-xs-12">
+		<div class = "col-sm-2 col-xs-12">
+			<% if present %>
+				<%= button_to "Remove", {action: "remove",
+				controller: "configuration", remove: part_type, conf: @conf_objects},
+				class: "btn btn-primary btn-block"%>
+			<% end %>
+		<%= button_to @add_or_change, {action: "list", controller: "product_list",
+			conf: @conf_objects, type: part_type}, class: "btn btn-primary btn-block"%>
+		</div>
 
-					<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-primary",
-					confirm: "Are you sure you want to clear all products?"%>
-				</div>
-			</div>
+		<% if present %>
+			<%= render "single_compat_messages", {part_type: part_type} %>
+		<% end %>
+
+	</div>
+
+	<% if present %><% else %> <% end %>
+	<% end %>
+
+	<div class = "col-xs-12">
+		<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-primary",
+		confirm: "Are you sure you want to clear all products?"%>
+	</div>
+</div>

@@ -57,6 +57,9 @@ end
 # For adding in ratings
 gem 'rails-rateit'
 
+# For pagination
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

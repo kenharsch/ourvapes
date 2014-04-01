@@ -1,7 +1,8 @@
 <%= stylesheet_link_tag "product_list_entry" %>
 
-<h1 class = "center">All <%= @part_type.pluralize %></h1>
-
+<h1 class = "left">All <%= @part_type.capitalize.pluralize %></h1>
+<br/>
+<%= paginate @prods %>
 <div class = "container-fluid center">
 	<% @prods.each do |prod| %>
 	<div class = "row">
