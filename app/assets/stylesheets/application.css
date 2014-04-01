@@ -14,7 +14,17 @@
 
  .fixed
  {
- 	position:fixed !important;
+ 	position:fixed;
+ }
+
+ .tiny
+ {
+ 	font-size: 0.85em;
+ }
+
+ body
+ {
+ 	padding-top:65px;
  }
 
 .title-button
@@ -71,11 +81,6 @@ body
 	background-color: #E3F1FA !important
 }
 
-#configurator .btn
-{
-	font-weight:bold;
-	color: white;
-}
 
 #configurator .part-name
 {
@@ -86,6 +91,7 @@ body
 {
 	border-radius:25px;
 	font-weight:bold;
+	text-align: center;
 }
 .compat-message.bg-danger
 {
@@ -104,17 +110,19 @@ body
 }
 .product-tile
 {
-	border:3px solid;
+	border:1px solid;
 	border-radius:5px;
 	border-color: #7B8F8F;
 	background-color: white;
 }
-
-.padded
+.product-description
 {
-	padding-top:10px;
-	padding-bottom:10px;
+	background-color: 
+}
 
+.padded-5
+{
+	padding:5px;
 }
 .center
 {
@@ -154,4 +162,16 @@ body
     margin: 0 auto;
 
 	width: 70%;
+}
+
+.bg-white-gray
+{
+background: rgb(249,249,249); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(249,249,249,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,249,249,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
 }
