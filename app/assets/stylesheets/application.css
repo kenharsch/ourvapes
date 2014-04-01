@@ -165,6 +165,29 @@ body
 	width: 70%;
 }
 
+.img-responsive{
+	border: 1px solid #021a40;
+}
+
+.prod_title:link{
+	color: #2929A6;
+	background-color: transparent;
+}
+.prod_title:visited{
+	color: #2929A6;
+	background-color: transparent;
+}
+
+.prod_all_items:link{
+	color: #2929A6;
+	background-color: transparent;
+}
+
+.prod_all_items:visited{
+	color: #2929A6;
+	background-color: transparent;
+}
+
 .bg-white-gray
 {
 background: rgb(249,249,249); /* Old browsers */

@@ -10,7 +10,9 @@
 			<%= render 'shared/product_list_entry', prod: prod %>
 		</div>
 		<div class = "col-sm-1">
-			<%= render 'shared/add_product_button', prod: prod %>
+			<% if prod.type != "Juice" %>
+				<%= render 'shared/add_product_button', prod: prod %>
+			<% end %>
 		</div>
 	</div>
 	<div class = "row">

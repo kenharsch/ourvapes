@@ -1,5 +1,5 @@
 <div>
-	<%= link_to(prod.name, "", 'class' => "prod_title", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
+	<%= link_to(prod.name, "", class: "prod_title", 'data-toggle' => "modal", "data-target" => "#modalID#{prod.id}") %>
 
 	<div class="modal fade" id="modalID<%= prod.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -15,8 +15,8 @@
 					<strong>Price:</strong> <%= prod.price %><br/>
 					<strong>Type:</strong> <%= prod.type %><br/><br/>
 					<strong>Description:</strong> <%= prod.description %><br/><br/>
-					<% if request.env['PATH_INFO'] != "/configuration" %>
-					<%= render 'shared/add_product_button', prod: prod%>
+					<% if request.env['PATH_INFO'] != "/configuration"  && prod.type != "Juice"%>
+						<%= render 'shared/add_product_button', prod: prod%>
 					<% end %>
 				</div>
 			</div>

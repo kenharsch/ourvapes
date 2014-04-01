@@ -47,6 +47,9 @@ DESCRIPTIONS_SHORT["charger"] = "Plugs into the wall socket and charges batterie
 
 DESCRIPTIONS_LONG["charger"] = "The charger should be matched to the button and battery according to the manufacturers recommendations. Many buttons use a 510 connection to both charge and discharge their electricity, so this is a popular choice for beginners. Most of us eventually move into a \"passthrough\" device where the battery is integral and the charger plugs directly into the bottom of the battery or a device with removable batteries. The prime benefit of the removables is that you can swap batteries and never find yourself without power. Mixing and matching chargers should be done with extreme caution and preferably with more than a little knowledge of electrical engineering."
 
+DESCRIPTIONS_SHORT["juice"] = "Juice Short TEMP."
+
+DESCRIPTIONS_LONG["juice"] = "Juice Long TEMP."
 		
 	
 end
