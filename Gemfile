@@ -18,9 +18,6 @@ gem 'coffee-rails', '~> 4.0.0'
 # readline
 gem 'rb-readline'
 
-# Better Errors
-gem 'better_errors', '~> 1.1.0'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

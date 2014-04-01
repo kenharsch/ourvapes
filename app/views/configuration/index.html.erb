@@ -26,6 +26,7 @@
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
 			<% if present %><%= render 'shared/product_list_entry',
 				prod: @conf_objects[part_type] %>
+
 				<% @add_or_change = "Change" %>
 				<% else %>
 				<% @add_or_change = "Choose" %>
@@ -39,17 +40,6 @@
 
 					<%= button_to @add_or_change, {action: "list", controller: "product_list",
 						conf: @conf_objects, type: part_type}, class: "btn btn-primary btn-block"%>
-					</div>
-					<% if present %>
-					<%= render "single_compat_messages", {part_type: part_type} %>
-					<% end %>
-				</div>
-				<% if present %><% else %> <% end %>
-				<% end %>
-				<div class = "col-xs-12">
-
-					<%= button_to @add_or_change, {action: "list", controller: "product_list",
-						conf: @conf_objects}, class: "btn btn-default btn-block"%>
 					</div>
 					<% if present %>
 					<%= render "single_compat_messages", {part_type: part_type} %>
