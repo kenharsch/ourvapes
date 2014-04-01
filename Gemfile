@@ -57,6 +57,9 @@ group :test do
 	gem 'minitest-rails'
 end
 
+# For adding in ratings
+gem 'rails-rateit'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
