@@ -20,7 +20,7 @@
 			<strong>
 				<%= part_type.capitalize %>
 			</strong>
-			<%= render 'configuration/product_type_description' %>
+			<%= render 'configuration/product_type_description', part_type: part_type %>
 		</div>
 
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">

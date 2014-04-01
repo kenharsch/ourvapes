@@ -1,5 +1,16 @@
-<a type="button" class="tiny" data-toggle="collapse" data-target="#demo">
-  learn more
-</a>
-
-<div id="demo" class="collapse">...</div>
+	<div>
+		<%= Constants::DESCRIPTIONS_SHORT[part_type] %>
+	</div>
+<div id="desc-<%= part_type %>" class="collapse">
+	<%= Constants::DESCRIPTIONS_LONG[part_type] %>	
+</div>
+<div>
+	<a type="button" class="" data-toggle="collapse" data-target="#desc-<%= part_type %>" onclick="toggleArrow('<%= part_type %>')">
+		<span id="desc-<%= part_type %>-more" >
+			learn more&#x25BC;
+		</span>
+		<span id="desc-<%= part_type %>-less" style="display:none;">
+			show less&#x25B2;
+		</span>
+	</a>
+</div>
