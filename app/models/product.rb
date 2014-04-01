@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
 	validates :details, presence: true
 
 	searchable do
-		text :name #, :body
+		text :name, :description
 		# text :comments do
 		# 	comments.map { |comment| comment.body }
 		# end
