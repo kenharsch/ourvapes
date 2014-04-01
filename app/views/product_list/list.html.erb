@@ -2,7 +2,9 @@
 
 <h1 class = "left">All <%= @part_type.capitalize.pluralize %></h1>
 <br/>
+<div class = "pagination">
 <%= paginate @prods %>
+</div>
 <div class = "container-fluid center">
 	<% @prods.each do |prod| %>
 	<div class = "row">
