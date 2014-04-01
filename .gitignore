@@ -17,3 +17,6 @@
 
 # ignore the mac directory management files
 *.DS_Store
+
+# ignore machine specific rubymine config files
+.idea
