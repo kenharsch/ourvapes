@@ -21,7 +21,10 @@
 
 			<%= form_tag "/product_list/list", method: "get", class: "navbar-form navbar-left" do %>
 				<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
-				<%= submit_tag "GO",  data: { conf: @conf_objects }, class: "btn btn-default", role: "button" %>
+					<% @conf_objects.each do |key, value| %>
+				  	<%= hidden_field_tag "conf[#{key}]", value.id %>
+					<% end %>
+				<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 			<% end %>
 
 			<!--

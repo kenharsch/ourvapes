@@ -48,12 +48,10 @@ class ConfigurationController < ApplicationController
 		end
 		go_to_config if error_flag
 		@conf_objects = @kit_obj.to_hash
-
 	end
 
 	def check_compatibility
 		@checker = ConfigChecker.new(@kit_obj)
-		@kit_obj
 	end
 
 	def show
