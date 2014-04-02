@@ -60,28 +60,37 @@ descr = ['Perfect for the user that is committed to e-cigs and wants a low cost 
 	'Essential hardware for the vaping enthusiast. Compare this model with our competitors and you will that this is best ',
 	'The latest in vaping technology can be in your hand today! Check out the revolutionary technology in our ']
 
+# avoids seeding duplicates
+Product.delete_all
+
 for i in 0..16
 	wick = Wick.create(name: colors.sample + " " + adjectives.sample + " Wick", description: descr.sample + "Wick!")
 	wick.resistance_in_ohm = Random.rand(0..11)
 	wick.picture_path = wick_pic.sample
 	wick.save
+
 	battery = Battery.create(name: colors.sample + " " + adjectives.sample + " Battery", description: descr.sample + "Battery!")
 	battery.voltage = Random.rand(100..201)
 	battery.wattage = Random.rand(1..6)
 	battery.picture_path = batt_pic.sample
 	battery.save
+
 	button = Button.create(name: colors.sample + " " + adjectives.sample + " Button", description: descr.sample + "Button!")
 	button.picture_path = button_pic.sample
 	button.save
+
 	cartridge = Cartridge.create(name: colors.sample + " " + adjectives.sample + " Cartridge", description: descr.sample + "Cartridge!")
 	cartridge.picture_path = cart_pic.sample
 	cartridge.save
+
 	charger = Charger.create(name: colors.sample + " " + adjectives.sample + " Charger", description: descr.sample + "Charger!")
 	charger.picture_path = charger_pic.sample
 	charger.save
+
 	mouthpiece = Mouthpiece.create(name: colors.sample + " " + adjectives.sample + " Mouthpiece", description: descr.sample + "Mouthpiece!")
 	mouthpiece.picture_path = mouth_pic.sample
 	mouthpiece.save
+
 	tank = Tank.create(name: colors.sample + " " + adjectives.sample + " Tank", description: descr.sample + "Tank!")
 	tank.volume_in_ml = Random.rand(10..51)
 	tank.picture_path = tank_pic.sample
@@ -95,15 +104,13 @@ for i in 0..31
 	juice.save
 end
 
-# make sure param i is i%7 == 1 as this starts on a Wick from how the seed data is structured above
-def self.populate_test_compats(i)
-	w = Wick.find(i)
-	counter = i+1
-	types = [Tank, Mouthpiece, Charger, Cartridge, Button, Battery]
-	6.times do
-		t = types.pop
-		w.set_compat_with(t.find(counter), true)
-		counter += 1
+# make each wick compatible with the 6 next parts in the products table (sorted by id)
+types = [Battery, Button, Cartridge, Charger, Mouthpiece, Tank]
+Wick.all.each do |w|
+	(0..5).each do |index|
+		type = types[index]
+		other_part = type.find(w.id + index + 1)
+		w.set_compat_with(other_part, true)
 	end
 end
 
@@ -113,7 +120,3 @@ Product.all.each do |p|
 	p.description += " \n\n#{LOREM}"
 	p.save
 end
-
-populate_test_compats(1)
-populate_test_compats(8)
-populate_test_compats(15)
