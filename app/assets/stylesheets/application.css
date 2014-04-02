@@ -207,6 +207,7 @@ body
  {
  	text-align: center;
  }
+
  .pagination a, .current
  {
  	text-align: center;
@@ -236,8 +237,39 @@ body
     color: inherit;
     background-color: #ebebeb;
  }
+
  .pagination .gap, .gap:hover
  {
  	border-style:none;
  	background: inherit;
  }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size:30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 18px;
+  font-size:30px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   left: 0; 
+   color: gold;
+   font-size:30px;
+   font-family: Arial, Helvetica, sans-serif;
+}

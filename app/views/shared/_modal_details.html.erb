@@ -12,8 +12,9 @@
 					<%= image_tag(prod.picture_path, class: 'product_image') %><br/><br/>
 					<strong>Name:</strong> <%= prod.name %><br/>
 					<strong>Manufacturer:</strong> <%= prod.manufacturer %><br/>
-					<strong>Price:</strong> <%= prod.price %><br/>
-					<strong>Type:</strong> <%= prod.type %><br/><br/>
+					<strong>Price:</strong> $<%= prod.price %><br/>
+					<strong>Type:</strong> <%= prod.type %><br/>
+					<strong>Rating:</strong> <%= render 'shared/star_rating' %><br/><br/>
 					<strong>Description:</strong> <%= prod.description %><br/><br/>
 					<% if request.env['PATH_INFO'] != "/configuration"  && prod.type != "Juice"%>
 						<%= render 'shared/add_product_button', prod: prod%>
