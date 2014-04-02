@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 1.2'
 # Full text search
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+# gem 'sunspot-rails-tester'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
