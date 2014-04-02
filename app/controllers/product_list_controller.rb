@@ -12,14 +12,7 @@ class ProductListController < ApplicationController
 			# exclude kits because we are not handling them als products yet
 			@prods = Product.where.not(type: "Kit").take(20)
 		else
-			# for some reason the fulltext search does not work with @query
-			query = @query
-
-			search = Product.search do
-				fulltext query
-			end
-
-			@prods = search.results
+			@prods = ProdSearch.full_text(@query).results
 		end
 
 		@conf_objects = params["conf"] || {}

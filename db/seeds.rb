@@ -46,7 +46,7 @@ An pro clita patrioque theophrastus, novum facete his ad. An alii liberavisse vi
 
 companies = ["Aro", "Smok Tech", "Oddy", "EHPro", "Nimbus", "Aspire", "Kanger", "AmeraVape", "Innokin iClear", "Tugboat", "AnyVape", "Vision", "Omega", "Patriot", "Kayfun"]
 colors = ["Black", "Grey", "Stainless Steel", "Red", "Green", "Mystic Blue", "Forest Green", "Blue", "White", "Pearl White", "Metalic Red", "Fire Red", "Orange", "Hyper Yellow", "Pitch Black", "Pink", "Silver", "Gunmetal"]
-adjectives = ["Mini", "Large", "Flashy", "Twisted", "BDC", "RDX", "Time", "Cool", "Mod", "Pro", "Professional", "RDA", "Pyrex", "EVOD", "Dual", "Mega", "Micro", "Metal", "Super", "Power", "Vivi", "Victory", "Nova"]
+adjectives = ["Essential", "Mini", "Large", "Flashy", "Twisted", "BDC", "RDX", "Time", "Cool", "Mod", "Pro", "Professional", "RDA", "Pyrex", "EVOD", "Dual", "Mega", "Micro", "Metal", "Super", "Power", "Vivi", "Victory", "Nova"]
 juices = ["Juicy Pear", "Pineapple", "Apple", "Tangy Orange", "Orange", "Grape", "Amazing Grape", "Juicy Apple", "Pear", "Coconut", "Pina Colada", "Lightning Lemon", "Lemon", "Lime", "Smokin Orange", "Tasty Grape", "Kiwi", "Mango", "Juicy Mango", "Honey Melon", "Amazing Coke"]
 wick_pic = ['wick1.png', 'wick2.png', 'wick3.png']
 batt_pic = ['batt1.png', 'batt2.png', 'batt3.png']
