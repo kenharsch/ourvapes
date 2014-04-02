@@ -4,8 +4,9 @@ this readme is not meant to be read by the public since this project is currentl
 
 ## Testing
 
-I am not sure if the `bundle exec` is necessary but stackoverflow says it should be used if we
-use bundler to manage gem dependencies, which we do
+According to stackoverflow we should use `bundle exec` if we use bundler to manage gem
+dependencies, which we do. Also I had some cases where tests failed without the `bundle exec`
+but did not fail with it.
 
 
 run a single test file
@@ -26,4 +27,14 @@ RAILS_ENV=test rake sunspot:solr:start
 rake test:prepare
 rake test
 RAILS_ENV=test rake sunspot:solr:stop
+```
+
+## Running in development mode
+
+There should be some configuration to run solr automatically and I will try to set this ASAP.
+For now it is
+```
+rake sunspot:solr:start
+rails s
+sunspot:solr:stop
 ```
