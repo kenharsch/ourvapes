@@ -8,7 +8,7 @@ class ProductTest < ActiveSupport::TestCase
 
 	setup do
 		# clear and fill the test database
-		Product.delete_all
+		Product.destroy_all
 
 		(1..5).each do |i|
 			Wick.create(name: "my wick #{i}", description: "some words #{i}")
@@ -101,7 +101,7 @@ class ProductTest < ActiveSupport::TestCase
 		end
 
 		it "searches in type" do
-			Product.delete_all
+			Product.destroy_all
 			Wick.create(name: "XY1", manufacturer: "Viva La Vape")
 			Wick.create(name: "XY2", manufacturer: "Viva La Vape")
 			Tank.create(name: "V2", manufacturer: "Vapers Heaven")

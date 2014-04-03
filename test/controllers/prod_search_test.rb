@@ -4,7 +4,7 @@ class ProdSearchTest < ActiveSupport::TestCase
 
 	setup do
 		# clear and fill the test database
-		Product.delete_all
+		Product.destroy_all
 
 		5.times do
 			Wick.create(

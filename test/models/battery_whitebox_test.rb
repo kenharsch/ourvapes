@@ -55,13 +55,7 @@ class BatteryTest < ActiveSupport::TestCase
 				BatteryDet.count.must_equal (@det_count_before + 1)
 			end
 
-			it "deletes associated details object if host object gets deleted" do
-				@b.delete
-				Battery.count.must_equal @bat_count_before
-				BatteryDet.count.must_equal @det_count_before
-			end
-
-			it "destroys associated details object if host object gets deleted" do
+			it "destroys associated details object if host object gets destroyed" do
 				@b.destroy
 				Battery.count.must_equal @bat_count_before
 				BatteryDet.count.must_equal @det_count_before
