@@ -4,7 +4,7 @@ This readme is not meant to be read by the public since this project is currentl
 
 Since our app nows that it uses Solr indexing, it will not allow to do any database changes
 without Solr running. Trying it results in `Errno::ECONNREFUSED: Connection refused` and an SQL
-rollback, undoung the started changes.
+rollback, undoing the started changes.
 
 In particular this causes most tests to fail because they try to add or change DB entries.
 
