@@ -27,7 +27,8 @@
 <div class = "col-md-10 product_listing">
 	<h1 class = "left"><%= @title %></h1><br/>
 	<% unless @query.nil? %>
-		<span class = "query">for <b><%= @query %></b></span>
+		<span class = "query">for <b><%= @query %></b>
+			in <b><%= @searched_in %></b></span>
 	<% end %>
 	<div class = "left"><%= paginate @prods %></div>
 

@@ -24,6 +24,7 @@
 				<% @conf_objects.each do |key, value| %>
 					<%= hidden_field_tag "conf[#{key}]", value.id %>
 				<% end %>
+				<%= hidden_field_tag "type", @params_type %>
 				<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 			<% end %>
 
