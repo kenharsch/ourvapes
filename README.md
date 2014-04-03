@@ -22,7 +22,7 @@ background until we call
 rake sunspot:solr:stop
 ```
 
-Sometimes, after testing or seeding the indices become broken, not always though - I will
+Sometimes, after testing or seeding, the indices become broken, not always though - I will
 investigate more on this ASAP. **Having Solr running** this can always be repaired by
 ```
 rake sunspot:solr:reindex
