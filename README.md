@@ -29,6 +29,15 @@ rake sunspot:solr:reindex
 ```
 
 
+## Repairing Solr / Sunspot
+
+1) Delete the solr folder
+2) Delete the config/sunspot.yml
+3) run the following
+```
+rails generate sunspot_rails:install
+```
+
 ## Testing
 
 According to stackoverflow we should use `bundle exec` if we use bundler to manage gem

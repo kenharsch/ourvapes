@@ -308,11 +308,14 @@ body
 	margin-bottom: 0px;
 }
 
-.checkbox {
-	width: 12%;
-	height: 12%;
-}
-
 .compatibility_filt{
 	padding-top: 1.3em;
+}
+
+.product_listing h1{
+	margin-bottom: -10px;
+}
+
+.query{
+	font-size: 20px;
 }
