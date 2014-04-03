@@ -1,9 +1,32 @@
 <%= stylesheet_link_tag "product_list_entry" %>
+<div class = "col-md-2 left_filters">
+	<div class = "row filter_indent compatibility_filt">
+		<dl>
+			<dt>Compatibility</dt>
+			<dd><%= check_box_tag(:compatible_filt) %><%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %></dd>
+		</dl>
+	</div>
+	<div class = "row filter_indent">
+		<dl>
+			<dt>Product Type</dt>
+			<% ["all_types", "mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
+			<dd><%= radio_button_tag :prod_type, type %><%= label_tag(type, nil, class: "type_list") %></dd>
+			<% end %>
+		</dl>
+	</div>
+	<div class = "row filter_indent">
+		<dl>
+			<dt>Manufacturers</dt>
+			<% @manus.each do |manu| %>
+			<dd><%= check_box_tag(:manufacturer, manu.manufacturer) %><%= label_tag(manu.manufacturer, nil, class: "type_list") %></dd>
+			<% end %>
+		</dl>
+	</div>
+</div>
 
-<h1 class = "left">All <%= @part_type.capitalize.pluralize %></h1>
-<br/>
-<div class = "container-fluid center">
-	<%= paginate @prods %>
+<div class = "col-md-10 product_listing">
+	<h1 class = "left">All <%= @part_type.capitalize.pluralize %></h1><br/>
+	<div class = "left"><%= paginate @prods %></div>
 	<% @prods.each do |prod| %>
 	<div class = "row">
 		<div class = "col-sm-11">
@@ -11,7 +34,7 @@
 		</div>
 		<div class = "col-sm-1">
 			<% if prod.type != "Juice" %>
-				<%= render 'shared/add_product_button', prod: prod %>
+			<%= render 'shared/add_product_button', prod: prod %>
 			<% end %>
 		</div>
 	</div>
@@ -21,6 +44,5 @@
 		</div>
 	</div>
 	<% end %>
-	<%= paginate @prods %>
-
+	<div class = "left"><%= paginate @prods %></div>
 </div>
