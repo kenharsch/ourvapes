@@ -4,7 +4,7 @@ This readme is not meant to be read by the public since this project is currentl
 
 Since our app nows that it uses Solr indexing, it will not allow to do any database changes
 without Solr running. Trying it results in `Errno::ECONNREFUSED: Connection refused` and an SQL
-rollback, undoung the started changes.
+rollback, undoing the started changes.
 
 In particular this causes most tests to fail because they try to add or change DB entries.
 
@@ -22,14 +22,20 @@ background until we call
 rake sunspot:solr:stop
 ```
 
-Sometimes, after testing or seeding the indices become broken, not always though - I will
+
+## Repairing Solr
+
+
+### Wrong search results
+
+Sometimes, after testing or seeding, the indices become broken, not always though - I will
 investigate more on this ASAP. **Having Solr running** this can always be repaired by
 ```
 rake sunspot:solr:reindex
 ```
 
 
-## Repairing Solr
+### RSolr::Error::Http - 404
 
 Sometimes Solr fails to store the process id of a started Solr instance. Thus it claims not to
 run at all when calling `rake sunspot:solr:stop`. This causes a `RSolr::Error::Http - 404` error.
@@ -47,10 +53,11 @@ where `12345` stands for the PID of the process to be killed
 
 2) Delete the VapeRater/solr folder
 
-3) run Solr again
+3) Run Solr again
 ```
 rake sunspot:solr:start
 ```
+
 
 ## Testing
 
