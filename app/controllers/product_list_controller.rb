@@ -15,27 +15,27 @@ class ProductListController < ApplicationController
 			@prods = ProdSearch.full_text(@query).results
 		end
 
-		build_kit
+		@conf_objects = get_conf_objects
 	end
 
 
-	def build_kit
-		@partslist = Kit::HW_TYPES
-		@kit_obj = Kit.new
+	def get_conf_objects
+		kit = Kit.new
 		params["conf"] ||= {}
-		error_flag = false;
+		errors = []
 
 		params["conf"].each do |part_type, part_id| #go through full array
 			part_class = part_type.capitalize.constantize
 
 			if part_class.exists?(part_id) #validate existence
-				@kit_obj.update(part_type => part_class.find(part_id))
+				kit.update(part_type => part_class.find(part_id))
 			else #could not find
-				flash[:error] = "Invalid " + part_type + " selection"
-				error_flag = true
+				errors << "invalid " + part_type + " selection"
 			end
 		end
-		@conf_objects = @kit_obj.to_hash
+
+		flash[:error] = errors.join("<br>") if errors.any?
+		return kit.to_hash
 	end
 
 end
