@@ -273,3 +273,46 @@ body
    font-size:30px;
    font-family: Arial, Helvetica, sans-serif;
 }
+
+.left_filters{
+	float: left;
+	width: 30%;
+	padding: 10px;
+}
+
+.product_listings{
+	float: right;
+	width: 70%;
+}
+
+.filter_font{
+	font-size: 1.20em;
+	padding-bottom: 1.4em;
+	padding-top: 0.9em;
+}
+.type_list{
+	font-weight: normal;
+	text-indent: 10px;
+}
+
+.filter_indent dt{
+	padding-bottom: .5em;
+	color: #C60;
+}
+
+.filter_indent dd{
+	margin-left: 1em;
+}
+
+.filter_indent dl{
+	margin-bottom: 0px;
+}
+
+.checkbox {
+	width: 12%;
+	height: 12%;
+}
+
+.compatibility_filt{
+	padding-top: 1.3em;
+}

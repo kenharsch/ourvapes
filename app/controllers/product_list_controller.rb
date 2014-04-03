@@ -8,13 +8,17 @@ class ProductListController < ApplicationController
 
 		if part_type_filter.nil?
 			@title = "All Products"
+			@manus = Product.where.not(type: "Kit").select("manufacturer").distinct.order("manufacturer")
 		else
 			part_type_filter = part_type_filter.capitalize
 			@title = part_type_filter.pluralize
+			@manus = Product.where(type: part_type_filter).select("manufacturer").distinct.order("manufacturer")
 		end
 
 		@query = params["query"]
 		@prods = ProdSearch.full_text(@query, part_type_filter, params[:page]).results
+
+		@title = "Search Results" unless @query.nil?
 
 		@conf_objects = get_conf_objects
 	end
