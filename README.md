@@ -22,6 +22,12 @@ background until we call
 rake sunspot:solr:stop
 ```
 
+
+## Repairing Solr
+
+
+### Wrong search results
+
 Sometimes, after testing or seeding, the indices become broken, not always though - I will
 investigate more on this ASAP. **Having Solr running** this can always be repaired by
 ```
@@ -29,7 +35,7 @@ rake sunspot:solr:reindex
 ```
 
 
-## Repairing Solr
+### RSolr::Error::Http - 404
 
 Sometimes Solr fails to store the process id of a started Solr instance. Thus it claims not to
 run at all when calling `rake sunspot:solr:stop`. This causes a `RSolr::Error::Http - 404` error.
@@ -47,10 +53,11 @@ where `12345` stands for the PID of the process to be killed
 
 2) Delete the VapeRater/solr folder
 
-3) run Solr again
+3) Run Solr again
 ```
 rake sunspot:solr:start
 ```
+
 
 ## Testing
 
