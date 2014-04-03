@@ -6,6 +6,7 @@ class ProductListController < ApplicationController
 
 		@params_type = params["type"]
 		type_filter = @params_type
+		type_filter = nil if type_filter == ""
 
 		if type_filter.nil?
 			@title = "All Products"
