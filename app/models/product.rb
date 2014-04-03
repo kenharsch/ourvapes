@@ -5,7 +5,12 @@ class Product < ActiveRecord::Base
 	validates :details, presence: true
 
 	searchable do
+		# the fields used for fulltext search
 		text :name, :description, :type, :manufacturer
+
+		# the fields used for text filtering
+		string :type
+
 		# text :comments do
 		# 	comments.map { |comment| comment.body }
 		# end

@@ -2,18 +2,19 @@ class ProductListController < ApplicationController
 
 	def list
 		@page = Constants::PAGE_PROD_LIST
-
 		@add_or_change = "Add"
 
-		@query = params["query"]
+		part_type_filter = params["type"]
 
-		if @query.nil?
-			# limit to 20 items for faster loading during development;
-			# exclude kits because we are not handling them als products yet
-			@prods = Product.where.not(type: "Kit").take(20)
+		if part_type_filter.nil?
+			@title = "All Products"
 		else
-			@prods = ProdSearch.full_text(@query).results
+			part_type_filter = part_type_filter.capitalize
+			@title = part_type_filter.pluralize
 		end
+
+		@query = params["query"]
+		@prods = ProdSearch.full_text(@query, part_type_filter, params[:page]).results
 
 		@conf_objects = get_conf_objects
 	end

@@ -1,15 +1,18 @@
 <%= stylesheet_link_tag "product_list_entry" %>
 
-<h1 class = "center">All Parts</h1>
-
+<h1 class = "left"><%= @title %></h1>
+<br/>
 <div class = "container-fluid center">
+	<%= paginate @prods %>
 	<% @prods.each do |prod| %>
 	<div class = "row">
 		<div class = "col-sm-11">
 			<%= render 'shared/product_list_entry', prod: prod %>
 		</div>
 		<div class = "col-sm-1">
-			<%= render 'shared/add_product_button', prod: prod %>
+			<% if prod.type != "Juice" %>
+				<%= render 'shared/add_product_button', prod: prod %>
+			<% end %>
 		</div>
 	</div>
 	<div class = "row">
@@ -18,4 +21,6 @@
 		</div>
 	</div>
 	<% end %>
+	<%= paginate @prods %>
+
 </div>

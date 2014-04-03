@@ -18,9 +18,6 @@ gem 'coffee-rails', '~> 4.0.0'
 # readline
 gem 'rb-readline'
 
-# Better Errors
-gem 'better_errors', '~> 1.1.0'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -61,6 +58,12 @@ group :test do
 	# for running minitest tests
 	gem 'minitest-rails'
 end
+
+# For adding in ratings
+gem 'rails-rateit'
+
+# For pagination
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
