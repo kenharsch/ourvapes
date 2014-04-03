@@ -26,7 +26,7 @@
  body
  {
  	padding-top:65px;
- 	background-color: #E3F1FA !important
+ 	background-color: #E3F1FA !important;
  }
 
 .title-button
@@ -78,12 +78,6 @@
 	margin-bottom:3px;
 }
 
-body
-{
-	background-color: #E3F1FA !important
-}
-
-
 #configurator .part-name
 {
 	font-size: 1.5em;
@@ -117,11 +111,11 @@ body
 	border-color: #7B8F8F;
 	background-color: white;
 }
-.product-description
+/*.product-description
 {
-	background-color: 
+	background-color:
 }
-
+*/
 .padded-5
 {
 	padding:5px;
@@ -218,7 +212,7 @@ body
  	border-radius: 0.35em;
  	background-color: white;
  	margin:0.1em;
- 	
+
  	padding-left: 0.75em;
  	padding-right: 0.75em;
  	padding-top: 0.35em;
@@ -268,7 +262,7 @@ body
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
-   left: 0; 
+   left: 0;
    color: gold;
    font-size:30px;
    font-family: Arial, Helvetica, sans-serif;
