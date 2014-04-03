@@ -21,6 +21,8 @@
 # ignore machine specific rubymine config files
 .idea
 
-# ignore the generated solr full-text search index files
-/solr/test
+# ignore the generated solr full-text search files, machine specific
+/solr/default
 /solr/development
+/solr/pids
+/solr/test
