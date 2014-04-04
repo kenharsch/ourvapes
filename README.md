@@ -2,7 +2,24 @@
 
 This readme is not meant to be read by the public since this project is currently not open source.
 
-Since our app nows that it uses Solr indexing, it will not allow to do any database changes
+## General
+
+### delete vs. destroy
+
+**In short:** Never use `delete` or `delete_all`, instead use `destroy` and `destroy_all`.
+
+**Ratoinale:** The former two act directly on the database, ignoring all our settings in the models,
+causing inconsistent dependencies and broken fulltext search indices. Imagine we have a `Wick`
+object `w` and an associated `WickDet` object `w.details`. Calling `w.delete` would delete `w`
+from the `prdocucts` table and leave the `WickDet` object in the `wick_dets` table with a _nil_
+as foreign key. In contrary `w.destroy` would execute all the `dependent`, `before_validation`,
+and `after_save` methods, causinfg the delete forwarding to the `WickDet` object as well as
+the update of the Solr indices.
+
+
+### Our app needs a running Solr instance
+
+Since our app knows that it uses Solr indexing, it will not allow to do any database changes
 without Solr running. Trying it results in `Errno::ECONNREFUSED: Connection refused` and an SQL
 rollback, undoing the started changes.
 
@@ -87,14 +104,4 @@ RAILS_ENV=test rake sunspot:solr:start
 rake test:prepare
 rake test
 RAILS_ENV=test rake sunspot:solr:stop
-```
-
-## Running in development mode
-
-There should be some configuration to run solr automatically and I will try to set this ASAP.
-For now, e.g. to run our app with fulltext search functionality, we have to do
-```
-rake sunspot:solr:start
-rails s
-sunspot:solr:stop
 ```

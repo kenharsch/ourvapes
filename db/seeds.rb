@@ -31,7 +31,7 @@ descr = ['Perfect for the user that is committed to e-cigs and wants a low cost 
 	'The leader in vaping technology presents']
 
 # avoids seeding duplicates
-Product.delete_all
+Product.destroy_all
 
 for i in 0..16
 	wick = Wick.create(name: colors.sample + " " + adjectives.sample + " Wick", description: descr.sample + "Wick!")

@@ -46,7 +46,7 @@ class Product < ActiveRecord::Base
 			raise ArgumentError.new "You must specify the name of the details association"
 		}
 
-		has_one :details, class_name: class_name, dependent: :delete, autosave: true
+		has_one :details, class_name: class_name, dependent: :destroy, autosave: true
 
 		# needed for queries like Tanks.where(volume_in_ml: '> 12')
 		# because this accesses attributes stored in the details object
@@ -63,13 +63,6 @@ class Product < ActiveRecord::Base
 		define_accessors attributes
 	end
 
-
-	# for some reason delete does not forward deletion to associated objects although the
-	# +dependent: :delete+ flag is set; this solves the problem for now
-	def delete
-		destroy
-	end
-
 	# Returns +true+ if this product is compatible (physically fits with) +other_product+,
 	# otherwise +false+.
 	def compat_with?(other_product)
@@ -83,7 +76,7 @@ class Product < ActiveRecord::Base
 			CompatPair.create(pair_order(self, other_product))
 		else
 			pair = find_pair(self, other_product)
-			pair.delete if pair != nil
+			pair.destroy unless pair.nil?
 		end
 	end
 
@@ -108,7 +101,7 @@ class Product < ActiveRecord::Base
 	end
 
 	def self.clear_compat
-		CompatPair.delete_all
+		CompatPair.destroy_all
 	end
 
 
