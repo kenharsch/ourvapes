@@ -120,6 +120,5 @@ class ProductTest < ActiveSupport::TestCase
 		search = Product.search {fulltext "tank"}
 		search.total.must_equal 1
 		search.results[0].must_be_instance_of Tank
-		end
 	end
 end
