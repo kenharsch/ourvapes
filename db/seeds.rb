@@ -253,7 +253,7 @@ Read more: http://www.viper-vape.com/products/aspire-ce5-s-bdc.html#ixzz2xlMiCQJ
 	tank.price = 7.99
 	tank.save
 
-	tank = Tank.create(name: "Nautilus" + " Tank", description: "ASPIRE NAUTILUS FIRST GLASSOMIZER WITH ADJUSTABLE AIR FLOW CONTROL
+	tank = Tank.create(name: "Nautilus", description: "ASPIRE NAUTILUS FIRST GLASSOMIZER WITH ADJUSTABLE AIR FLOW CONTROL
 If you have any question why you should buy this amazing new device than check out this indepedent video
 
 The Aspire Nautilus glassomizer has a revolutionary new design that consists of features based from vape enthusiasts who have provided feedback of what an ideal tank should be. Utilizing this information, the engineers have created a new tank that provides optimal performance and superior vaping functionality. This tank is really a work of art and holds about 5ml of eliquid (twice the amount of what protank holds) Updated bottom dual coil and dont forget the most important part which is the air flow control.
@@ -283,7 +283,7 @@ Read more: http://www.viper-vape.com/products/aspire-nautilus.html#ixzz2xlNWyZAw
 	tank.price = 35.99
 	tank.save
 
-	tank = Tank.create(name: "Hypertank Pyrex Glass BCC" + " Tank", description: "Hypertank Pyrex Glass BCC only from Viper Vape - This is the new Vivi Nova style tank that is going to blow your mind with clouds of vapor and lots of flavor
+	tank = Tank.create(name: "Hypertank Pyrex Glass BCC", description: "Hypertank Pyrex Glass BCC only from Viper Vape - This is the new Vivi Nova style tank that is going to blow your mind with clouds of vapor and lots of flavor
 
 If you loved your Vision Vivi Nova your going to love this tank twice as much. Picture your Vivi Nova made of durable pyrex glass and move the coil to the bottom of the tank for great hits every time and you have the Hypertank!   
 
@@ -321,7 +321,7 @@ Replacement Coils/Heads can be found here
 
 Read more: http://www.viper-vape.com/products/hypertank-pyrex-glass-bcc.html#ixzz2xlOWWfem " + "Tank!")
 	tank.volume_in_ml = 5
-	tank.picture_path = 'HypertankPyrex.png'
+	tank.picture_path = 'HypertankPyrex.jpg'
 	tank.manufacturer = "Viper Vape"
 	tank.price = 17.99
 	tank.save
@@ -401,7 +401,7 @@ Read more: http://www.viper-vape.com/products/innokin-iclear-x-i-pyrex-bdc.html#
 	tank.price = 24.90
 	tank.save
 
-	tank = Tank.create(name: "Aero Tank" + " Tank", description: "The Aerotank is the first Kanger Adjustable Air Flow bottom coil clearomizer!!
+	tank = Tank.create(name: "Aero Tank", description: "The Aerotank is the first Kanger Adjustable Air Flow bottom coil clearomizer!!
 
 
 Kanger Aerotank Features:
@@ -442,7 +442,7 @@ Package Contents:
 
 Read more: http://www.viper-vape.com/products/kanger-aerotank.html#ixzz2xlQgSMmZ " + "Tank!")
 	tank.volume_in_ml = 3
-	tank.picture_path = 'kangeraerotank.png'
+	tank.picture_path = 'kangeraerotank.jpg'
 	tank.manufacturer = "Kanger"
 	tank.price = 24.99
 	tank.save
@@ -559,7 +559,7 @@ wick = Wick.create(name: "Innokin i30B Replacement Coil 2.1" + " Wick", descript
 
 wick = Wick.create(name: "Kanger Aerotank BDC Replacement Coi" + " Wick", description: " " + "Wick!")
 	wick.resistance_in_ohm = 2.1
-	wick.picture_path = 'kanger_protank_3.jpeg'
+	wick.picture_path = 'kanger_protank_3.jpg'
 	wick.manufacturer = "Kanger"
 	wick.price = 2.75
 	wick.set_compat_with(Tank.find(10), true)
@@ -568,7 +568,7 @@ wick = Wick.create(name: "Kanger Aerotank BDC Replacement Coi" + " Wick", descri
 
 wick = Wick.create(name: "Aspire CE5-s BDC Replacement Coil 1.6" + " Wick", description: " " + "Wick!")
 	wick.resistance_in_ohm = 1.6
-	wick.picture_path = 'aspire_ce5s_blue_coil.png.png'
+	wick.picture_path = 'aspire_ce5s_blue_coil.png'
 	wick.manufacturer = "Aspire"
 	wick.price = 2.75
 	wick.set_compat_with(Tank.find(5), true)
@@ -731,7 +731,7 @@ So you dont want the big bulky variable voltage mods on the market but you do wa
 
 
 Read more: http://www.viper-vape.com/products/ego-v-v2-650mah.html#ixzz2xlc3yQ9p " + "Button!")
-	button.picture_path = "egov_v.png"
+	button.picture_path = "egov_v.jpg"
 	button.manufacturer = "Anyvape"
 	button.price = 28.99
 	button.set_compat_with(Tank.find(3), true)
@@ -893,7 +893,7 @@ Over-Discharge Protection: The device will monitor the battery voltage and autom
 
 
 Read more: http://www.viper-vape.com/products/vision-e-fire-1000mah-wood-spinner.html#ixzz2xleXnqRT" + "Button!")
-	button.picture_path = "MB_Vision_X.Fire_E_Fire_1000mah_Wood_Spinner_Variable_Voltage.png"
+	button.picture_path = "MB_Vision_X.Fire_E_Fire_1000mah_Wood_Spinner_Variable_Voltage.jpg"
 	button.manufacturer = "Viper Vape "
 	button.price = 54.99
 	button.set_compat_with(Tank.find(3), true)
@@ -1348,7 +1348,7 @@ mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips Type 
 
 Read more: http://www.viper-vape.com/products/custom-stainless-steel-510-drip-tips-type-b.html#ixzz2xlsnBePU" + "Mouthpiece!")
 	mouthpiece.picture_path = 'driptipb__54729.1379036578.360.360.png'
-	mouthpiece.manufacturer = ""
+	mouthpiece.manufacturer = "Viper Vape"
 	mouthpiece.price = 4.99
 	mouthpiece.set_compat_with(Tank.find(8), true)
 	mouthpiece.set_works_well_with(Tank.find(8), true)

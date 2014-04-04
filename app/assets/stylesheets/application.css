@@ -292,6 +292,7 @@
 .filter_indent dt{
 	padding-bottom: .5em;
 	color: #C60;
+	padding-left: 2px;
 }
 
 .filter_indent dd{
@@ -312,4 +313,8 @@
 
 .query{
 	font-size: 20px;
+}
+
+.filter_indent, .last{
+	padding-bottom: 12px;
 }
