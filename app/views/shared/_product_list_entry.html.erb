@@ -6,7 +6,7 @@
 		<%= render 'shared/modal_details', prod: prod %>
 		by <%= prod.manufacturer %>
 		<span class = "prod_price">
-			<strong>$<%= "%.2f" % prod.price %></strong><br/>
+			<strong>$<%= "%.2f" % prod.price unless prod.price.blank? %></strong><br/>
 		</span>
 		<%= render 'shared/star_rating' %>
 	</p>
@@ -17,6 +17,6 @@
 	<span class = "prod_type">
 		<%= prod.type %>:
 	</span>
-	<%= link_to("See all " + prod.class.count.to_s + " items", {action: "list", 
+	<%= link_to("See all " + prod.class.count.to_s + " items", {action: "list",
 		controller: "product_list", conf: @conf_objects, type: prod.class}, class: "prod_all_items") %>
 	</div>
