@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProdSearchTest < ActiveSupport::TestCase
 
-	setup do
+	before do
 		# clear and fill the test database
 		Product.destroy_all
 
@@ -22,11 +22,7 @@ class ProdSearchTest < ActiveSupport::TestCase
 				description: "where VapeRater is in the description again")
 		end
 
-		# binding.pry
-
-		# update solr indices / should run without reindexing every time
-		# Product.reindex
-		# Sunspot.commit
+		update_solr_indices
 	end
 
 
