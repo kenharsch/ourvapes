@@ -52,19 +52,19 @@ production:
 PostgresSQL uses its own user management system and calls users _roles_. It comes with one
 default role _postgres_. In order to login to the Postgres server in user role _postgres_ (e.g. to
 create other roles and new databases) we need to be logged in with username _postgres_ on our
-OS (Mac OS, Linux, Windows). On Linux this is done by:
+OS (Mac OS, Linux, Windows).
 
+Fortunately the installation above (or Ubuntu per default, I'm not sure) creates a user _postgres_
+on our system. We just have to login as such:
 ```
-$ sudo bash
-$ su - postgres
+$ sudo su - postgres
 ```
 
-The `sudo bash` will log you in as _root_ and the `su - postgres` will log you in as _postgres_.
-Therefore, to get back to your original login you have to exit twice:
+To get back to your original login you have to exit the _postgres_ login:
 ```
 $ exit
-$ exit
 ```
+
 
 ### Interacting with Postgres DB
 
