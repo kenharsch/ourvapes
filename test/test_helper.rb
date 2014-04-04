@@ -6,7 +6,7 @@ require "minitest/autorun"
 require "minitest/rails"
 
 class ActiveSupport::TestCase
-  ActiveRecord::Migration.check_pending!
+	ActiveRecord::Migration.check_pending!
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
@@ -15,4 +15,9 @@ class ActiveSupport::TestCase
   # fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def update_solr_indices
+  	Product.reindex
+  	Sunspot.commit
+  end
 end

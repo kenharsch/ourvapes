@@ -2,27 +2,24 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 
-	# update solr indices / should run without reindexing every time
-	# Product.reindex
-	# Sunspot.commit
-
-	before do
-		# clear and fill the test database
-		Product.destroy_all
-
-		(1..5).each do |i|
-			Wick.create(name: "my wick #{i}", description: "some words #{i}")
-			Tank.create(name: "your tank #{i}", description: "totally different, kinda #{i}")
-		end
-
-		Button.create(name: "his button", description: "well, not creative today, sorry")
-		Button.create(name: "his other button", description: "well, not creative today, sorry")
-
-		Wick.create(name: "some Wick with uppercase name")
-	end
-
-
 	describe "full text search in products table" do
+
+		before do
+			# clear and fill the test database
+			Product.destroy_all
+
+			(1..5).each do |i|
+				Wick.create(name: "my wick #{i}", description: "some words #{i}")
+				Tank.create(name: "your tank #{i}", description: "totally different, kinda #{i}")
+			end
+
+			Button.create(name: "his button", description: "well, not creative today, sorry")
+			Button.create(name: "his other button", description: "well, not creative today, sorry")
+
+			Wick.create(name: "some Wick with uppercase name")
+
+			update_solr_indices
+		end
 
 		it "finds with one matching word in the name" do
 			search = Product.search {fulltext 'tank'} # does not work with double quotes
@@ -59,17 +56,6 @@ class ProductTest < ActiveSupport::TestCase
 			search.total.must_equal 5
 		end
 
-		it "finds nothing if there is nothing matching" do
-			search = Product.search {fulltext 'tanks 3 your'}
-			search.total.must_equal 1
-		end
-
-		it "ignores commata" do
-			search = Product.search {fulltext 'different kinda'}
-			search.total.must_equal 5
-			search.results.each {|r| r.must_be_instance_of Tank}
-		end
-
 		it "finds with multiple words in wrong order in description" do
 			search = Product.search {fulltext 'creative not'}
 			search.total.must_equal 2
@@ -82,39 +68,58 @@ class ProductTest < ActiveSupport::TestCase
 			search.results[0].name.must_equal "his other button"
 		end
 
+		it "finds nothing if there is nothing matching" do
+			search = Product.search {fulltext 'tanks 3 your'}
+			search.total.must_equal 1
+		end
+
+		it "ignores commata" do
+			search = Product.search {fulltext 'different kinda'}
+			search.total.must_equal 5
+			search.results.each {|r| r.must_be_instance_of Tank}
+		end
+
+
 		it "ignores cases" do
 			search = Product.search {fulltext 'wick'}
 			search.total.must_equal 6
 			search.results.each {|r| r.must_be_instance_of Wick}
 		end
+	end
 
-		it "searches in manufacturer" do
-			Wick.create(name: "XY1", manufacturer: "Viva La Vape")
-			Wick.create(name: "XY2", manufacturer: "Viva La Vape")
-			Tank.create(name: "V2", manufacturer: "Vapers Heaven")
+	it "searches in manufacturer" do
+		Product.destroy_all
+		Wick.create(name: "XY1", manufacturer: "Viva La Vape")
+		Wick.create(name: "XY2", manufacturer: "Viva La Vape")
+		Tank.create(name: "V2", manufacturer: "Vapers Heaven")
 
-			search = Product.search {fulltext "viva la"}
-			search.total.must_equal 2
-			search.results.each {|r| r.must_be_instance_of Wick}
+		update_solr_indices
 
-			search = Product.search {fulltext "heaven"}
-			search.total.must_equal 1
-			search.results[0].must_be_instance_of Tank
-		end
+		search = Product.search {fulltext "viva la"}
+		search.total.must_equal 2
+		search.results.each {|r| r.must_be_instance_of Wick}
 
-		it "searches in type" do
-			Product.destroy_all
-			Wick.create(name: "XY1", manufacturer: "Viva La Vape")
-			Wick.create(name: "XY2", manufacturer: "Viva La Vape")
-			Tank.create(name: "V2", manufacturer: "Vapers Heaven")
+		search = Product.search {fulltext "heaven"}
+		search.total.must_equal 1
+		search.results[0].must_be_instance_of Tank
+	end
 
-			search = Product.search {fulltext "wick"}
-			# search.total.must_equal 2
-			search.results.each {|r| r.must_be_instance_of Wick}
+	it "searches in type" do
+		Product.destroy_all
+		Wick.create(name: "XY1", manufacturer: "Viva La Vape")
+		Wick.create(name: "XY2", manufacturer: "Viva La Vape")
+		Tank.create(name: "V2", manufacturer: "Vapers Heaven")
 
-			search = Product.search {fulltext "tank"}
-			# search.total.must_equal 1
-			search.results[0].must_be_instance_of Tank
+		update_solr_indices
+
+		search = Product.search {fulltext "wick"}
+
+		search.total.must_equal 2
+		search.results.each {|r| r.must_be_instance_of Wick}
+
+		search = Product.search {fulltext "tank"}
+		search.total.must_equal 1
+		search.results[0].must_be_instance_of Tank
 		end
 	end
 end
