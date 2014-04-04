@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.float :rating
       t.integer :rating_count
-      t.string :description
+      t.text :description, :limit => nil
       t.string :picture_path
       t.string :type
       t.string :manufacturer

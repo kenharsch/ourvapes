@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140320032542) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "battery_dets", force: true do |t|
     t.integer  "battery_id"
     t.string   "voltage"
@@ -48,8 +51,8 @@ ActiveRecord::Schema.define(version: 20140320032542) do
     t.datetime "updated_at"
   end
 
-  add_index "compat_pairs", ["prod1_id"], name: "index_compat_pairs_on_prod1_id"
-  add_index "compat_pairs", ["prod2_id"], name: "index_compat_pairs_on_prod2_id"
+  add_index "compat_pairs", ["prod1_id"], name: "index_compat_pairs_on_prod1_id", using: :btree
+  add_index "compat_pairs", ["prod2_id"], name: "index_compat_pairs_on_prod2_id", using: :btree
 
   create_table "connectors", force: true do |t|
     t.string   "name"
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140320032542) do
     t.string   "name"
     t.float    "rating"
     t.integer  "rating_count"
-    t.string   "description"
+    t.text     "description"
     t.string   "picture_path"
     t.string   "type"
     t.string   "manufacturer"

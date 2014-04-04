@@ -93,6 +93,10 @@ Product.all.each do |p|
 
 end
 =end
+
+# avoids seeding duplicates
+Product.destroy_all
+
 tank = Tank.create(name: "Davide" + " Tank", description: "1. High Polish.
 2. Unique Design: Tube Locking Systerm, All Parts Changeable (especially glass tube & drip tip)  No Glue used so you can change the pyrex glass tank if you break it or just want a new color.
 3. BCC Technology: Bottom Coil changeable, No Burning, Pure Taste.
@@ -115,7 +119,7 @@ Compare this tank with a standard Bottom Coil Clearomizer (BCC) and you will be 
 
 Included in kit:
 
-1 Pyrex glass davide, 2 BDC coils and 1 beauty ring/spacer 
+1 Pyrex glass davide, 2 BDC coils and 1 beauty ring/spacer
 
 How to Use your Anyvape Davide BDC:
 
@@ -123,11 +127,11 @@ To fill, turn the tank upside down and remove the threaded end cap.  Fill the ou
 Gurgling or Leaking can occur if liquid gets into the center airflow tube.  To clear this liquid and improve performance remove the tank from the battery and blow through the mouthpiece into a paper towel. The excess liquid will come out of the threaded end of the device.  If this happens often you may need to check that all connections are screwed down tightly or replace the head and wick assembly with a new one.
 The head and wick assembly will sometimes loosen itself when the threaed end cap is unscrewed.  Always check that it is pushed into the bottom cap tightly tightly before screwing the cap back on.  Not doing so could result in a leaking or non-working device.
 You should never run the tank completely dry.  Doing so could result in a burnt or damaged wick and can cause leaking.  Refill the tank when the liquid level reaches approximately 1/3 full
-The lifespan of replacement heads can vary quite a bit, but following the above instructions will maximize the lifespan of the coil. 
- 
+The lifespan of replacement heads can vary quite a bit, but following the above instructions will maximize the lifespan of the coil.
+
 Another great benefit of the Davide BDC is that you can remove the ring and use regular BCC coils if you run out of BDC coils.
 
- 
+
 
 Replacement atomizer heads/coils can be found here
 
@@ -158,7 +162,7 @@ Glassomizer Kit Contents:
 
 Anyvape Glassomizer Mini Davide Glassomizer Advantages:
 1. Nice Appearance, High Polish.
-2. Unique Design: Tube Locking System, All Parts Changeable (especially glass tube & drip tip) Economic, No Glue 
+2. Unique Design: Tube Locking System, All Parts Changeable (especially glass tube & drip tip) Economic, No Glue
 3. BCC Technology: Bottom Coil changeable, No Burning , Pure Taste.
 4. Top Quality Coil, Good Throat-hit.
 5. Easy to Be Cleaned.
@@ -210,7 +214,7 @@ Rebuildable atomizers are intended for advanced users, rebuildable atomizers sho
 
 4. By purchasing this product you certify that you meet the requirements above. You also agree to hold harmless Viper Vape Inc for any improper use of this product.
 
- 
+
 
 
 
@@ -221,18 +225,18 @@ Read more: http://www.viper-vape.com/products/aqua-rba-clone.html#ixzz2xlLyNoW9"
 	tank.price = 49.99
 	tank.save
 
-	tank = Tank.create(name: "Aspire CE5-S BDC" + " Tank", description: "Aspire CE5-S BDC 
+	tank = Tank.create(name: "Aspire CE5-S BDC" + " Tank", description: "Aspire CE5-S BDC
 
-The Aspire CE5-S BDCC (Bottom Dual Coil Changeable) Clearomizer is the newest generation of clearomizers, featuring BDCC (Bottom Dual Coil Changeable) technology. This new generation clearomzier has a very humanistic design and gives the users the most enjoyable vaping experience. If you want to blow some massive clouds than you cant pass up on this revolutional new bdc clearomizer.The CE-S Clearomizer is a new style of bottom coil clearomizer featuring dual heating elements to provide twice the vapor. It comes pre-loaded with a 1.8ohm dual coil head. 
+The Aspire CE5-S BDCC (Bottom Dual Coil Changeable) Clearomizer is the newest generation of clearomizers, featuring BDCC (Bottom Dual Coil Changeable) technology. This new generation clearomzier has a very humanistic design and gives the users the most enjoyable vaping experience. If you want to blow some massive clouds than you cant pass up on this revolutional new bdc clearomizer.The CE-S Clearomizer is a new style of bottom coil clearomizer featuring dual heating elements to provide twice the vapor. It comes pre-loaded with a 1.8ohm dual coil head.
 
 Compare this tank with a standard Bottom Coil Clearomizer (BCC) and you will be astonished by the difference in taste and performance. The Bottom Dual Coil (BDC) design is a major upgrade when compared to similar single coil tanks not only because of the dual coils, but also because of the uniquely designed replaceable coil and airflow system. It was designed differently to eliminate common issues such as an airy draw, gurgling, and leaking that users often experience with other BCC tanks. It also works to eliminate outside influences on flavor to provide a true and pure taste experience.
 
-Features: 
+Features:
 
 Tube with metal casing
 Very easy to refill (1.8ml capacity)
 No burning, no leaking
-Huge vapor 
+Huge vapor
 Pure and clean taste
 More stable and reliable
 eGo threading
@@ -285,7 +289,7 @@ Read more: http://www.viper-vape.com/products/aspire-nautilus.html#ixzz2xlNWyZAw
 
 	tank = Tank.create(name: "Hypertank Pyrex Glass BCC", description: "Hypertank Pyrex Glass BCC only from Viper Vape - This is the new Vivi Nova style tank that is going to blow your mind with clouds of vapor and lots of flavor
 
-If you loved your Vision Vivi Nova your going to love this tank twice as much. Picture your Vivi Nova made of durable pyrex glass and move the coil to the bottom of the tank for great hits every time and you have the Hypertank!   
+If you loved your Vision Vivi Nova your going to love this tank twice as much. Picture your Vivi Nova made of durable pyrex glass and move the coil to the bottom of the tank for great hits every time and you have the Hypertank!
 
 Each HyperTank consists of a glass inner tank,an aluminium outer tank,a bottom changeable coil, a stainless steel top,a removable stainless steel base and a replaceable chrome 510 drip tip
 
@@ -293,8 +297,8 @@ The inner tank, which hold the ejuice directly, is made with the glass material 
 
 The aluminium outer tank is an inseparable cover above the inner tank and does not touch ejuice. The outer tank has 4 windows, so you can see the ejuice level through windows easily.
 
-HyperTank has the same bottom coil heating system as Kanger Protank. 
- 
+HyperTank has the same bottom coil heating system as Kanger Protank.
+
 When the bottom coil dies, you can keep the metal base and replace only the coil head.
 
 HyperTank uses a separate chrome 510 drip tip. You can replace it with various drip tip for 510/901.
@@ -312,7 +316,7 @@ Tank Capactiy: 5ml
 
 
 Each pack contains
-1pc HyperTank 
+1pc HyperTank
 2pc Coil - One coil head already pre-installed (resistance 1.8om)
 
 Replacement Coils/Heads can be found here
@@ -326,21 +330,21 @@ Read more: http://www.viper-vape.com/products/hypertank-pyrex-glass-bcc.html#ixz
 	tank.price = 17.99
 	tank.save
 
-	tank = Tank.create(name: "iClear 30 Dual Coil" + " Tank", description: "Innokin iClear 30 dual coil clearomizer: 
+	tank = Tank.create(name: "iClear 30 Dual Coil" + " Tank", description: "Innokin iClear 30 dual coil clearomizer:
 
 The iClear 30 utilizes a rotatable mouth piece with an innovative 360 degree rotating design. These mouth pieces are designed to swivel around, providing a more comfortable and enjoyable vape!The iClear 30 features dual coils and a easily replaceable atomizer head.Innokin iClear 30 is the first dual coil clearomizer with a replaceable atomizer head, making it very inexpensive to maintain, while providing huge amounts of vapor and flavor. Another great feature of the iClear 30 is the large 3ml chamber for holding liquid. This means vapers can vape longer between fills, uninterrupted. Resistance 2.0-2.2ohms
 
 
 Features
 
-1. Easy to disassemble 
-2. Stainless steel clearomizer 
-3. Replaceable atomizer head 
-4. Rotatable mouth piece 
-5. Replaceable Dual Coil 
-6. Rebuildable 
-7. Large capacity 
-8. Hold 3ml juice 
+1. Easy to disassemble
+2. Stainless steel clearomizer
+3. Replaceable atomizer head
+4. Rotatable mouth piece
+5. Replaceable Dual Coil
+6. Rebuildable
+7. Large capacity
+8. Hold 3ml juice
 9. Keep the liquid fresh and original
 
 Replacement Coils/Heads can be found here
@@ -360,33 +364,33 @@ The Innokin iClear X.I is a dual coil clearomizer with a replaceable coil unit, 
 Another great feature of the iClear X.I is the large 3ml tube for holding e-liquid. This means vapers can vape longer between fills, uninterrupted.
 Innokin iClear X.I is made of Pyrex Glass. So the tube is more durabe and clean to keep e-juices.
 
- 
+
 
 How to replace the coil
 
 Empty the iClear X.I Tank
 
-Unscrew the bottom base. 
+Unscrew the bottom base.
 
 Unscrew the old coil and replace a new one.
 
- 
 
-How to refill the iClear X.I 
 
- 1. Turn upside down the cartomizer and screw off the bottom base firstly. 
+How to refill the iClear X.I
 
-2. Use the syringer or needle tip dropper to fill less than 3ml e-liquid against the inner wall. Try not to get e-Liquid in the center hole as it's used for air flow. 
+ 1. Turn upside down the cartomizer and screw off the bottom base firstly.
+
+2. Use the syringer or needle tip dropper to fill less than 3ml e-liquid against the inner wall. Try not to get e-Liquid in the center hole as it's used for air flow.
 
 3. Carefully screw on the connector, connect it with the battery and enjoy it.
 
- 
+
 
 How to remove your BDCC  from battery
 
 Hold the bottom of the clear cartomizer when you separate it from battery. Please do not screw the cartomizer from the top or middle of the cartomizer or  the e-liquid will spill out of tank
 
- 
+
 
 Tips
 
@@ -407,7 +411,7 @@ Read more: http://www.viper-vape.com/products/innokin-iclear-x-i-pyrex-bdc.html#
 Kanger Aerotank Features:
 
 Airflow control
-Stainless steel 
+Stainless steel
 Stronger base
 Pyrex tank is replaceable
 Glue Free: All parts are replaceable
@@ -422,9 +426,9 @@ Pyrex Glass Tank
 
 Tips:
 
-The metal tube in the center of this Clearomizer leads from the mouthpiece to the battery end. Avoid getting liquid in this tube when filling the Clearomizer. 
+The metal tube in the center of this Clearomizer leads from the mouthpiece to the battery end. Avoid getting liquid in this tube when filling the Clearomizer.
 When unfastening the base (atomizer head) to refill the Clearomizer, the seals are temporarily broken and liquid will leak from the mouthpiece or escape into the center tube. Always wrap a cloth or piece of tissue around the mouthpiece when unfastening the base of the Clearomizer.
-Gurgling noise or leaks: This is a sign that liquid has found its way into the metal tube in the center of the Clearomizer (and usually occurs after a refill). Ridding the center tube of liquid will resolve the issue. To do so without emptying the tank, remove the Clearomizer from the battery, wrap a cloth or tissue around the battery end of the Clearomizer and blow through the mouthpiece. 
+Gurgling noise or leaks: This is a sign that liquid has found its way into the metal tube in the center of the Clearomizer (and usually occurs after a refill). Ridding the center tube of liquid will resolve the issue. To do so without emptying the tank, remove the Clearomizer from the battery, wrap a cloth or tissue around the battery end of the Clearomizer and blow through the mouthpiece.
 The atomizer head of the Protank can unfasten when unscrewing the tube or base. Always secure the atomizer head before reinstalling the base of the Protank.
 It is normal to find a small amount of liquid in the battery contact area when removing the Clearomizer or any atomizer. We recommend cleaning the battery before charging it.
 
@@ -575,7 +579,7 @@ wick = Wick.create(name: "Aspire CE5-s BDC Replacement Coil 1.6" + " Wick", desc
 	wick.set_works_well_with(Tank.find(5), true)
 	wick.save
 
-button = Button.create(name: "Kanger E.V.O.D" + " Button", description: "It is the latest KangerTech EVOD 1000mAh manual battery. With 1000mAh capacity, you can vape for 8 hours or more! 
+button = Button.create(name: "Kanger E.V.O.D" + " Button", description: "It is the latest KangerTech EVOD 1000mAh manual battery. With 1000mAh capacity, you can vape for 8 hours or more!
 
 It comes with eGo thread, it is compatible with eGo series atomizer/cartomizer. It also comes with short-circuit protection and overcharge protection.
 
@@ -612,7 +616,7 @@ Threading: 510 and eGo compatible
 Its power bank function allows you to charge your iPhone, iPad, Android OS device, Smart phones, etc. When charging a phone the AnyMOD cannot be used to vape at the same time.
 The single button interface is very easy to operate: 1 click to select the next value (hold the button to quickly scroll through values) - 2 clicks to select the value - 3 clicks to get in and out of the menu.
 When on - simply double click to change the voltage or the wattage - no need to get into the menu for that! Very smartly done.
- 
+
 
 
 Read more: http://www.viper-vape.com/products/anyvape-anymod.html#ixzz2xlZRpz9H" + "Button!")
@@ -693,8 +697,8 @@ Read more: http://www.viper-vape.com/products/innokin-itaste-vtr.html#ixzz2xlaRS
 	button.set_works_well_with(Tank.find(10), true)
 	button.save
 
-button = Button.create(name: "eGo-C Twist" + " Button", description: "The Anyvape eGo-C Twist is a variable voltage battery. You can adjust the voltage from 3.2V to 4.8V. 
-The Anyvape eGo-C Twist is made by the same manufacturer and with the same material as the Joyetech eGo-C Twist version. Its main improvement over the Joyetech is the bottom knob which is much easier to read and use. The Anyvape eGo-C Twist has the Anyvape Twist logo on the side (see pictures). 
+button = Button.create(name: "eGo-C Twist" + " Button", description: "The Anyvape eGo-C Twist is a variable voltage battery. You can adjust the voltage from 3.2V to 4.8V.
+The Anyvape eGo-C Twist is made by the same manufacturer and with the same material as the Joyetech eGo-C Twist version. Its main improvement over the Joyetech is the bottom knob which is much easier to read and use. The Anyvape eGo-C Twist has the Anyvape Twist logo on the side (see pictures).
 Usage Comments:
 
 To lock the battery, simply click the button 5 times rapidly. The LED will flash indicating that the battery is now locked.
@@ -750,11 +754,11 @@ button = Button.create(name: "eVic" + " Button", description: "There is a serial
 	button.price = 103.95
 	button.save
 
-button = Button.create(name: "Mego-V VV" + " Button", description: "The Mego-V is a variable voltage battery and can be adjusted from 3.0-6.0 volts. Removable top ring so you can easily use ego threaded atomizers as well as 510 threaded atomizers. This battery is no longer than a 1000mah ego battery. Battery indicator shows remaning battery life on the LCD screen as well as displays your current voltage when you adjust up or down. 
+button = Button.create(name: "Mego-V VV" + " Button", description: "The Mego-V is a variable voltage battery and can be adjusted from 3.0-6.0 volts. Removable top ring so you can easily use ego threaded atomizers as well as 510 threaded atomizers. This battery is no longer than a 1000mah ego battery. Battery indicator shows remaning battery life on the LCD screen as well as displays your current voltage when you adjust up or down.
 
 Included:
 
-900mah Variable Voltage battery , USB Cord , Gift Box and instruction booklet. 
+900mah Variable Voltage battery , USB Cord , Gift Box and instruction booklet.
 
 
 
@@ -800,7 +804,7 @@ Main Features
 8)  Reverse polarity protection
 9)  Fits compatible atomizers with a 510 screw threading fitting( not included)
 
- 
+
 
 Voltage Mode
 
@@ -832,7 +836,7 @@ Wattage Mode
     Wattage - wattage mode
     Voltage - voltage mode
 
- 
+
 
 
 Read more: http://www.viper-vape.com/products/smoktech-sid.html#ixzz2xldj9dLe" + "Button!")
@@ -872,9 +876,9 @@ Read more: http://www.viper-vape.com/products/smoktech-vmax-v2.html#ixzz2xle7G7H
 button = Button.create(name: "Vision E-Fire 1000mAh Wood Spinner" + " Button", description: "Unique hand carved design on a wooden body. This is a variable voltage battery. Show your style and get one of these unique batteries while they last.
 Standard 510/eGo thread. 1000mAh Capacity.There maybe some color differences since these are wood batteries. Limited edition so hurry and get yours today
 Options A and C both are version 2. Option B is version 1.
- 
 
- 
+
+
 
 5-Click protection: Generally, the battery is shipped in the off position. In off position, it will not function even when pressing the button. To turn on battery, press manual button 5 times within 2 seconds. You will see white LED flash. To turn off battery, press manual button 5 times within 2 second as well, the white LED will flash!  5-click protection can protect the battery from being activated when you do not want or do not use it. No more firing in your pocket!
 
@@ -958,7 +962,7 @@ Top: flat top
 Bottom: non-proctected
 Weight: 50g
 
-Nominal Capacity: 2100mAh 
+Nominal Capacity: 2100mAh
 
 Nominal Voltage: 3.7v
 
@@ -1010,7 +1014,7 @@ Positive: Flat top
 Cycle Life: 500 Cycles
 Max Charging Rate: 4.5amps
 
-NOTE:These IMR cells have much lower internal resistance than regular Li-ion 3.7V cells and they may end up with a higher ending voltage when charged in certain chargers . Please check the voltage of your 26650 IMR battery right out of the charger to see if they are above 4.20V when fully charged with your charger.Above 4.50V may even damage them. DO NOT use the charger if it is overcharging IMR cells. 
+NOTE:These IMR cells have much lower internal resistance than regular Li-ion 3.7V cells and they may end up with a higher ending voltage when charged in certain chargers . Please check the voltage of your 26650 IMR battery right out of the charger to see if they are above 4.20V when fully charged with your charger.Above 4.50V may even damage them. DO NOT use the charger if it is overcharging IMR cells.
 
 Read more: http://www.viper-vape.com/products/efest-imr-26650-3000mah-3-7v.html#ixzz2xllFpeZv" + "Battery!")
 	battery.voltage = 3.7
@@ -1024,7 +1028,7 @@ Read more: http://www.viper-vape.com/products/efest-imr-26650-3000mah-3-7v.html#
 	battery.set_works_well_with(Button.find(31), true)
 	battery.save
 
-battery = Battery.create(name: "eVic replacement Battery Samsung 18650" + " Battery", description: "Samsung ICR18650 2600mAh Battery - Flat Top - eVic 
+battery = Battery.create(name: "eVic replacement Battery Samsung 18650" + " Battery", description: "Samsung ICR18650 2600mAh Battery - Flat Top - eVic
 This is the same battery that is included in our Joye eVic Kits.
 
 Read more: http://www.viper-vape.com/evic-battery-samsung-18650/#ixzz2xlkv1C5o" + "Battery!")
@@ -1051,7 +1055,7 @@ Peak Voltage: 4.2V
 Dimensions: 18.3mmX65mm
 Rechargable: Yes
 Protected: No
-Chemistry: Lithium manganese Dioxide (Li-Mn02) 
+Chemistry: Lithium manganese Dioxide (Li-Mn02)
 Style: Flat Top
 Color: Orange
 
@@ -1083,14 +1087,14 @@ Read more: http://www.viper-vape.com/products/sanyo-16650-li-ion-battery.html#ix
 	battery.set_works_well_with(Button.find(31), true)
 	battery.save
 
-battery = Battery.create(name: "Sony vtc4 18650" + " Battery", description: "Authentic Sony 30AMP VTC4 2100mah 18650 Battery 
- 
-If you want a battery for high amperage this is the battery for you. 
-These batteries are perfect for sub-ohm coils and those that like to go to .3Ω and below. 
-SONY 3.7V US18650VTC3 HIGH DRAIN 30A RECHARGEABLE Li-on 18650 Battery 2100mAh 
-Battery Maximum Voltage 4.25 V 
-Battery Minimum Voltage 2.5 V 
-Battery Rated Voltage 3.7 V 
+battery = Battery.create(name: "Sony vtc4 18650" + " Battery", description: "Authentic Sony 30AMP VTC4 2100mah 18650 Battery
+
+If you want a battery for high amperage this is the battery for you.
+These batteries are perfect for sub-ohm coils and those that like to go to .3Ω and below.
+SONY 3.7V US18650VTC3 HIGH DRAIN 30A RECHARGEABLE Li-on 18650 Battery 2100mAh
+Battery Maximum Voltage 4.25 V
+Battery Minimum Voltage 2.5 V
+Battery Rated Voltage 3.7 V
 Size: 65 mm long, diameter is 18m
 84 amp pulse
 
@@ -1108,7 +1112,7 @@ Read more: http://www.viper-vape.com/products/sony-vtc4-18650.html#ixzz2xlmRAnZS
 	battery.save
 
 
-charger = Charger.create(name: "Efest LUC Multi-function LCD Smart charger" + " Charger", description: "2 battery grooves for charge 10440 / 16340 / 14500 / 14650 / 17500 / 17670 / 18350 / 18490 / 18500 / 18650 / 18700 / 22650 / 26500 / 26650 ect. Li-Mn or Li-ion battery. 
+charger = Charger.create(name: "Efest LUC Multi-function LCD Smart charger" + " Charger", description: "2 battery grooves for charge 10440 / 16340 / 14500 / 14650 / 17500 / 17670 / 18350 / 18490 / 18500 / 18650 / 18700 / 22650 / 26500 / 26650 ect. Li-Mn or Li-ion battery.
 
 Read more: http://www.viper-vape.com/products/efest-luc-multi-function-lcd-smart-charger.html#ixzz2xlnmFVSy" + "Charger!")
 	charger.picture_path = '20130926030109423__94828.1386806659.360.360.jpg'
@@ -1134,12 +1138,12 @@ Read more: http://www.viper-vape.com/products/efest-luc-multi-function-lcd-smart
 	charger.set_works_well_with(Battery.find(41), true)
 	charger.save
 
-charger = Charger.create(name: "eGo USB Charger" + " Charger", description: "Both cord and no cord versions are universal USB charger for eGo batteries. Normally it takes 2 hours to charge a 650mah battery completely. 
+charger = Charger.create(name: "eGo USB Charger" + " Charger", description: "Both cord and no cord versions are universal USB charger for eGo batteries. Normally it takes 2 hours to charge a 650mah battery completely.
 The LED on charger is red when charging,when the battery is fully charged,LED turns green.Use the eGo USB charger to recharge your batteries with any powered USB device (couputer,etc) or our wall charger (sold seperate)
 
 No cord version means no shorting due to cord shorts.
 
-Both versions work with all ego style batteries  we sell including kanger evod , twist, spinner , normal ego batteries and any other ego threaded batteries we sell.Works with our 510 batteries as well. 
+Both versions work with all ego style batteries  we sell including kanger evod , twist, spinner , normal ego batteries and any other ego threaded batteries we sell.Works with our 510 batteries as well.
 
 
 
@@ -1153,7 +1157,7 @@ Read more: http://www.viper-vape.com/ego-usb-charger/#ixzz2xloBhOfx" + "Charger!
 	charger.set_works_well_with(Button.find(27), true)
 	charger.save
 
-charger = Charger.create(name: " Efest LUC V4 4 bay LCD USB charger" + " Charger", description: "Efest LUC V4 is high quality with 4 charging channel and big LCD charger, it has four built-in independent charging channels with reverse polarity protection, short circuit protection, over-current protection and Zero voltage activation function, It can automatically monitor battery power and give an alarming notice. LUC V4 charger is compatible with most 3.7V Li-ion or LiMn batteries like 10440, 14500, 14650, 18500, 17670, 18650, 18700, 26500, 26650 etc.It can charge 15270 or 14250 batteries with spacers. 
+charger = Charger.create(name: " Efest LUC V4 4 bay LCD USB charger" + " Charger", description: "Efest LUC V4 is high quality with 4 charging channel and big LCD charger, it has four built-in independent charging channels with reverse polarity protection, short circuit protection, over-current protection and Zero voltage activation function, It can automatically monitor battery power and give an alarming notice. LUC V4 charger is compatible with most 3.7V Li-ion or LiMn batteries like 10440, 14500, 14650, 18500, 17670, 18650, 18700, 26500, 26650 etc.It can charge 15270 or 14250 batteries with spacers.
 Besides, with one full charged battery in channel 2, LUC V4 charger also can charge those devices, such as mobile phone, iPad, MP3, Mp4, PSP etc. There are 2 USB sockets of DC5V/0.5A and DC5V/1A. Now comes with car charger!
 
 Read more: http://www.viper-vape.com/products/efest-luc-v4-4-bay-lcd-usb-charger.html#ixzz2xlommGA1" + "Charger!")
@@ -1246,7 +1250,7 @@ Read more: http://www.viper-vape.com/products/itaste-universal-charging-cable.ht
 
 charger = Charger.create(name: "Mini Car Charger USB Port" + " Charger", description: "Car charger can charge your e-cigarette but you will still need your USB charger cord.
 
-Charge your electronic cigarette in your car 
+Charge your electronic cigarette in your car
 
 Electronic cigarette charger has CE, FCC, SGS, RoHS, UL and PSE approved.
 
@@ -1381,20 +1385,20 @@ Read more: http://www.viper-vape.com/products/hybrid-ming-vase-drip-tip.html#ixz
 	mouthpiece.save
 =begin
 def self.populate_test_compats
-		
+
 	10.times do
 		types = [Wick, Button, Battery]
 		counter = 52
 		m = Mouthpiece.find(counter)
 		t = types.pop
-		case t 
+		case t
 		when Wick
 			i = 12
 		when Button
 			i = 22
 		when Battery
 			i = 32
-		end			
+		end
 		10.times do
 			m.set_compat_with(t.find(i), true)
 			m.set_works_well_with(t.find(i), true)
@@ -1408,15 +1412,15 @@ def self.populate_test_compats
 		counter = 42
 		c = Charger.find(counter)
 		t = types.pop
-		case t 
+		case t
 		when Wick
 			i = 12
 		when Button
 			i = 22
 		when Battery
 			i = 32
-		end			
-		
+		end
+
 		10.times do
 			c.set_compat_with(t.find(i), true)
 			c.set_works_well_with(t.find(i), true)
@@ -1424,18 +1428,18 @@ def self.populate_test_compats
 		end
 		counter += 1
 	end
-	
+
 	10.times do
 		types = [Wick, Button]
 		counter = 32
 		b =Battery.find(counter)
 		t = types.pop
-		case t 
+		case t
 		when Wick
 			i = 12
 		when Button
 			i = 22
-		end		
+		end
 
 		10.times do
 			b.set_compat_with(t.find(i), true)
