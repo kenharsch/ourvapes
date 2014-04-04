@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 
-	describe "full text search in products table" do
+	describe "full text search in name and description" do
 
 		before do
 			# clear and fill the test database
@@ -87,38 +87,37 @@ class ProductTest < ActiveSupport::TestCase
 		end
 	end
 
-	it "searches in manufacturer" do
-		Product.destroy_all
-		Wick.create(name: "XY1", manufacturer: "Viva La Vape")
-		Wick.create(name: "XY2", manufacturer: "Viva La Vape")
-		Tank.create(name: "V2", manufacturer: "Vapers Heaven")
+	describe "fulltext search in manufacturer and type" do
 
-		update_solr_indices
+		before do
+			Product.destroy_all
 
-		search = Product.search {fulltext "viva la"}
-		search.total.must_equal 2
-		search.results.each {|r| r.must_be_instance_of Wick}
+			Wick.create(name: "XY1", manufacturer: "Viva La Vape")
+			Wick.create(name: "XY2", manufacturer: "Viva La Vape")
+			Tank.create(name: "V2", manufacturer: "Vapers Heaven")
 
-		search = Product.search {fulltext "heaven"}
-		search.total.must_equal 1
-		search.results[0].must_be_instance_of Tank
-	end
+			update_solr_indices
+		end
 
-	it "searches in type" do
-		Product.destroy_all
-		Wick.create(name: "XY1", manufacturer: "Viva La Vape")
-		Wick.create(name: "XY2", manufacturer: "Viva La Vape")
-		Tank.create(name: "V2", manufacturer: "Vapers Heaven")
+		it "searches in manufacturer" do
+			search = Product.search {fulltext "viva la"}
+			search.total.must_equal 2
+			search.results.each {|r| r.must_be_instance_of Wick}
 
-		update_solr_indices
+			search = Product.search {fulltext "heaven"}
+			search.total.must_equal 1
+			search.results[0].must_be_instance_of Tank
+		end
 
-		search = Product.search {fulltext "wick"}
+		it "searches in type" do
+			search = Product.search {fulltext "wick"}
 
-		search.total.must_equal 2
-		search.results.each {|r| r.must_be_instance_of Wick}
+			search.total.must_equal 2
+			search.results.each {|r| r.must_be_instance_of Wick}
 
-		search = Product.search {fulltext "tank"}
-		search.total.must_equal 1
-		search.results[0].must_be_instance_of Tank
+			search = Product.search {fulltext "tank"}
+			search.total.must_equal 1
+			search.results[0].must_be_instance_of Tank
+		end
 	end
 end
