@@ -5,7 +5,8 @@ This readme is not meant to be read by the public since this project is currentl
 ## PostgresSQL
 
 Most of this information is from
-http://www.amberbit.com/blog/2014/2/4/postgresql-awesomeness-for-rails-developers/
+http://www.amberbit.com/blog/2014/2/4/postgresql-awesomeness-for-rails-developers/ and
+https://www.digitalocean.com/community/articles/how-to-setup-ruby-on-rails-with-postgres
 
 ### Installation
 
@@ -14,6 +15,36 @@ $ echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" | sudo t
 $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 $ sudo apt-get update
 $ sudo apt-get install postgresql-9.3 libpq-dev
+```
+
+Change the VapeRater/config/database.yml to something like this
+```
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: vaperater_development
+  pool: 5
+  username: vaperater
+  timeout: 5000
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: vaperater_test
+  pool: 5
+  username: vaperater
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: vaperater_production
+  pool: 5
+  username: vaperater
+  timeout: 5000
 ```
 
 ### Acting as user _postgres_ on your OS
@@ -61,8 +92,40 @@ postgres=# \q
 In contrary to commands like `\q` and `\help` the database manipulating commands like
 `CREATE ROLE` are entered **without a leading `\` and end with `;`**, e.g.
 ```
+postgres=# create role vaperater with createdb;
+```
+
+#### Pitfall 1: everything is turned to lowercase
+
+Per deafult Postgres turns all the netries into lowercase. Therefore it's probably convenient to use
+lowercase / snake case for everything like role name and database name. However if you happen
+to create a role called VapeRater (not lowercase) and then execute
+```
 postgres=# create role VapeRater with createdb;
 ```
+you well get a `ERROR:  role "vaperater" does not exist` (notice: _vaperater_ instead of
+_VapeRater_ as you entered it). Although the role VapeRater might exist:
+```
+postgres=# SELECT rolname FROM pg_roles;
+  rolname
+-----------
+ postgres
+ VapeRater
+ vagrant
+(3 rows)
+```
+
+In order to delete the role VapeRater you have to use qutations:
+```
+postgres=# DROP ROLE "VapeRater";
+DROP ROLE
+postgres=# SELECT rolname FROM pg_roles;
+ rolname
+----------
+ postgres
+(1 row)
+```
+
 
 
 
