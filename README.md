@@ -18,9 +18,10 @@ $ sudo apt-get install postgresql-9.3 libpq-dev
 
 ### Acting as user _postgres_ on your OS
 
-PostgresSQL uses it's own user management system and calls users _roles_. It comes with one
-default role _postgres_. In order to login to the Postgres as _postgres_ we need to be logged in
-as with username _postgres_ on our OS (Mac OS, Linux, Windows). On Linux this is done by:
+PostgresSQL uses its own user management system and calls users _roles_. It comes with one
+default role _postgres_. In order to login to the Postgres server in user role _postgres_ (e.g. to
+create other roles and new databases) we need to be logged in with username _postgres_ on our
+OS (Mac OS, Linux, Windows). On Linux this is done by:
 
 ```
 $ sudo bash
@@ -28,7 +29,7 @@ $ su - postgres
 ```
 
 The `sudo bash` will log you in as _root_ and the `su - postgres` will log you in as _postgres_.
-Tgerefore, to get back to your original login you have to exit twice:
+Therefore, to get back to your original login you have to exit twice:
 ```
 $ exit
 $ exit
@@ -36,7 +37,7 @@ $ exit
 
 ### Interacting with Postgres DB
 
-Once logged in as _psotgres_ on your OS you can connect to the postgres server via
+Once logged in as _postgres_ on your OS you can connect to the postgres server via
 ```
 $ psql
 ```
@@ -46,7 +47,7 @@ which should change the terminal to
 postgres=#
 ```
 
-Now you can use `\help` to show all available commands and `help [command]` for viewing the
+Now you can use `\help` to show all available commands and `\help [command]` for viewing the
 syntax of a particular command. E.g. to see the syntax of `CREATE ROLE` use
 ```
 postgres=# \help CREATE ROLE
@@ -58,7 +59,10 @@ postgres=# \q
 ```
 
 In contrary to commands like `\q` and `\help` the database manipulating commands like
-`CREATE ROLE` are entered **without a leading `\` and end with `;`**.
+`CREATE ROLE` are entered **without a leading `\` and end with `;`**, e.g.
+```
+postgres=# create role VapeRater with createdb;
+```
 
 
 
