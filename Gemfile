@@ -57,6 +57,9 @@ group :test do
 
 	# for running minitest tests
 	gem 'minitest-rails'
+
+	# for colored test output
+	gem 'minitest-colorize'
 end
 
 # For adding in ratings
