@@ -8,7 +8,7 @@
 			Configuration
 		</h1>
 	</div>
-	
+
 	<%= render "pair_compat_messages" %>
 
 	<% @partslist.each do |part_type| %>
@@ -53,6 +53,6 @@
 
 	<div class = "col-xs-12">
 		<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
-		confirm: "Are you sure you want to clear all products?"%>
+		data: {confirm: "Are you sure you want to clear all products?"}%>
 	</div>
 </div>

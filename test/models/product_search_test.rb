@@ -5,9 +5,6 @@ class ProductTest < ActiveSupport::TestCase
 	describe "full text search in name and description" do
 
 		before do
-			# clear and fill the test database
-			Product.destroy_all
-
 			(1..5).each do |i|
 				Wick.create(name: "my wick #{i}", description: "some words #{i}")
 				Tank.create(name: "your tank #{i}", description: "totally different, kinda #{i}")
@@ -90,8 +87,6 @@ class ProductTest < ActiveSupport::TestCase
 	describe "fulltext search in manufacturer and type" do
 
 		before do
-			Product.destroy_all
-
 			Wick.create(name: "XY1", manufacturer: "Viva La Vape")
 			Wick.create(name: "XY2", manufacturer: "Viva La Vape")
 			Tank.create(name: "V2", manufacturer: "Vapers Heaven")

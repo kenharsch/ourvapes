@@ -3,9 +3,6 @@ require 'test_helper'
 class ProdSearchTest < ActiveSupport::TestCase
 
 	before do
-		# clear and fill the test database
-		Product.destroy_all
-
 		5.times do
 			Wick.create(
 				name: "no keyword in name",
