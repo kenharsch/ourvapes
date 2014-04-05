@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/personinma/VapeRater.png)](https://codeclimate.com/github/personinma/VapeRater)
 # VapeRater Developer Info
 
 This readme is not meant to be read by the public since this project is currently not open source.
