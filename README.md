@@ -16,37 +16,11 @@ $ echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" | sudo t
 $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 $ sudo apt-get update
 $ sudo apt-get install postgresql-9.3 libpq-dev
+$ sudo su - postgres
+$ create role vaperater with createdb login password 'password1'
+$ exit
 ```
 
-Change the VapeRater/config/database.yml to something like this
-```
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: vaperater_development
-  pool: 5
-  username: vaperater
-  timeout: 5000
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: vaperater_test
-  pool: 5
-  username: vaperater
-  timeout: 5000
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: vaperater_production
-  pool: 5
-  username: vaperater
-  timeout: 5000
-```
 
 ### Acting as user _postgres_ on your OS
 
@@ -180,7 +154,7 @@ rake sunspot:solr:reindex
 ```
 
 
-### RSolr::Error::Http - 404
+### RSolr::Error::Http: RSolr::Error::Http - 404 Not Found
 
 Sometimes Solr fails to store the process id of a started Solr instance. Thus it claims not to
 run at all when calling `rake sunspot:solr:stop`. This causes a `RSolr::Error::Http - 404` error.
