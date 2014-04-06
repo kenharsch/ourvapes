@@ -1,6 +1,20 @@
+# helper methods ===========================================
+
+# Allows independence of the actual database IDs which could change every time
+# the seed is executed (sinde IDs are not reused if the DB is not dropeed and recreated).
+# Uses +product_class+ to double check if this is really the wanted product.
+# Could be done with Product.find(...) without the class but the double check
+# is a good thing to do.
+# seed_id:: the first element in this seed has the seed_id 1, the next one 2 etc.
+def find(product_class, seed_id)
+	db_id = FIRST_ID + seed_id - 1
+	return product_class.find(db_id)
+end
+
+
 # avoids seeding duplicates ============================
 Product.destroy_all
-CompatPairStatus.destroy_all
+CompatPair.destroy_all
 
 
 # create real products ===============================
@@ -18,6 +32,8 @@ tank.picture_path = 'AnyvapeDavide.png'
 tank.manufacturer = "Anyvape"
 tank.price = 14.95
 tank.save
+
+FIRST_ID = tank.id
 
 tank = Tank.create(name: "Davide BDC Glassomizer", description: "This new glassomizer is brought to you by Anyvape. Viper Vape is proud to introduce the Anvape Davide BDC worlds first bottom dual coil glassomizer. If you want to blow some massive clouds than you cant pass up on this revolutional new bdc glassomizer.
 
@@ -402,7 +418,7 @@ wick.resistance_in_ohm = 1.6
 wick.picture_path = 'AnyvapeBDCcoil.png'
 wick.manufacturer = "AnyVape"
 wick.price = 2.75
-wick.set_compat_with(Tank.find(2), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 2), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Anyvape Davide BDC Replacement Coil 1.8" + " Wick", description: " " + "Wick!")
@@ -410,7 +426,7 @@ wick.resistance_in_ohm = 1.8
 wick.picture_path = 'AnyvapeBDCcoil.png'
 wick.manufacturer = "AnyVape"
 wick.price = 2.75
-wick.set_compat_with(Tank.find(2), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 2), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Anyvape Davide BDC Replacement Coil 2.1" + " Wick", description: " " + "Wick!")
@@ -418,7 +434,7 @@ wick.resistance_in_ohm = 2.1
 wick.picture_path = 'AnyvapeBDCcoil.png'
 wick.manufacturer = "AnyVape"
 wick.price = 2.75
-wick.set_compat_with(Tank.find(2), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 2), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Anyvape Mini Davide Replacement Coil 1.5" + " Wick", description: " " + "Wick!")
@@ -426,7 +442,7 @@ wick.resistance_in_ohm = 1.5
 wick.picture_path = 'AnyvapeBDCcoil.png'
 wick.manufacturer = "AnyVape"
 wick.price = 2.50
-wick.set_compat_with(Tank.find(3), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 3), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Anyvape Mini Davide Replacement Coil 1.8" + " Wick", description: " " + "Wick!")
@@ -434,7 +450,7 @@ wick.resistance_in_ohm = 1.8
 wick.picture_path = 'AnyvapeBDCcoil.png'
 wick.manufacturer = "AnyVape"
 wick.price = 2.50
-wick.set_compat_with(Tank.find(3), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 3), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Innokin i30B Replacement Coil 1.5" + " Wick", description: " " + "Wick!")
@@ -442,7 +458,7 @@ wick.resistance_in_ohm = 1.5
 wick.picture_path = 'iclear30b_coil.png'
 wick.manufacturer = "Innokin"
 wick.price = 2.99
-wick.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Innokin i30B Replacement Coil 1.8" + " Wick", description: " " + "Wick!")
@@ -450,7 +466,7 @@ wick.resistance_in_ohm = 1.8
 wick.picture_path = 'iclear30b_coil.png'
 wick.manufacturer = "Innokin"
 wick.price = 2.99
-wick.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Innokin i30B Replacement Coil 2.1" + " Wick", description: " " + "Wick!")
@@ -458,7 +474,7 @@ wick.resistance_in_ohm = 2.1
 wick.picture_path = 'iclear30b_coil.png'
 wick.manufacturer = "Innokin"
 wick.price = 2.99
-wick.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Kanger Aerotank BDC Replacement Coi" + " Wick", description: " " + "Wick!")
@@ -466,7 +482,7 @@ wick.resistance_in_ohm = 2.1
 wick.picture_path = 'kanger_protank_3.jpg'
 wick.manufacturer = "Kanger"
 wick.price = 2.75
-wick.set_compat_with(Tank.find(10), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 10), CompatPair::WORKS_WELL)
 wick.save
 
 wick = Wick.create(name: "Aspire CE5-s BDC Replacement Coil 1.6" + " Wick", description: " " + "Wick!")
@@ -474,7 +490,7 @@ wick.resistance_in_ohm = 1.6
 wick.picture_path = 'aspire_ce5s_blue_coil.png'
 wick.manufacturer = "Aspire"
 wick.price = 2.75
-wick.set_compat_with(Tank.find(5), CompatPair::WORKS_WELL)
+wick.set_compat_with(find(Tank, 5), CompatPair::WORKS_WELL)
 wick.save
 
 button = Button.create(name: "Kanger E.V.O.D", description: "It is the latest KangerTech EVOD 1000mAh manual battery. With 1000mAh capacity, you can vape for 8 hours or more!
@@ -489,10 +505,10 @@ button = Button.create(name: "Kanger E.V.O.D", description: "It is the latest Ka
 button.picture_path = "KangerEVOD.png"
 button.manufacturer = "Kanger"
 button.price = 18.99
-button.set_compat_with(Tank.find(4), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 4), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(2), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 2), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "AnyMOD", description: "The Anyvape Anymod is a combination of both a regulated and unregulated device. Sounds amazing - and it is true - the Anyvape AnyMOD will smartly take you to the unregulated setting menu (MOD) when used with an atomizer resistance lower than 1.8 ohm - you can then choose this mode by double clicking the button and voila! You are now using a mechnaical device - at that point the voltage indicator on the screen will display the battery voltage.
@@ -520,13 +536,13 @@ button = Button.create(name: "AnyMOD", description: "The Anyvape Anymod is a com
 button.picture_path = "anymod2.png"
 button.manufacturer = "Anyvape"
 button.price = 75.00
-button.set_compat_with(Tank.find(1), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(2), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(3), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 1), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 2), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 3), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(10), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 10), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "itaste 134", description: "Innokin, a leading electronic cigarette manufacturer renowned for innovation and quality, is proud to announce the launch of the iTaste 134.
@@ -581,12 +597,12 @@ button = Button.create(name: "itaste VTR", description: "iTaste VTR is solid var
 button.picture_path = "Innokin_vtr.png"
 button.manufacturer = "Innokin"
 button.price = 105.00
-button.set_compat_with(Tank.find(1), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(4), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 1), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 4), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(10), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 10), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "eGo-C Twist", description: "The Anyvape eGo-C Twist is a variable voltage battery. You can adjust the voltage from 3.2V to 4.8V.
@@ -610,13 +626,13 @@ button = Button.create(name: "eGo-C Twist", description: "The Anyvape eGo-C Twis
 button.picture_path = "anyvapeegotwist.png"
 button.manufacturer = "Anyvape"
 button.price = 21.99
-button.set_compat_with(Tank.find(8), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(10), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 8), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 10), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(3), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(2), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(1), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 3), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 2), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 1), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "eGo-V V2 650mAh", description: "eGo-V V2 650mAh
@@ -628,13 +644,13 @@ button = Button.create(name: "eGo-V V2 650mAh", description: "eGo-V V2 650mAh
 button.picture_path = "egov_v.jpg"
 button.manufacturer = "Anyvape"
 button.price = 28.99
-button.set_compat_with(Tank.find(1), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(2), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(8), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(10), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 1), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 2), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 8), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 10), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(3), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 3), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "eVic", description: "There is a serial number for every Joyetech branded eVic kit, which is checked the authenticity of the eVic for the customers.If the product you buy without serial number, please deny it. Any Joyetech branded eVic without serial number will not be provided
@@ -656,13 +672,13 @@ button = Button.create(name: "Mego-V VV", description: "The Mego-V is a variable
 button.picture_path = "megov1.png"
 button.manufacturer = "Smiss"
 button.price = 29.99
-button.set_compat_with(Tank.find(7), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 7), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(4), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(5), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(6), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(11), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 4), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 5), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 6), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 11), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "Smoktech SID", description: "The new SmokTech SID variable voltage or wattage mod is the latest in their revolutionary lineup of VV / VW mods. With the ability to adjust from 3V to 6V in .1 increments, or 3 to 15 watts in .5 increments. The simplified sleek design and the revolutionary OLED display makes it one of the easiest most stylish single button VV/ VW mod on the market.
@@ -730,13 +746,13 @@ Read more: http://www.viper-vape.com/products/smoktech-sid.html#ixzz2xldj9dLe" +
 button.picture_path = "Smoktech_sid.png"
 button.manufacturer = "Smoktech"
 button.price = 49.99
-button.set_compat_with(Tank.find(7), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 7), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(4), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(5), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(6), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(11), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 4), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 5), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 6), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 11), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "Smoktech VMax V2", description: "An amazing mod with tons of built in features! Adjustable voltage for the perfect vape! It is the updated Vmax Variable Voltage Battery MOD V2 from Smoktech. Its output voltage can be adjusted from 3.0-6.0V volts in 0.1 volt increments. So VMax can work on most cartomizers or atomizers with 510 threading from 1.25ohm to 3.0ohm. VMAX PCB allows 5 Amperage output limit. Vmax has built-in three digit display, which allows you to visually adjust your voltage.
@@ -745,13 +761,13 @@ button = Button.create(name: "Smoktech VMax V2", description: "An amazing mod wi
 button.picture_path = "vmax5.png"
 button.manufacturer = "Smoktech"
 button.price = 84.99
-button.set_compat_with(Tank.find(7), CompatPair::WORKS_BADLY)
-button.set_compat_with(Tank.find(9), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 7), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 9), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(4), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(5), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(6), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(11), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 4), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 5), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 6), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 11), CompatPair::WORKS_WELL)
 button.save
 
 button = Button.create(name: "Vision E-Fire 1000mAh Wood Spinner", description: "Unique hand carved design on a wooden body. This is a variable voltage battery. Show your style and get one of these unique batteries while they last.
@@ -781,10 +797,10 @@ button = Button.create(name: "Vision E-Fire 1000mAh Wood Spinner", description: 
 button.picture_path = "MB_Vision_X.Fire_E_Fire_1000mah_Wood_Spinner_Variable_Voltage.jpg"
 button.manufacturer = "Viper Vape "
 button.price = 54.99
-button.set_compat_with(Tank.find(6), CompatPair::WORKS_BADLY)
+button.set_compat_with(find(Tank, 6), CompatPair::WORKS_BADLY)
 
-button.set_compat_with(Tank.find(3), CompatPair::WORKS_WELL)
-button.set_compat_with(Tank.find(5), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 3), CompatPair::WORKS_WELL)
+button.set_compat_with(find(Tank, 5), CompatPair::WORKS_WELL)
 button.save
 
 battery = Battery.create(name: " IMR 14500", description: "AW IMR 14500 3.7v 700mAh Protected Button Top
@@ -795,8 +811,8 @@ battery.wattage = 700
 battery.picture_path = 'aw__28994.1392842090.360.360.png'
 battery.manufacturer = "AW"
 battery.price = 9.50
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "IMR 18350", description: "AW IMR 18350 3.7v 700mAh protected button top battery
@@ -807,8 +823,8 @@ battery.wattage = 700
 battery.picture_path = 'aw350__37068.1388869064.360.360.png'
 battery.manufacturer = "AW"
 battery.price = 9.50
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "IMR 18490", description: "AW IMR 18490 3.7v 1100mAh Protected Button Top
@@ -819,8 +835,8 @@ battery.wattage = 1100
 battery.picture_path = 'aw__46329.1389340974.360.360.jpg'
 battery.manufacturer = "AW"
 battery.price = 11.00
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "Efest 18650", description: "30 amp discharge
@@ -855,8 +871,8 @@ battery.wattage = 2100
 battery.picture_path = '20131226015069506950__70481.1396373090.360.360.jpg'
 battery.manufacturer = "Efest"
 battery.price = 10.50
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "Efest 18350", description: "18350, 3.7 volt, IMR Li-Mn battery was made by Efest. The capacity of this battery is 800 mAh. This battery can be used in electronic cigarettes that requires an 18350 cell. This IMR cell has a high discharge rate and is great in variable voltage electronic cigarettes that take an 18350 IMR. This purchase comes with one battery . Sold individually.
@@ -872,8 +888,8 @@ battery.wattage = 800
 battery.picture_path = '20130621231316471647__07574.1386806035.360.360.jpg'
 battery.manufacturer = "Efest"
 battery.price = 7.75
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "IMR 26650 3000mah 3.7V", description: "26650, 3.7 volt, IMR lithium ion battery made by Efest. The capacity of this battery is 3000mAh. This battery can be used in electronic cigarettes that requires an 26650 cell. This IMR cell has a high discharge rate and is great in variable voltage electronic cigarettes that take an 26650 IMR. This purchase comes with one battery . Sold individually.
@@ -892,8 +908,8 @@ battery.wattage = 3000
 battery.picture_path = '20130621232059485948__59530.1386806174.360.360.jpg'
 battery.manufacturer = "Efest"
 battery.price = 12.99
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "eVic replacement Battery Samsung 18650", description: "Samsung ICR18650 2600mAh Battery - Flat Top - eVic
@@ -905,8 +921,8 @@ battery.wattage = 2600
 battery.picture_path = 'joyetech11__38465.1374950435.360.360.png'
 battery.manufacturer = "Joyetech"
 battery.price = 9.99
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "MNKE IMR 18650 1500mAh Li-MN 3.7v ", description: "Safe chemistry Li-MN 3.7V rechargeable battery does not require protection circuit. These cells can handle high amperage and is safe to use in series / multi-cell applications. Can be charged with any Li-Ion battery charger with 4.2V output. Price is per single cell (1x)
@@ -933,8 +949,8 @@ battery.wattage = 1500
 battery.picture_path = '813093109_846_74205.1386807173.600.600__45757.1387908107.360.360.jpg'
 battery.manufacturer = "MNKE"
 battery.price = 11.00
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "SANYO 16650 Li-Ion Battery", description: "Genuine SANYO 2000mAh 16650 rechargeable Li-Ion Battery. Button top converts to flat top becuase button is magnetized and can be removed by just pulling off.
@@ -945,8 +961,8 @@ battery.wattage = 2000
 battery.picture_path = 'sayno1__13303.1379372759.360.360.png'
 battery.manufacturer = "Sanyo"
 battery.price = 9.00
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 battery = Battery.create(name: "Sony vtc4 18650", description: "Authentic Sony 30AMP VTC4 2100mah 18650 Battery
@@ -967,8 +983,8 @@ battery.wattage = 2100
 battery.picture_path = 'sony_vct4__65655.1394936589.360.360.png'
 battery.manufacturer = "Sony"
 battery.price = 11.50
-battery.set_compat_with(Button.find(30), CompatPair::WORKS_WELL)
-battery.set_compat_with(Button.find(31), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 30), CompatPair::WORKS_WELL)
+battery.set_compat_with(find(Button, 31), CompatPair::WORKS_WELL)
 battery.save
 
 
@@ -978,15 +994,15 @@ charger = Charger.create(name: "Efest LUC Multi-function LCD Smart charger" + " 
 charger.picture_path = '20130926030109423__94828.1386806659.360.360.jpg'
 charger.manufacturer = "Efest"
 charger.price = 33.99
-charger.set_compat_with(Battery.find(33), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(34), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(35), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(36), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(37), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(38), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(39), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(40), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(41), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 33), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 34), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 35), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 36), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 37), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 38), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 39), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 40), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 41), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "eGo USB Charger" + " Charger", description: "Both cord and no cord versions are universal USB charger for eGo batteries. Normally it takes 2 hours to charge a 650mah battery completely.
@@ -1002,8 +1018,8 @@ charger = Charger.create(name: "eGo USB Charger" + " Charger", description: "Bot
 charger.picture_path = '420mA_eGo_Fast_USB_Charger_1_78237__00376.1396448524.360.360.jpg'
 charger.manufacturer = "Viper Vape"
 charger.price = 7.00
-charger.set_compat_with(Button.find(26), CompatPair::WORKS_WELL)
-charger.set_compat_with(Button.find(27), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 26), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 27), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: " Efest LUC V4 4 bay LCD USB charger" + " Charger", description: "Efest LUC V4 is high quality with 4 charging channel and big LCD charger, it has four built-in independent charging channels with reverse polarity protection, short circuit protection, over-current protection and Zero voltage activation function, It can automatically monitor battery power and give an alarming notice. LUC V4 charger is compatible with most 3.7V Li-ion or LiMn batteries like 10440, 14500, 14650, 18500, 17670, 18650, 18700, 26500, 26650 etc.It can charge 15270 or 14250 batteries with spacers.
@@ -1013,15 +1029,15 @@ charger = Charger.create(name: " Efest LUC V4 4 bay LCD USB charger" + " Charger
 charger.picture_path = '20131017035408648__91028.1386806455.360.360.jpg'
 charger.manufacturer = "Efest"
 charger.price = 38.99
-charger.set_compat_with(Battery.find(33), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(34), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(35), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(36), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(37), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(38), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(39), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(40), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(41), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 33), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 34), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 35), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 36), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 37), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 38), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 39), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 40), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 41), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "eGo Wall Charger" + " Charger", description: "Wall outlet converter to a USB power source.
@@ -1030,8 +1046,8 @@ charger = Charger.create(name: "eGo Wall Charger" + " Charger", description: "Wa
 charger.picture_path = 'charger1__08552.1377982108.360.360.png'
 charger.manufacturer = "Viper Vape"
 charger.price = 7.00
-charger.set_compat_with(Button.find(26), CompatPair::WORKS_WELL)
-charger.set_compat_with(Button.find(27), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 26), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 27), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "i2 Nitecore Intellicharger V2" + " Charger", description: " I2 Nitecore Intellicharger I2 Li-ion / NiMH battery charger is a universal, automatic smart-charger compatible with almost all types of rechargeable batteries thus eliminating the need to own several chargers.
@@ -1054,15 +1070,15 @@ charger = Charger.create(name: "i2 Nitecore Intellicharger V2" + " Charger", des
 charger.picture_path = 'DSCN50161__34438.1373396818.360.360.jpg'
 charger.manufacturer = "i2 Nitecore"
 charger.price = 20.00
-charger.set_compat_with(Battery.find(33), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(34), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(35), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(36), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(37), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(38), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(39), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(40), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(41), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 33), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 34), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 35), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 36), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 37), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 38), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 39), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 40), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 41), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "iTaste Universal Charging Cable" + " Charger", description: "Designed for Upgraded iTaste VV 3.0 battery. It can also charge Joyetech eVic control head, Joyetech eVic easy head, Ismoka iGo control head well.
@@ -1071,8 +1087,8 @@ charger = Charger.create(name: "iTaste Universal Charging Cable" + " Charger", d
 charger.picture_path = 'itasteusb1__57294.1379372655.360.360.png'
 charger.manufacturer = "Innokin"
 charger.price = 7.99
-charger.set_compat_with(Button.find(24), CompatPair::WORKS_WELL)
-charger.set_compat_with(Button.find(25), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 24), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 25), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "Mini Car Charger USB Port" + " Charger", description: "Car charger can charge your e-cigarette but you will still need your USB charger cord.
@@ -1087,8 +1103,8 @@ charger = Charger.create(name: "Mini Car Charger USB Port" + " Charger", descrip
 charger.picture_path = 'mini_charger__78670.1363915156.360.360.jpg'
 charger.manufacturer = "Viper Vape"
 charger.price = 9.95
-charger.set_compat_with(Button.find(24), CompatPair::WORKS_WELL)
-charger.set_compat_with(Button.find(25), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 24), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Button, 25), CompatPair::WORKS_WELL)
 charger.save
 
 charger = Charger.create(name: "TrustFire Multifunctional Charger" + " Charger", description: "Output: 4.2V 500mA
@@ -1107,15 +1123,15 @@ charger = Charger.create(name: "TrustFire Multifunctional Charger" + " Charger",
 charger.picture_path = 'Trustfire_TR001_Li_ion_Charger_US_EU_Plug__36596.1376031689.360.360.jpg'
 charger.manufacturer = "Viper Vape"
 charger.price = 15.99
-charger.set_compat_with(Battery.find(33), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(34), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(35), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(36), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(37), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(38), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(39), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(40), CompatPair::WORKS_WELL)
-charger.set_compat_with(Battery.find(41), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 33), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 34), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 35), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 36), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 37), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 38), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 39), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 40), CompatPair::WORKS_WELL)
+charger.set_compat_with(find(Battery, 41), CompatPair::WORKS_WELL)
 charger.save
 
 mouthpiece = Mouthpiece.create(name: "360 510 Drip Tip" + " Mouthpiece", description: "It is the most innovative drip tip with 360 degree rotating design. Each drip tip is combined by 2 parts: the connection base and the mouthpiece
@@ -1124,16 +1140,16 @@ mouthpiece = Mouthpiece.create(name: "360 510 Drip Tip" + " Mouthpiece", descrip
 mouthpiece.picture_path = '360Driptips__41132.1380734948.360.360.png'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 3.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Bullet Drip Tip" + " Mouthpiece", description: " " + "Mouthpiece!")
 mouthpiece.picture_path = 'Bullet_510_Colored_Stainless_Steel_Drip_Tip__48488.1383719619.360.360.jpg'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Colored 510 Drip Tip" + " Mouthpiece", description: "These tips are made of high grade aluminum and allow you to dress up any product you may have that has a removable tip including but not limited to Vivi Novas, Vapeonly tanks, iSmoka tanks, Viva , Smok DCT and many, many more.
@@ -1142,8 +1158,8 @@ mouthpiece = Mouthpiece.create(name: "Colored 510 Drip Tip" + " Mouthpiece", des
 mouthpiece.picture_path = 'coloreddriptips__11779.1383075706.360.360.png'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.50
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips" + " Mouthpiece", description: "Custom Stainless Steel 510 Drip Tips made of high grade stainless steel
@@ -1152,8 +1168,8 @@ mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips" + " 
 mouthpiece.picture_path = 'driptips__46585.1383946714.360.360.png'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips Type B" + " Mouthpiece", description: "Custom Stainless Steel 510 Drip Tips made of high grade stainless steel
@@ -1162,8 +1178,8 @@ mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips Type 
 mouthpiece.picture_path = 'driptipb__54729.1379036578.360.360.png'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips Type C" + " Mouthpiece", description: "Custom Stainless Steel 510 Drip Tips made of high grade stainless steel
@@ -1172,8 +1188,8 @@ mouthpiece = Mouthpiece.create(name: "Custom Stainless Steel 510 Drip Tips Type 
 mouthpiece.picture_path = 'DRIPTIPC__86968.1379036762.360.360.png'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
 mouthpiece = Mouthpiece.create(name: "Hybrid Ming Vase Drip Tip" + " Mouthpiece", description: "New Hybrid Ming Vase Drip Tips. Made of Acrylic and Stainless Steel
@@ -1182,6 +1198,60 @@ mouthpiece = Mouthpiece.create(name: "Hybrid Ming Vase Drip Tip" + " Mouthpiece"
 mouthpiece.picture_path = 'Stainless_Steel_Acrylic_Hybrid_Ming_vase_Drip_Tip__01239.1383947144.360.360.jpg'
 mouthpiece.manufacturer = "Viper Vape"
 mouthpiece.price = 4.99
-mouthpiece.set_compat_with(Tank.find(8), CompatPair::WORKS_WELL)
-mouthpiece.set_compat_with(Tank.find(9), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
+mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
+
+
+
+
+
+# set all yet undefined compatibilities as INCOMPATIBLE ========================
+
+Mouthpiece.all.each do |mp|
+	Tank.all.each do |tank|
+		if mp.compat_with(tank) == CompatPair::UNKNOWN
+			mp.set_compat_with(tank, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
+
+Tank.all.each do |tank|
+	Wick.all.each do |wick|
+		if tank.compat_with(wick) == CompatPair::UNKNOWN
+			tank.set_compat_with(wick, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
+
+Tank.all.each do |tank|
+	Button.all.each do |button|
+		if tank.compat_with(button) == CompatPair::UNKNOWN
+			tank.set_compat_with(button, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
+
+Button.all.each do |button|
+	Battery.all.each do |battery|
+		if button.compat_with(battery) == CompatPair::UNKNOWN
+			button.set_compat_with(battery, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
+
+Button.all.each do |button|
+	Charger.all.each do |charger|
+		if button.compat_with(charger) == CompatPair::UNKNOWN
+			button.set_compat_with(charger, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
+
+Battery.all.each do |battery|
+	Charger.all.each do |charger|
+		if battery.compat_with(charger) == CompatPair::UNKNOWN
+			battery.set_compat_with(charger, CompatPair::INCOMPATIBLE)
+		end
+	end
+end
