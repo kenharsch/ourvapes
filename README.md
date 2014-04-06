@@ -207,3 +207,24 @@ rake test:prepare
 rake test
 RAILS_ENV=test rake sunspot:solr:stop
 ```
+
+## Production mode
+
+If you have done any changes in the assets folder (css, images etc.), run the following before
+starting the server:
+```
+rake assets:precompile
+```
+
+all the rake tasks like `rake db:seed` can be started like this:
+```
+RAILS_ENV=production rake db:seed
+```
+
+Finally, starting the server in production mode is
+```
+rails s -e production
+```
+
+**Note:** Although no explicit errors are shown on the website itself each error is printed in the
+terminal, in detail.

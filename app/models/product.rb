@@ -4,28 +4,30 @@ class Product < ActiveRecord::Base
 	before_validation :create_details_obj_if_none_yet
 	validates :details, presence: true
 
-	searchable do
-		# the fields used for fulltext search
-		text :name, :description, :type, :manufacturer
+	if !Rails.env.production?
+		searchable do
+			# the fields used for fulltext search
+			text :name, :description, :type, :manufacturer
 
-		# the fields used for text filtering
-		string :type
+			# the fields used for text filtering
+			string :type
 
-		# text :comments do
-		# 	comments.map { |comment| comment.body }
-		# end
+			# text :comments do
+			# 	comments.map { |comment| comment.body }
+			# end
 
-		# boolean :featured
-		# integer :blog_id
-		# integer :author_id
-		# integer :category_ids, :multiple => true
-		# double  :average_rating
-		# time    :published_at
-		# time    :expired_at
+			# boolean :featured
+			# integer :blog_id
+			# integer :author_id
+			# integer :category_ids, :multiple => true
+			# double  :average_rating
+			# time    :published_at
+			# time    :expired_at
 
-		# string  :sort_title do
-		# 	title.downcase.gsub(/^(an?|the)/, '')
-		# end
+			# string  :sort_title do
+			# 	title.downcase.gsub(/^(an?|the)/, '')
+			# end
+		end
 	end
 
 	# needed to use the def_delegators method

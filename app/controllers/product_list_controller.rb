@@ -18,7 +18,7 @@ class ProductListController < ApplicationController
 		end
 
 		@query = params["query"]
-		@prods = ProdSearch.full_text(@query, type_filter, params[:page]).results
+		@prods = ProdSearch.full_text(@query, type_filter, params[:page])
 
 		unless @query.nil?
 			@searched_in = @title
