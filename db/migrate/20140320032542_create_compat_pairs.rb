@@ -3,7 +3,7 @@ class CreateCompatPairs < ActiveRecord::Migration
 		create_table :compat_pairs do |t|
 			t.integer :prod1_id
 			t.integer :prod2_id
-			t.boolean :works_well, default: false
+			t.integer :compatibility
 			t.timestamps
 		end
 

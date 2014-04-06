@@ -65,49 +65,56 @@ class Product < ActiveRecord::Base
 		define_accessors attributes
 	end
 
-	# Returns +true+ if this product is compatible (physically fits with) +other_product+,
-	# otherwise +false+.
-	def compat_with?(other_product)
-		return find_pair(self, other_product) != nil
-	end
-
-	# Stores whether this product is compatible (physically fits with) +other_product+.
-	# +compat == true+ means it is compatible whereas +compat == false+ means it is not.
-	def set_compat_with(other_product, compat)
-		if compat
-			CompatPair.create(pair_order(self, other_product))
-		else
-			pair = find_pair(self, other_product)
-			pair.destroy unless pair.nil?
-		end
-	end
-
-	# Returns +true+ if both, this product is compatible (physically fits with) +other_product+
-	# and this pairs is defined as "working well"; Otherwise this returns +false+.
-	def works_well_with?(other_product)
-		pair = find_pair(self, other_product)
-		return false if pair.nil?
-		return pair.works_well?
-	end
-
-	# Stores whether this product works well with +other_product+. +well == true+ means it
-	# works well whereas +well == false+ means it doesn't.
-	#
-	# Use +set_compat_to(other_product, false)+ instead if this product is not compatible at all
-	# with +other_product+, means if these two physically do not fit together.
-	def set_works_well_with(other_product, well)
-		pair = find_pair(self, other_product)
-		pair = CompatPair.create(pair_order(self, other_product)) if pair.nil?
-		pair.works_well = well
-		pair.save
-	end
-
 	def self.clear_compat
 		CompatPair.destroy_all
 	end
 
 
+	# Returns one of the following: CompatPair::UNKNOWN, CompatPair::INCOMPATIBLE,
+	# CompatPair::WORKS_BADLY, CompatPair::WORKS_WELL
+	# The result for +a.compat_with(b)+ and +b.compat_with(a)+ is always the same.
+	def compat_with(other_product)
+		pair = find_pair(self, other_product)
+
+		return CompatPair::UNKNOWN if pair.nil?
+		return pair.compatibility
+	end
+
+	# Stores the compatibility for this product and +other_product+.
+	# After calling +a.set_compat_with(b, compat)+ there is no need to call
+	# +b.set_compat_with(a, compat)+.
+	# compat:: one of the following: CompatPair::UNKNOWN, CompatPair::INCOMPATIBLE,
+	# CompatPair::WORKS_BADLY, CompatPair::WORKS_WELL
+	def set_compat_with(other_product, compat)
+		pair = find_pair(self, other_product)
+
+		# compat == CompatPair::UNKNOWN means the corresponding pair should not exist
+		# in the database
+
+		return if (compat == CompatPair::UNKNOWN && pair.nil?)
+
+		if (compat == CompatPair::UNKNOWN && pair.present?)
+			pair.destroy
+			return
+		end
+
+		pair = CompatPair.create(pair_order(self, other_product)) if pair.nil?
+
+		pair.compatibility = compat
+		pair.save
+	end
+
+
 	private
+
+	# Getter, setter, and boolean getter (in case it's a boolean attribute)
+	# for each delegated attribute
+	def self.define_accessors(attributes)
+		attributes.each do |attribute_name|
+			def_delegators :details,
+			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
+		end
+	end
 
 	def find_pair(prod1, prod2)
 		return CompatPair.find_by(pair_order(prod1, prod2))
@@ -123,14 +130,5 @@ class Product < ActiveRecord::Base
 
 	def create_details_obj_if_none_yet
 		build_details if details.nil?
-	end
-
-	# Getter, setter, and boolean getter (in case it's a boolean attribute)
-	# for each delegated attribute
-	def self.define_accessors(attributes)
-		attributes.each do |attribute_name|
-			def_delegators :details,
-			:"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
-		end
 	end
 end

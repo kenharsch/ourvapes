@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140320032542) do
   create_table "compat_pairs", force: true do |t|
     t.integer  "prod1_id"
     t.integer  "prod2_id"
-    t.boolean  "works_well", default: false
+    t.integer  "compatibility"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
