@@ -70,7 +70,10 @@ class ConfigChecker
 	def check(prod1, prod2)
 		return if prod1.nil? || prod2.nil?
 
-		if !prod1.compat_with?(prod2)
+		# TODO differentiate between these two
+		bad_compatibilities = [CompatPair::UNKNOWN, CompatPair::INCOMPATIBLE]
+
+		if bad_compatibilities.include? prod1.compat_with(prod2)
 			@pair_compat_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
 			"the #{prod2.type.downcase} #{prod2.name} are not compatible at all. " \
 			"Replace or remove one of them."
@@ -84,7 +87,7 @@ class ConfigChecker
 			return
 		end
 
-		if !prod1.works_well_with?(prod2)
+		if prod1.compat_with(prod2) == CompatPair::WORKS_BADLY
 			@pair_works_badly_conflicts << "The #{prod1.type.downcase} #{prod1.name} and "\
 			"the #{prod2.type.downcase} #{prod2.name} do not work well together. " \
 			"Replace or remove one of them."
