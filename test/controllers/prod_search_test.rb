@@ -28,8 +28,7 @@ class ProdSearchTest < ActiveSupport::TestCase
 		it "shows title matchings higher than description matchings" do
 			search = ProdSearch.full_text('VapeRater')
 			# binding.pry
-			search.total.must_equal 11
-			search.results[0].name.must_equal "keyword VapeRater in name"
+			search[0].name.must_equal "keyword VapeRater in name"
 		end
 	end
 end
