@@ -122,15 +122,28 @@ the update of the Solr indices.
 ### Our app needs a running Solr instance
 
 Since our app knows that it uses Solr indexing, it will not allow to do any database changes
-without Solr running. Trying it results in `Errno::ECONNREFUSED: Connection refused` and an SQL
-rollback, undoing the started changes.
+without Solr running. Trying it results in `Errno::ECONNREFUSED: Connection refused` and an
+SQL rollback, undoing the started changes.
 
 In particular this causes most tests to fail because they try to add or change DB entries.
 
 Trying to use the search box without Solr running causes the same error.
 
+In order to simplify our two mostly used actions `rake test`, `rails s`, and `rails c` I created
+rake tests which automatically start Solr in the right enviroment before and stop it after:
+```
+rake solr:test 		# instead of rake test
+rake solr:s 			# instead of rails s
+rake solr:c 			# instead of rails c
+```
+This currently causes an *already running* warning when running the server more then one time
+in a row using `rake solr:s` or aborting the tests via `CTRL+C` after `rake solr:test`. The
+warning can be ignored. If however you also get a `Errno::ECONNREFUSED: Connection refused`
+or a `RSolr::Error::Http: RSolr::Error::Http - 404 Not Found` error you can solve it by killing the
+running Solr process as described in **Solving Solr problems**.
 
-Thus, before doing anything which changes the DB or uses fulltext search, we need
+
+Before doing anything else which changes the DB or uses fulltext search, we need
 ```
 rake sunspot:solr:start
 ```
@@ -142,7 +155,7 @@ rake sunspot:solr:stop
 ```
 
 
-## Repairing Solr
+## Solving Solr problems
 
 
 ### Wrong search results
@@ -154,7 +167,7 @@ rake sunspot:solr:reindex
 ```
 
 
-### RSolr::Error::Http: RSolr::Error::Http - 404 Not Found
+### Errors like RSolr::Error::Http: RSolr::Error::Http - 404 Not Found
 
 Sometimes Solr fails to store the process id of a started Solr instance. Thus it claims not to
 run at all when calling `rake sunspot:solr:stop`. This causes a `RSolr::Error::Http - 404` error.
@@ -208,6 +221,27 @@ rake test
 RAILS_ENV=test rake sunspot:solr:stop
 ```
 
+Or in one line using our `rake` tasks:
+```
+rake solr:test
+```
+
+
+### Solving the rake version problem
+
+Sometimes running a command without `bundle exec`, like `rake task` ends up in
+```
+Gem::LoadError: You have already activated rake 10.2.2, but your Gemfile requires rake 10.2.1.
+```
+
+To solve this either start to use `bundle exec` before each `rake` command or uninstall the
+10.2.2 version using
+```
+gem uninstall rake
+```
+and then selecting the number next to `rake-10.2.2`
+
+
 ## Production mode
 
 If you have done any changes in the assets folder (css, images etc.), run the following before
@@ -226,5 +260,5 @@ Finally, starting the server in production mode is
 rails s -e production
 ```
 
-**Note:** Although no explicit errors are shown on the website itself each error is printed in the
+**Note:** Although no explicit errors are shown on the website itself, each error is printed in the
 terminal, in detail.
