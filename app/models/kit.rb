@@ -3,7 +3,6 @@ class Kit < Product
 
 	HW_TYPES = ["mouthpiece","tank","wick","button","battery","charger"]
 
-
 	def to_url
 		return {conf: to_hash}.to_param.to_s
 	end
@@ -26,5 +25,4 @@ class Kit < Product
 	def add_by_id(part_type, id)
 		update(part_type => part_type.capitalize.constantize.find(id))
 	end
-
 end

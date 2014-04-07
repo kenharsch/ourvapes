@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "product_list_entry" %>
 
+<%= session[:kit_obj].inspect %>
 
 <div class = "container" id = "configurator">
 
@@ -11,11 +12,11 @@
 
 	<%= render "pair_compat_messages" %>
 
-	<% @partslist.each do |part_type| %>
+	<% @conf_objects.parts.each do |part_type, part_object| %>
 
 	<div class = "product-tile row">
 
-		<% present = !@conf_objects[part_type].nil? %>
+		<% present = !part_object.nil? %>
 
 		<div class="padded-5 bg-white-gray">
 			<strong>
@@ -25,7 +26,7 @@
 		</div>
 
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
-			<% if present %><%= render 'shared/product_list_entry', prod: @conf_objects[part_type] %>
+			<% if present %><%= render 'shared/product_list_entry', prod: part_object %>
 				<% @add_or_change = "Change" %>
 			<% else %>
 				<% @add_or_change = "Choose" %>

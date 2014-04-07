@@ -1,0 +1,27 @@
+<div class = "col-md-10 product_listing">
+	<h1 class = "left"><%= @title %></h1><br/>
+	<% unless @query.nil? %>
+		<span class = "query">for <b><%= @query %></b>
+			in <b><%= @searched_in %></b></span>
+	<% end %>
+	<div class = "left"><%= paginate @prods %></div>
+
+	<% @prods.each do |prod| %>
+		<div class = "row">
+			<div class = "col-sm-11">
+				<%= render 'shared/product_list_entry', prod: prod %>
+			</div>
+			<div class = "col-sm-1">
+				<% if prod.type != "Juice" %>
+				<%= render 'shared/add_product_button', prod: prod %>
+				<% end %>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-sm-12">
+				<hr>
+			</div>
+		</div>
+	<% end %>
+	<div class = "left"><%= paginate @prods %></div>
+</div>

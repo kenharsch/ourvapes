@@ -5,34 +5,38 @@ class ConfigurationController < ApplicationController
 		@page = Constants::PAGE_CONFIG
 
 		@add_or_change = "Add"
+		@conf_objects = session[:kit_obj]
+
 		check_compatibility
 	end
 
 	def add(add_type = params["add_type"], add_id = params["add_id"])
-		@kit_obj.add_by_id(add_type,add_id)
+		session[:kit_obj] ||= KitSession.new
+		session[:kit_obj].add_by_id(add_type,add_id)
 		go_to_config
 	end
 
 	def remove(remove_item = params["remove"])
-		@kit_obj.remove(remove_item)
+		session[:kit_obj] ||= KitSession.new
+		session[:kit_obj].remove(remove_item)
 		go_to_config
 	end
 
 	def clear
+		session[:kit_obj] = KitSession.new
 		go_to_config
 	end
 
 	def go_to_config
-		if @kit_obj.nil?
-			redirect_to "/configuration"
-		else
-			redirect_to "/configuration?#{@kit_obj.to_url}"
-		end
+		redirect_to "/configuration"
 	end
 
 	def build_kit
 		@partslist = Kit::HW_TYPES
+=begin
+
 		@kit_obj = Kit.new
+
 		params["conf"] ||= {}
 		error_flag = false;
 
@@ -48,10 +52,11 @@ class ConfigurationController < ApplicationController
 		end
 		go_to_config if error_flag
 		@conf_objects = @kit_obj.to_hash
+=end
 	end
 
 	def check_compatibility
-		@checker = ConfigChecker.new(@kit_obj)
+		@checker = ConfigChecker.new(session[:kit_obj])
 	end
 
 	def show

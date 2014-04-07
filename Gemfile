@@ -15,6 +15,10 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+
+#activerecord sessions
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 # readline
 gem 'rb-readline'
 
