@@ -67,6 +67,9 @@ gem 'rails-rateit'
 # For pagination
 gem 'kaminari'
 
+# For User Authentication
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

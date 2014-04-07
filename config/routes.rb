@@ -1,5 +1,6 @@
 Src::Application.routes.draw do
 
+  devise_for :users
   root "main#splash"
   get "configuration" => "configuration#index"
   get "configuration/show"

@@ -22,22 +22,22 @@ class ConfigChecker
 		# compatibility rules to check
 		# this is the only instance of these rules, caution if changing
 
-	if kit.class == Kit
-		check(kit.mouthpiece, kit.tank)
-		check(kit.tank, kit.wick)
-		check(kit.tank, kit.button)
-		check(kit.button, kit.battery)
-		check(kit.button, kit.charger)
-		check(kit.battery, kit.charger)
-	else
+		if kit.class == Kit
+			check(kit.mouthpiece, kit.tank)
+			check(kit.tank, kit.wick)
+			check(kit.tank, kit.button)
+			check(kit.button, kit.battery)
+			check(kit.button, kit.charger)
+			check(kit.battery, kit.charger)
+		else
 
-		check(kit["mouthpiece"], kit["tank"])
-		check(kit["tank"], kit["wick"])
-		check(kit["tank"], kit["button"])
-		check(kit["button"], kit["battery"])
-		check(kit["button"], kit["charger"])
-		check(kit["battery"], kit["charger"])
-	end
+			check(kit["mouthpiece"], kit["tank"])
+			check(kit["tank"], kit["wick"])
+			check(kit["tank"], kit["button"])
+			check(kit["button"], kit["battery"])
+			check(kit["button"], kit["charger"])
+			check(kit["battery"], kit["charger"])
+		end
 
 		puts @single_compat_conflicts
 		puts @single_works_badly_conflicts
