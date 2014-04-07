@@ -255,9 +255,11 @@ all the rake tasks like `rake db:seed` can be started like this:
 RAILS_ENV=production rake db:seed
 ```
 
-Finally, starting the server in production mode is
+Finally, running the server in production mode is
 ```
+RAILS_ENV=production rake sunspot:solr:start
 rails s -e production
+RAILS_ENV=production rake sunspot:solr:stop
 ```
 
 **Note:** Although no explicit errors are shown on the website itself, each error is printed in the
