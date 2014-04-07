@@ -25,11 +25,6 @@ class ProductListController < ApplicationController
 			@title = "Search Results"
 		end
 
-		@conf_objects = get_conf_objects
-	end
-
-
-	def get_conf_objects
 		@conf_objects = session[:kit_obj].parts
 	end
 

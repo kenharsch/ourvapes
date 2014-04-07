@@ -23,36 +23,12 @@ class KitSession
 
 	def size
 		count = 0
-		@parts.each do |part|
-			if !part.nil?
+		@parts.each do |type, part|
+			if !part.blank?
 				count += 1
 			end
 		end
 		return count
-	end
-
-	def tank
-		return @parts["tank"]
-	end
-
-	def wick
-		return @parts["wick"]
-	end
-
-	def mouthpiece
-		return @parts["mouthpiece"]
-	end
-
-	def button
-		return @parts["button"]
-	end
-
-	def battery
-		return @parts["battery"]
-	end
-
-	def charger
-		return @parts["charger"]
 	end
 
 end
