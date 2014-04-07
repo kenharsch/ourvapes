@@ -4,8 +4,7 @@ class Product < ActiveRecord::Base
 	before_validation :create_details_obj_if_none_yet
 	validates :details, presence: true
 
-	if !Rails.env.production?
-		searchable do
+	searchable do
 			# the fields used for fulltext search
 			text :name, :description, :type, :manufacturer
 
@@ -28,7 +27,6 @@ class Product < ActiveRecord::Base
 			# 	title.downcase.gsub(/^(an?|the)/, '')
 			# end
 		end
-	end
 
 	# needed to use the def_delegators method
 	extend Forwardable

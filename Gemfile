@@ -35,18 +35,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Full text search
+# works differently in production mode, moved here for now
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+# gem 'sunspot-rails-tester'
+
 group :development, :test do
 	gem 'pry-rails'
 	gem 'pry-debugger'
 
 	# table-print
 	gem 'table_print'
-
-	# Full text search
-	# works differently in production mode, moved here for now
-	gem 'sunspot_rails'
-	gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-	# gem 'sunspot-rails-tester'
 end
 
 group :test do
