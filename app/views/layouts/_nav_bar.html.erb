@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li <%= "class = active" if @page == Constants::PAGE_PROD_LIST%>>
-					<%= link_to "Products", {action: "list", controller: "product_list", conf: session[:kit_obj]} %>
+					<%= link_to "Products", {action: "list", controller: "product_list"} %>
 				</li>
 			</ul>
 
@@ -35,7 +35,7 @@
 		-->
 		<ul class="nav navbar-nav navbar-right">
 			<li <%= "class = active" if @page == Constants::PAGE_CONFIG%>>
-				<%= link_to "My Configuration", {action: "show", controller: "configuration", conf: @conf_objects} %>
+				<%= link_to "My Configuration", {action: "index", controller: "configuration"} %>
 			</li>
 		</ul>
 	</div><!-- /.navbar-collapse -->
