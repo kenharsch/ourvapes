@@ -15,12 +15,13 @@
 
 	<body>
 		<%= render 'layouts/nav_bar' %>
+<!-- 		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p> -->
 		<% if flash[:error] %>
 		<div class="flash error"><%= flash[:error] %></div>
 		<br />
 		<% end %>
 		<%= yield %>
-
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	</body>

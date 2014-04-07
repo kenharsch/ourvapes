@@ -15,17 +15,19 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li <%= "class = active" if @page == Constants::PAGE_PROD_LIST%>>
-					<%= link_to "Products", {action: "list", controller: "product_list", conf: @conf_objects} %>
+					<%= link_to "Products", {action: "list", controller: "/product_list", conf: @conf_objects} %>
 				</li>
 			</ul>
 
 			<%= form_tag "/product_list/list", method: "get", class: "navbar-form navbar-left" do %>
 				<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
-				<% @conf_objects.each do |key, value| %>
-					<%= hidden_field_tag "conf[#{key}]", value.id %>
+				<% if !@conf_objects.nil? %>
+					<% @conf_objects.each do |key, value| %>
+						<%= hidden_field_tag "conf[#{key}]", value.id %>
+					<% end %>
+					<%= hidden_field_tag "type", @params_type %>
+					<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 				<% end %>
-				<%= hidden_field_tag "type", @params_type %>
-				<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 			<% end %>
 
 			<!--
@@ -36,9 +38,19 @@
 				<button type="submit" class="btn btn-default">GO</button>
 			</form>
 		-->
+		<ul class="nav navbar-nav">
+			<li>
+				<%= render 'shared/registration_items' %>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav">
+			<li>
+				<%= render 'shared/login_items' %>
+			</li>
+		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li <%= "class = active" if @page == Constants::PAGE_CONFIG%>>
-				<%= link_to "My Configuration", {action: "show", controller: "configuration", conf: @conf_objects} %>
+				<%= link_to "My Configuration", {action: "show", controller: "/configuration", conf: @conf_objects} %>
 			</li>
 		</ul>
 	</div><!-- /.navbar-collapse -->
