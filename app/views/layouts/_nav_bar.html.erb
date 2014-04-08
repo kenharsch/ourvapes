@@ -15,11 +15,11 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li <%= "class = active" if @page == Constants::PAGE_PROD_LIST%>>
-					<%= link_to "Products", {action: "list", controller: "/product_list"} %>
+					<%= link_to "Products", {controller: "/product_list"} %>
 				</li>
 			</ul>
 
-			<%= form_tag "/product_list/list", method: "get", class: "navbar-form navbar-left" do %>
+			<%= form_tag "/product_list", method: "get", class: "navbar-form navbar-left" do %>
 				<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
 				<%= hidden_field_tag "type", @params_type %>
 				<%= submit_tag "GO", class: "btn btn-default", role: "button" %>

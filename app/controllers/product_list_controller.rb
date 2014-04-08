@@ -31,7 +31,7 @@ class ProductListController < ApplicationController
 
 
 
-	def list
+	def _list
 		@page = Constants::PAGE_PROD_LIST
 		@add_or_change = "Add"
 

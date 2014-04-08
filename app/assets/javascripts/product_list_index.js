@@ -1,8 +1,8 @@
-$(document).ready(function() {
-	$.get('product_list/list', function(data){
-		$('#product-list').html(data);
-	});
-});
+// $(document).ready(function() {
+// 	$.get('product_list/list', function(data){
+// 		$('#product-list').html(data);
+// 	});
+// });
 
 // this is the label selector
 // $(document).ready(function() {
@@ -20,7 +20,7 @@ $(document).ready(function() {
 	$("input[name='prod_type']").click(function(event) {
 		prodType = $(event.target).attr("value");
 		prodType = (prodType == "all_types") ? null : prodType;
-		$.get('product_list/list', {type: prodType}, function(data){
+		$.get('product_list/_list', {type: prodType}, function(data){
 		 	$('#product-list').html(data);
 		});
 	});

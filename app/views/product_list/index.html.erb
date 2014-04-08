@@ -12,13 +12,8 @@
 		</dl>
 	</div>
 	<div class = "row filter_indent last">
-		<dl>
-			<dt>Manufacturers</dt>
-			<% @manus.each do |manu| %>
-			<dd><%= check_box_tag(:manufacturer, manu.manufacturer) %><%= label_tag(manu.manufacturer, nil, class: "type_list") %></dd>
-			<% end %>
-		</dl>
 	</div>
 </div>
 <div id="product-list">
+<%= render "product_list/list" %>
 </div>
