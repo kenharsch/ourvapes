@@ -17,6 +17,5 @@
 	<span class = "prod_type">
 		<%= prod.type %>:
 	</span>
-	<%= link_to("See all " + prod.class.count.to_s + " items", {action: "list",
-		controller: "product_list", conf: @conf_objects, type: prod.class}, class: "prod_all_items") %>
+	<%= link_to("See all " + prod.class.count.to_s + " items", {controller: "product_list", type: prod.class}, class: "prod_all_items") %>
 	</div>

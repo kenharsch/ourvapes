@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li <%= "class = active" if @page == Constants::PAGE_PROD_LIST%>>
-					<%= link_to "Products", {controller: "/product_list"} %>
+					<%= link_to "Products", {controller: "/product_list"}, method: "post" %>
 				</li>
 			</ul>
 

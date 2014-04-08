@@ -5,10 +5,10 @@ Src::Application.routes.draw do
   get "configuration" => "configuration#index"
   get "configuration/show"
 
-  get "product_list/list"
   get "product_list/_list"
-  post "product_list/list"
+  post "product_list/_list"
   get "product_list" => "product_list#index"
+  post "product_list" => "product_list#index"
 
   post "configuration/add"
   post "configuration/remove"
