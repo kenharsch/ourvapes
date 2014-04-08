@@ -16,12 +16,31 @@
 // });
 
 // this listener works for both radio buttons and labels
+
+
+
+// $(document).ready(function() {
+// 	$("input[name='prod_type']").click(function(event) {
+// 		prodType = $(event.target).attr("value");
+// 		prodType = (prodType == "all_types") ? null : prodType;
+// 		$('#product-list').fadeOut();
+// 		$.get('product_list/_list', {type: prodType}, function(data){
+// 		 	$('#product-list').html(data);
+// 		 	$('#product-list').fadeIn();
+// 		});
+// 	});
+// });
+
 $(document).ready(function() {
 	$("input[name='prod_type']").click(function(event) {
 		prodType = $(event.target).attr("value");
 		prodType = (prodType == "all_types") ? null : prodType;
-		$.get('product_list/_list', {type: prodType}, function(data){
-		 	$('#product-list').html(data);
+		$('#product-list').fadeOut("fast", function(){
+			$.get('product_list/_list', {type: prodType}, function(data){
+				$('#product-list').html(data);
+				$('#product-list').fadeIn("fast");
+			});
 		});
+		
 	});
 });
