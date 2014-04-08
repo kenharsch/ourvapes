@@ -15,7 +15,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-
 #activerecord sessions
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
@@ -44,6 +43,7 @@ end
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 # gem 'sunspot-rails-tester'
+gem 'progress_bar'
 
 group :development, :test do
 	gem 'pry-rails'
