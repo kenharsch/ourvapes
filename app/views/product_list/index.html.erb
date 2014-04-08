@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "product_list_entry" %>
+
+<div class = "col-md-2 left_filters" style="background-color:white;border:1px solid black;border-radius:5px;">
+	<div class = "row filter_indent compatibility_filt">
+	</div>
+	<div class = "row filter_indent">
+		<dl>
+			<dt>Product Type</dt>
+			<% ["all_types", "mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
+			<dd><%= radio_button_tag :prod_type, type, class: "type_list" %><%= label :prod_type, type, class: "type_list" %></dd>
+			<% end %>
+		</dl>
+	</div>
+	<div class = "row filter_indent last">
+		<dl>
+			<dt>Manufacturers</dt>
+			<% @manus.each do |manu| %>
+			<dd><%= check_box_tag(:manufacturer, manu.manufacturer) %><%= label_tag(manu.manufacturer, nil, class: "type_list") %></dd>
+			<% end %>
+		</dl>
+	</div>
+</div>
+<div id="product-list">
+</div>
