@@ -1,23 +1,27 @@
-// var ready;
-// ready = function() {
-// 		$.get('configuration', {}, function(data){
-// 			$('#product-list').html(data);
-// 		});
-
-// 	};
-
-// $(document).ready(ready);
-
 $(document).ready(function() {
 	$.get('product_list/list', function(data){
 		$('#product-list').html(data);
 	});
 });
 
+// this is the label selector
+// $(document).ready(function() {
+// 	$(".type_list").click(function(event) {
+// 		prodType = $("#" + $(event.target).attr("for")).attr("value");
+// 		prodType = (prodType == "all_types") ? null : prodType;
+// 		$.get('product_list/list', {type: prodType}, function(data){
+// 			$('#product-list').html(data);
+// 		});
+// 	});
+// });
+
+// this listener works for both radio buttons and labels
 $(document).ready(function() {
-	$(".type_list").click(function(event) {
-		$.get('product_list/list', {type: $("#" + $(event.target).attr("for")).attr("value")} ,function(data){
-			$('#product-list').html(data);
+	$("input[name='prod_type']").click(function(event) {
+		prodType = $(event.target).attr("value");
+		prodType = (prodType == "all_types") ? null : prodType;
+		$.get('product_list/list', {type: prodType}, function(data){
+		 	$('#product-list').html(data);
 		});
 	});
 });
