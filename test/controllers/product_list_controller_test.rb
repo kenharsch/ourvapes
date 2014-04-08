@@ -1,10 +1,9 @@
 require "test_helper"
 
 class ProductListControllerTest < ActionController::TestCase
-	# TODO why does this test fail?
+	include Devise::TestHelpers
 	test "should get list" do
 		get :list
 		assert_response :success
 	end
-
 end

@@ -25,7 +25,11 @@ class ProductListController < ApplicationController
 			@title = "Search Results"
 		end
 
-		@conf_objects = session[:kit_obj].parts
+		if session[:kit_obj].present?
+			@conf_objects = session[:kit_obj].parts
+		else
+			@conf_objects = {}
+		end
 	end
 
 end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ConfigurationControllerTest < ActionController::TestCase
-
+	include Devise::TestHelpers
 	test "should get index" do
 		get :index
 		assert_response :success

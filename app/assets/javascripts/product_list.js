@@ -1,11 +1,11 @@
-var ready;
-ready = function() {
+// var ready;
+// ready = function() {
 
-	$.get('shared/list', {}, function(data){
-		$('#product-list').html(data);
-	});
+// 	$.get('/shared/list', {}, function(data){
+// 		$('#product-list').html(data);
+// 	});
 
-};
+// };
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+// $(document).ready(ready);
+// $(document).on('page:load', ready);
