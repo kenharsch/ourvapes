@@ -1,9 +1,7 @@
-<div class = "imageBox">
-	<%= image_tag(prod.picture_path, class: 'img-responsive') %>
-</div>
+<%= render 'shared/modal_details', prod: prod %>
 <div class = "details">
 	<p>
-		<%= render 'shared/modal_details', prod: prod %>
+		<%= link_to(prod.name, {controller: "product", action: "show", id: prod.id}, class: "prod_title") %><br>		
 		by <%= prod.manufacturer %>
 		<span class = "prod_price">
 			<strong>$<%= "%.2f" % prod.price unless prod.price.blank? %></strong><br/>

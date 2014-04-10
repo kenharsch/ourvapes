@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <%= link_to_function "<< Go Back", "history.back()", class: "prod_all_items" %>
+	<h1><%= @product.name + " " + @product.type.capitalize %></h1>
+	<%= image_tag(@product.picture_path, class: 'img-responsive') %><br/><br/>
+	<strong>Name:</strong> <%= @product.name %><br/>
+	<strong>Manufacturer:</strong> <%= @product.manufacturer %><br/>
+	<strong>Price:</strong> $<%= "%.2f" % @product.price unless @product.price.blank? %><br/>
+	<strong>Type:</strong> <%= @product.type %><br/>
+	<strong>Rating:</strong> <%= render 'shared/star_rating' %><br/><br/>
+	<strong>Description:</strong> <%= @product.description %><br/><br/>
+	<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
+		<%= render 'shared/add_product_button', prod: @product, button: "Add to Configuration"%>
+	<% end %>
+</div>
