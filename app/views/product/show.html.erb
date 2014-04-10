@@ -11,4 +11,7 @@
 	<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
 		<%= render 'shared/add_product_button', prod: @product, button: "Add to Configuration"%>
 	<% end %>
+	<br>
+	<%= render partial: 'the_comments/tree', locals: { commentable: @post, comments_tree: @comments } %>
+
 </div>

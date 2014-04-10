@@ -70,6 +70,11 @@ gem 'kaminari'
 # For User Authentication
 gem 'devise'
 
+# For comments:
+gem "the_comments", "~> 2.2.1"
+gem 'haml'                # or gem 'slim'
+gem 'awesome_nested_set'  # or same gem
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
