@@ -261,6 +261,13 @@ RAILS_ENV=production rake sunspot:solr:start
 rails s -e production
 RAILS_ENV=production rake sunspot:solr:stop
 ```
+### Comments (the_comments)
 
+run..
+```
+$ rake db:migrate:redo VERSION=20140410021758
+$ rake db:migrate
+```
+in that order, Post model was made after using the comments gem--unfortunately migrations are sequential (apparently).
 **Note:** Although no explicit errors are shown on the website itself, each error is printed in the
 terminal, in detail.
