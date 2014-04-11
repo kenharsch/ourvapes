@@ -1,6 +1,6 @@
 Src::Application.routes.draw do
 
-  get "product/show"
+  # get "product/show"
   get '/product/:id', to: 'product#show', as: 'product'
   devise_for :users
   root "main#splash"
