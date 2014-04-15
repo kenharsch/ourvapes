@@ -75,6 +75,9 @@ gem "the_comments", "~> 2.2.1"
 gem 'haml'                # or gem 'slim'
 gem 'awesome_nested_set'  # or same gem
 
+# In Rails 4, there is no way to by default compile both digest and non-digest assets.
+gem "non-stupid-digest-assets"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
