@@ -6,7 +6,9 @@ class ProductControllerTest < ActionController::TestCase
 	include Devise::TestHelpers
 
 	test "should get show" do
+		u = User.create
 		w = Wick.create(name: "test name")
+		r = Rating.create(product_id: w.id, user_id: u.id, score: 0)
 		get :show, id: w.id
 		assert_response :success
 	end

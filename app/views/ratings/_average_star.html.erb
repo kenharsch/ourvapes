@@ -1,0 +1,8 @@
+<span id="star<%= prod.id %><%= view%>"></span>
+<script>
+$('#star<%= prod.id %><%= view%>').raty({
+	readOnly: true,
+	score: <%= prod.average_rating %>,
+	path: '/assets'
+});
+</script>
