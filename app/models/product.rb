@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+	has_many :ratings
+	belongs_to :user
 	# make sure that a product object always has a details object
 	before_validation :create_details_obj_if_none_yet
 	validates :details, presence: true
@@ -102,6 +104,14 @@ class Product < ActiveRecord::Base
 		pair.save
 	end
 
+	def average_rating
+		zero = ratings.where("score = 0").count
+		if zero > 0
+			ratings.sum(:score) / (ratings.size - zero).to_f
+		else
+			ratings.sum(:score) / ratings.size.to_f
+		end
+	end
 
 	private
 
@@ -129,4 +139,5 @@ class Product < ActiveRecord::Base
 	def create_details_obj_if_none_yet
 		build_details if details.nil?
 	end
+
 end
