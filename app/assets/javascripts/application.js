@@ -16,3 +16,4 @@
 //= require bootstrap
 //= require the_comments
 //= require jquery.raty.min.js
+//= require jquery_ujs
