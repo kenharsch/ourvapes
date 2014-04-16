@@ -17,3 +17,4 @@
 //= require the_comments
 //= require jquery.raty.min.js
 //= require jquery_ujs
+//= require jquery.ui.all
