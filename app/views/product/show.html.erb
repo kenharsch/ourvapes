@@ -7,12 +7,12 @@
 	<strong>Price:</strong> $<%= "%.2f" % @product.price unless @product.price.blank? %><br/>
 	<strong>Type:</strong> <%= @product.type %><br/>
 	<strong>Averate Rating: </strong>
-	<span id="star"></span> <br/>
 	<% if user_signed_in? %>
+		<span id="star"></span><br/>
 		<strong>Your Rating: </strong>
 		<span id="user_star"></span><br/><br/>
 	<% else %>
-		<br/>
+		<span id="star_prod<%= @product.id %>"></span><br/><br/>
 	<% end %>
 	<strong>Description:</strong> <%= @product.description %><br/><br/>
 	<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
@@ -21,10 +21,17 @@
 	<br>
 	<%= render partial: 'the_comments/tree', locals: { commentable: @post, comments_tree: @comments } %>
 </div>
+
+<script>
+$('#star_prod<%= @product.id %>').raty({
+	readOnly: true,
+	score: <%= @product.average_rating %>,
+	path: '/assets'
+});
+</script>
 <script>
 $('#star').raty({
 	readOnly: true,
-	halfShow: true,
 	score: <%= @product.average_rating %>,
 	path: '/assets'
 });

@@ -6,8 +6,10 @@ class ProductController < ApplicationController
       unless @rating 
         @rating = Rating.create(product_id: @product.id, user_id: current_user.id, score: 0)
       end
-    else
-      @rating = Rating.where(product_id: @product.id).first 
+    elsif !Rating.where(product_id: @product.id).first.nil?
+      @rating = Rating.where(product_id: @product.id).first
+    else 
+      @rating = Rating.new(product_id: @product.id, score: 0)
     end
     @conf_objects = {}
     if Post.exists? params[:id]

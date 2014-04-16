@@ -101,6 +101,7 @@ div.rateit div.rateit-reset:hover
  *
 
 
+
  */
 
 
@@ -247,7 +248,6 @@ div.rateit div.rateit-reset:hover
 .product_image{
 	display: table;
     margin: 0 auto;
-
 	width: 70%;
 }
 
@@ -328,36 +328,6 @@ div.rateit div.rateit-reset:hover
  	border-style:none;
  	background: inherit;
  }
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  font-size:30px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 18px;
-  font-size:30px;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.rating > span:hover,
-.rating > span:hover ~ span {
-  color: transparent;
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-   left: 0;
-   color: gold;
-   font-size:30px;
-   font-family: Arial, Helvetica, sans-serif;
-}
 
 .left_filters{
 	float: left;
@@ -550,3 +520,188 @@ div.field, div.actions {
   #error_explanation ul li {
     font-size: 12px;
     list-style: square; }
+.comments_tree, .comments_list {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px; }
+  .comments_tree *, .comments_list * {
+    margin: 0;
+    padding: 0;
+    font-size: inherit; }
+  .comments_tree a, .comments_list a {
+    text-decoration: none; }
+  .comments_tree a:hover, .comments_list a:hover {
+    text-decoration: underline; }
+  .comments_tree ol, .comments_list ol {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: none outside none; }
+  .comments_tree li, .comments_list li {
+    margin-bottom: 5px;
+    position: relative;
+    list-style: none outside none; }
+
+.comments, .comments_tree {
+  font-family: Arial;
+  font-size: 13px; }
+  .comments h3, .comments_tree h3 {
+    font-size: 1.6em; }
+  .comments .error_notifier, .comments_tree .error_notifier {
+    background-color: #F2DEDE;
+    border: 1px solid #B94A48;
+    color: #B94A48;
+    border-radius: 4px;
+    margin: 0 0 15px 0;
+    padding: 10px 10px 0 10px;
+    overflow: hidden; }
+    .comments .error_notifier p, .comments_tree .error_notifier p {
+      margin: 0 0 10px 0; }
+  .comments form, .comments_tree form {
+    background: #e0e4f5;
+    border: 1px solid #c6cff5;
+    border-radius: 5px;
+    padding: 10px; }
+    .comments form p, .comments_tree form p {
+      margin: 0 0 10px 0; }
+    .comments form input[type=text], .comments_tree form input[type=text] {
+      border: 1px solid gray;
+      padding: 4px;
+      width: 75%; }
+    .comments form label, .comments_tree form label {
+      font-size: 15px; }
+    .comments form textarea, .comments_tree form textarea {
+      border: 1px solid gray;
+      font-family: Arial;
+      font-size: 13px;
+      height: 150px;
+      padding: 4px;
+      width: 75%; }
+    .comments form .trap, .comments_tree form .trap {
+      margin: 0;
+      padding: 0;
+      filter: alpha(opacity=0.001);
+      height: 0.1px;
+      opacity: 0.001;
+      overflow: hidden; }
+
+.comments_tree .nested_set {
+  border-left: 1px dotted lightGray; }
+.comments_tree li .comment.draft {
+  border: 1px solid gray;
+  background: #eff5f3;
+  padding: 10px; }
+.comments_tree .form_holder {
+  margin-left: 40px; }
+.comments_tree .edit, .comments_tree .delete {
+  margin-bottom: 3px;
+  text-align: center;
+  line-height: 130%;
+  background: #336;
+  color: white;
+  padding: 1px; }
+.comments_tree .delete {
+  background: gray; }
+.comments_tree .comment {
+  overflow: hidden;
+  zoom: 1; }
+  .comments_tree .comment .userpic {
+    overflow: hidden;
+    zoom: 1;
+    float: left;
+    width: 50px; }
+    .comments_tree .comment .userpic img {
+      margin-bottom: 10px;
+      width: 42px;
+      height: 42px; }
+  .comments_tree .comment .userbar, .comments_tree .comment .cbody {
+    margin: 0 0 5px 55px;
+    padding: 3px; }
+  .comments_tree .comment .userbar {
+    background: #eff5f3;
+    border-radius: 3px;
+    padding-left: 7px; }
+  .comments_tree .comment.draft .userbar {
+    background: #ffa768; }
+  .comments_tree .comment.draft .to_draft {
+    display: none; }
+  .comments_tree .comment.published .to_published {
+    display: none; }
+  .comments_tree .comment .cbody {
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    line-height: 135%;
+    margin-bottom: 3px;
+    overflow: hidden; }
+  .comments_tree .comment .reply {
+    margin: 0 0 5px 55px;
+    font-size: 12px; }
+.comments_tree .controls {
+  position: absolute;
+  top: 53px;
+  left: 5px; }
+  .comments_tree .controls a {
+    font-size: 11px;
+    display: block; }
+.comments_tree .comment {
+  margin-bottom: 10px; }
+  .comments_tree .comment.published, .comments_tree .comment.draft {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px; }
+  .comments_tree .comment.highlighted {
+    border: 1px dashed #ff6633 !important; }
+.comments_tree .form_holder form {
+  margin: 10px 0; }
+
+.new_comment .btn {
+  padding: 7px;
+  margin-top: 5px;
+  cursor: pointer; }
+
+.comments_list li {
+  margin-bottom: 20px; }
+  .comments_list li .item {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px; }
+  .comments_list li .draft {
+    border-left: 5px solid orange; }
+    .comments_list li .draft .controls a.to_draft {
+      display: none; }
+  .comments_list li .published {
+    border-left: 5px solid green; }
+    .comments_list li .published .controls a.to_published {
+      display: none; }
+  .comments_list li .deleted {
+    border-left: 5px solid red; }
+    .comments_list li .deleted .controls a.to_deleted, .comments_list li .deleted .controls a.to_spam {
+      display: none; }
+  .comments_list li .comment div {
+    margin: 0 0 10px 0; }
+  .comments_list li .comment label {
+    width: 75px;
+    font-weight: bold;
+    display: inline-block; }
+  .comments_list li .comment input[type=text] {
+    width: 70%;
+    padding: 4px; }
+  .comments_list li .comment input[type=submit] {
+    padding: 5px;
+    cursor: pointer; }
+  .comments_list li .comment textarea {
+    width: 70%;
+    padding: 4px;
+    height: 150px; }
+  .comments_list li .comment .content {
+    line-height: 130%;
+    background: #ddd;
+    padding: 10px; }
+  .comments_list li .comment .commentable {
+    margin-bottom: 10px; }
+  .comments_list li .comment .controls {
+    background: lightgray;
+    padding: 3px; }
+    .comments_list li .comment .controls a {
+      margin-right: 15px; }

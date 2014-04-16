@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 20140414182439) do
   create_table "ratings", force: true do |t|
     t.integer  "product_id"
     t.integer  "user_id"
-    t.integer  "score"
+    t.integer  "score",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

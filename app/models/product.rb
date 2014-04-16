@@ -106,10 +106,12 @@ class Product < ActiveRecord::Base
 
 	def average_rating
 		zero = ratings.where("score = 0").count
-		if zero > 0
-			ratings.sum(:score) / (ratings.size - zero).to_f
+		if ratings.count == 0
+			return 0.0
+		elsif zero > 0
+			return ratings.sum(:score) / (ratings.size - zero).to_f
 		else
-			ratings.sum(:score) / ratings.size.to_f
+			return ratings.sum(:score) / ratings.size.to_f
 		end
 	end
 
