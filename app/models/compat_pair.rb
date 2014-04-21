@@ -4,6 +4,7 @@ class CompatPair < ActiveRecord::Base
 	WORKS_BADLY = 2
 	WORKS_WELL = 3
 
+	# TODO change to a class method with yield(..., ...) for each pair in a more natural order
 	# bidirectional compatibility rules to check
 	# this is the only instance of these rules, caution if changing
 	# make sure that each key is used only once
