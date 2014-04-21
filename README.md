@@ -198,32 +198,30 @@ dependencies, which we do. Also I had some cases where tests failed without the 
 but did not fail with it.
 
 
-run a single test file
+Run a single test file
 ```
-bundle exec ruby -I test test/models/product_blackbox_test.rb
+rake solr:test[models/product_blackbox_test.rb]
 ```
 
-The Solr calls shown above start the Solr server for the development environment, especially for
-the development DB. This won't work with tests which use the test DB in test environment.
-Instead we need to start the Solr server in the test environment. E.g. running the full-text search
-test could be done by
+equal to
 ```
 RAILS_ENV=test rake sunspot:solr:start
+rake test:prepare
 bundle exec ruby -I test test/models/product_search_test.rb
 RAILS_ENV=test rake sunspot:solr:stop
 ```
 
-Similarly, running all tests would be
+Similarly, running all tests is
+```
+rake solr:test
+```
+
+equal to
 ```
 RAILS_ENV=test rake sunspot:solr:start
 rake test:prepare
 rake test
 RAILS_ENV=test rake sunspot:solr:stop
-```
-
-Or in one line using our `rake` tasks:
-```
-rake solr:test
 ```
 
 
