@@ -3,6 +3,9 @@ class Constants
 	PAGE_PROD_LIST = :page_prod_list
 	PAGE_CONFIG = :page_config
 
+	# used as key to retrieve the MyConfig object representing the current data in
+	# "My Configuration": session[SESS_MY_CONFIG]
+	SESS_MY_CONFIG = :my_config
 
 	ABOUT_US = "VapeRater was created out of a desire to find trustworthy, useful
 information about vaping, vaping supplies and vaping health
@@ -21,7 +24,6 @@ simple pleasure in creating a personalized vaping kit."
 
 DESCRIPTIONS_SHORT = {}
 DESCRIPTIONS_LONG = {}
-
 
 DESCRIPTIONS_SHORT[Product::MOUTHPIECE] = "The part that goes in your mouth, often integral to the tank. Also known as Drip Tip or Tip."
 DESCRIPTIONS_LONG[Product::MOUTHPIECE] = "The mouthpiece is most often a permanent part of the tank assembly, but in some cases the tip is removable and therefore replaceable. Different tips can provide a wider aperature for \"dripping\" juice directly on the coils. Almost invariably, a mouthpiece will come with a tank even if it is removable. People will choose different mouthpieces for comfort or style and most are interchangable."

@@ -1,4 +1,4 @@
-<% if session[:kit_obj].part(prod.type).nil? %>
+<% if session[Constants::SESS_MY_CONFIG].part(prod.type).nil? %>
 <% confirm_message = nil %>
 <% else %>
 <% confirm_message = "Do you want to overwrite your existing #{prod.type}?" %>

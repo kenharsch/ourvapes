@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
 	def ensure_my_config
-		session[:kit_obj] ||= MyConfig.new
+		session[Constants::SESS_MY_CONFIG] ||= MyConfig.new
 	end
 end
