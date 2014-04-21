@@ -12,35 +12,16 @@ class ConfigChecker
 	attr_reader :pair_works_badly_conflicts
 
 
-	def initialize(kit)
+	def initialize(my_config)
 		@pair_compat_conflicts = []
 		@single_compat_conflicts = Hash.new { |hash, key| hash[key] = [] }
 
 		@pair_works_badly_conflicts = []
 		@single_works_badly_conflicts = Hash.new { |hash, key| hash[key] = [] }
 
-		# compatibility rules to check
-		# this is the only instance of these rules, caution if changing
-
-		if kit.class == Kit
-			check(kit.mouthpiece, kit.tank)
-			check(kit.tank, kit.wick)
-			check(kit.tank, kit.button)
-			check(kit.button, kit.battery)
-			check(kit.button, kit.charger)
-			check(kit.battery, kit.charger)
-		else
-
-			check(kit["mouthpiece"], kit["tank"])
-			check(kit["tank"], kit["wick"])
-			check(kit["tank"], kit["button"])
-			check(kit["button"], kit["battery"])
-			check(kit["button"], kit["charger"])
-			check(kit["battery"], kit["charger"])
+		CompatPair::TYPE_PAIRS.each do |type1, type2|
+			check(my_config.part(type1), my_config.part(type2))
 		end
-
-		puts @single_compat_conflicts
-		puts @single_works_badly_conflicts
 	end
 
 	# Returns a list of strings according to the given product type. Each entry states that the
@@ -49,9 +30,9 @@ class ConfigChecker
 	#
 	# If there are no conflicts of this type this returns an empty list.
 	#
-	# prod_type:: a symbol representing the product type of interest
+	# prod_type:: Product::TYPE_... or prod.type on a Product object
 	def compat_conflicts(prod_type)
-		return @single_compat_conflicts[prod_type.downcase]
+		return @single_compat_conflicts[prod_type]
 	end
 
 	# Returns a list of strings according to the given product type. Each entry states that the
@@ -60,9 +41,9 @@ class ConfigChecker
 	#
 	# If there are no conflicts of this type this returns an empty list.
 	#
-	# prod_type:: a symbol representing the product type of interest
+	# prod_type:: Product::TYPE_... or prod.type on a Product object
 	def works_badly_conflicts(prod_type)
-		return @single_works_badly_conflicts[prod_type.downcase]
+		return @single_works_badly_conflicts[prod_type]
 	end
 
 
@@ -88,10 +69,10 @@ class ConfigChecker
 			"the #{prod2.type.downcase} #{prod2.name} are not compatible at all. " \
 			"Replace or remove one of them."
 
-			@single_compat_conflicts[type_sym(prod1)] << "not compatible with "\
+			@single_compat_conflicts[prod1.type] << "not compatible with "\
 			"#{prod2.type.downcase} #{prod2.name} at all"
 
-			@single_compat_conflicts[type_sym(prod2)] << "not compatible with "\
+			@single_compat_conflicts[prod2.type] << "not compatible with "\
 			"#{prod1.type.downcase} #{prod1.name} at all"
 
 			return
@@ -102,18 +83,11 @@ class ConfigChecker
 			"the #{prod2.type.downcase} #{prod2.name} do not work well together. " \
 			"Replace or remove one of them."
 
-			@single_works_badly_conflicts[type_sym(prod1)] << "does not work well with "\
+			@single_works_badly_conflicts[prod1.type] << "does not work well with "\
 			"#{prod2.type.downcase} #{prod2.name}"
 
-			@single_works_badly_conflicts[type_sym(prod2)] << "does not work well with "\
+			@single_works_badly_conflicts[prod2.type] << "does not work well with "\
 			"#{prod1.type.downcase} #{prod1.name}"
 		end
 	end
-
-	# returns the type of the given product as a symbol
-	def type_sym(product)
-		return product.type.downcase.to_sym
-	end
-
-
 end

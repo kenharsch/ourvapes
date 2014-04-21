@@ -1,7 +1,7 @@
 <%= render 'shared/modal_details', prod: prod %>
 <div class = "details">
 	<p>
-		<%= link_to(prod.name, {controller: "product", action: "show", id: prod.id}, class: "prod_title") %><br>		
+		<%= link_to(prod.name, {controller: "product", action: "show", id: prod.id}, class: "prod_title") %><br>
 		by <%= prod.manufacturer %>
 		<span class = "prod_price">
 			<strong>$<%= "%.2f" % prod.price unless prod.price.blank? %></strong><br/>
@@ -16,5 +16,5 @@
 		<%= prod.type %>:
 	</span>
 	<%= link_to("See all " + prod.class.count.to_s + " items", {action: "list",
-		controller: "product_list", conf: @conf_objects, type: prod.class}, class: "prod_all_items") %>
+		controller: "product_list", type: prod.type}, class: "prod_all_items") %>
 </div>

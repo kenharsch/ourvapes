@@ -2,23 +2,25 @@ require "test_helper"
 
 class ConfigCheckerTest < ActionView::TestCase
 
-	KIT_PART_TYPES = [:mouthpiece, :tank, :wick, :button, :battery, :charger]
+	def init(compat_relation)
+		t = Tank.create()
+		w = Wick.create()
+		t.set_compat_with(w, compat_relation)
+
+		my_config = MyConfig.new
+		my_config.add_by_id(t.id)
+		my_config.add_by_id(w.id)
+
+		@checker = ConfigChecker.new(my_config)
+	end
 
 	describe "everything works well" do
 		before do
-			t = Tank.create()
-			w = Wick.create()
-			t.set_compat_with(w, CompatPair::WORKS_WELL)
-
-			kit = Kit.new
-			kit.tank = t
-			kit.wick = w
-
-			@checker = ConfigChecker.new(kit)
+			init(CompatPair::WORKS_WELL)
 		end
 
 		it "returns empty compatibility conflict lists for each type" do
-			KIT_PART_TYPES.each do |type|
+			Kit::PART_TYPES.each do |type|
 				@checker.compat_conflicts(type).must_be_empty
 			end
 		end
@@ -28,7 +30,7 @@ class ConfigCheckerTest < ActionView::TestCase
 		end
 
 		it "returns empty works-badly conflict lists for each type" do
-			KIT_PART_TYPES.each do |type|
+			Kit::PART_TYPES.each do |type|
 				@checker.works_badly_conflicts(type).must_be_empty
 			end
 		end
@@ -40,21 +42,13 @@ class ConfigCheckerTest < ActionView::TestCase
 
 	describe "incompatibilities exist" do
 		before do
-			t = Tank.create()
-			w = Wick.create()
-			t.set_compat_with(w, CompatPair::INCOMPATIBLE)
-
-			kit = Kit.new
-			kit.tank = t
-			kit.wick = w
-
-			@checker = ConfigChecker.new(kit)
+			init(CompatPair::INCOMPATIBLE)
 		end
 
 		it "returns non-empty compatibility conflict lists for the conflicting types" do
-			@checker.compat_conflicts(:tank).length.must_equal 1
-			@checker.compat_conflicts(:wick).length.must_equal 1
-			@checker.compat_conflicts(:battery).must_be_empty
+			@checker.compat_conflicts(Product::TYPE_TANK).length.must_equal 1
+			@checker.compat_conflicts(Product::TYPE_WICK).length.must_equal 1
+			@checker.compat_conflicts(Product::TYPE_BATTERY).must_be_empty
 		end
 
 		it "returns non-empty compatibility conflict lists for the conflicting pair" do
@@ -63,9 +57,9 @@ class ConfigCheckerTest < ActionView::TestCase
 
 		# incompatibilities subsum works-badly conflicts
 		it "returns empty works-badly lists" do
-			@checker.works_badly_conflicts(:tank).must_be_empty
-			@checker.works_badly_conflicts(:wick).must_be_empty
-			@checker.works_badly_conflicts(:battery).must_be_empty
+			@checker.works_badly_conflicts(Product::TYPE_TANK).must_be_empty
+			@checker.works_badly_conflicts(Product::TYPE_WICK).must_be_empty
+			@checker.works_badly_conflicts(Product::TYPE_BATTERY).must_be_empty
 		end
 
 		# incompatibilities subsum works-badly conflicts

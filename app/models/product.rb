@@ -1,5 +1,12 @@
 class Product < ActiveRecord::Base
 
+	TYPE_MOUTHPIECE = "Mouthpiece"
+	TYPE_TANK = "Tank"
+	TYPE_WICK = "Wick"
+	TYPE_BUTTON = "Button"
+	TYPE_BATTERY = "Battery"
+	TYPE_CHARGER = "Charger"
+
 	has_many :ratings
 	belongs_to :user
 	# make sure that a product object always has a details object

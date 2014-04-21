@@ -10,7 +10,7 @@
 
 	<%= render "pair_compat_messages" %>
 
-	<% @conf_objects.parts.each do |part_type, part_object| %>
+	<% session[:kit_obj].each_slot do |part_type, part_object| %>
 
 	<div class = "product-tile row">
 
@@ -18,7 +18,7 @@
 
 		<div class="padded-5 bg-white-gray">
 			<strong>
-				<%= part_type.capitalize %>
+				<%= part_type %>
 			</strong>
 			<%= render 'configuration/product_type_description', part_type: part_type %>
 		</div>

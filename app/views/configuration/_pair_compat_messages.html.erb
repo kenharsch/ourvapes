@@ -16,7 +16,7 @@
 
 <% end %>
 
-<% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? && @conf_objects.size >= 2 %>
+<% if @checker.pair_works_badly_conflicts.empty? && @checker.pair_compat_conflicts.empty? && session[:kit_obj].size >= 2 %>
 <div class = "row bg-success compat-message">
 	all selected parts work well with each other
 </div>
