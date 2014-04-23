@@ -8,11 +8,13 @@
 	<strong>Type:</strong> <%= @product.type %><br/>
 	<strong>Averate Rating: </strong>
 	<% if user_signed_in? %>
-		<span id="star"></span><br/>
+		<span id="star"></span>
+		<%= render 'ratings/rating_count', prod: @product %><br/>
 		<strong>Your Rating: </strong>
 		<span id="user_star"></span><br/><br/>
 	<% else %>
-		<span id="star_prod<%= @product.id %>"></span><br/><br/>
+		<span id="star_prod<%= @product.id %>"></span>
+		<%= render 'ratings/rating_count', prod: @product %><br/><br/>
 	<% end %>
 	<strong>Description:</strong> <%= @product.description %><br/><br/>
 	<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>

@@ -1,4 +1,5 @@
 <span id="star<%= prod.id %><%= view%>"></span>
+<%= render 'ratings/rating_count', prod: prod %>
 <script>
 $('#star<%= prod.id %><%= view%>').raty({
 	readOnly: true,

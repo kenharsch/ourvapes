@@ -122,6 +122,10 @@ class Product < ActiveRecord::Base
 		end
 	end
 
+	def rating_count
+		ratings.size - (ratings.where("score = 0").count)
+	end
+
 	private
 
 	# Getter, setter, and boolean getter (in case it's a boolean attribute)
