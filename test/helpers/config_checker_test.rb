@@ -67,4 +67,27 @@ class ConfigCheckerTest < ActionView::TestCase
 			@checker.pair_works_badly_conflicts.must_be_empty
 		end
 	end
+
+	describe "more than two parts in MyConfig" do
+		it "shows incompatibilities with three added parts" do
+			m = Mouthpiece.create()
+			t = Tank.create()
+			w = Wick.create()
+
+			m.set_compat_with(t, CompatPair::INCOMPATIBLE)
+			t.set_compat_with(w, CompatPair::INCOMPATIBLE)
+
+			my_config = MyConfig.new
+			my_config.add_by_id(m.id)
+			my_config.add_by_id(t.id)
+			my_config.add_by_id(w.id)
+
+			checker = ConfigChecker.new(my_config)
+
+			checker.pair_compat_conflicts.length.must_equal 2
+			checker.compat_conflicts(Product::TYPE_MOUTHPIECE).length.must_equal 1
+			checker.compat_conflicts(Product::TYPE_TANK).length.must_equal 2
+			checker.compat_conflicts(Product::TYPE_WICK).length.must_equal 1
+		end
+	end
 end

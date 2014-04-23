@@ -1,19 +1,19 @@
-<% if @checker.compat_conflicts(part_type.to_sym).any? %>
-<% @checker.compat_conflicts(part_type.to_sym).each do |message| %>
+<% if @checker.compat_conflicts(part_type).any? %>
+<% @checker.compat_conflicts(part_type).each do |message| %>
 <div class = "col-xs-12 bg-danger compat-message">
 	<%= message %>
 </div>
 <% end %>
 
 <% end %>
-<% if @checker.works_badly_conflicts(part_type.to_sym).any? %>
-<% @checker.works_badly_conflicts(part_type.to_sym).each do |message| %>
+<% if @checker.works_badly_conflicts(part_type).any? %>
+<% @checker.works_badly_conflicts(part_type).each do |message| %>
 <div class = "col-xs-12 bg-warning compat-message">
 	<%= message %>
 </div>
 <% end %>
 <% end %>
-<% if @checker.works_badly_conflicts(part_type.to_sym).empty? && @checker.compat_conflicts(part_type.to_sym).empty? %>
+<% if @checker.works_badly_conflicts(part_type).empty? && @checker.compat_conflicts(part_type).empty? %>
 <div class = "col-xs-12 bg-success compat-message">
 	works well with all selected parts
 </div>

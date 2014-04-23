@@ -1,4 +1,8 @@
 class ConfigChecker
+	#TODO: refactor to have only one call like messages(type) which returns
+	# all issues or "works well with all selected" or an empty list if it is the only part yet
+	# generally take out all the compatibility logic from the view and put it here
+
 	# Returns a list of strings. Each entry states that a certain product pair is not compatible
 	# (physically does not fit together).
 	#
