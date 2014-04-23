@@ -50,8 +50,12 @@
 	<% if present %><% else %> <% end %>
 	<% end %>
 
-	<div class = "col-xs-12">
+	<div class = "col-xs-2">
 		<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
 		data: {confirm: "Are you sure you want to clear all products?"}%>
+	</div>
+	<div class = "col-xs-10 center">
+		Share your Configuration!  
+		<%= text_field_tag(:url, @url, :readonly => true, :size => 90, :onclick => "$(url).select()") %>
 	</div>
 </div>
