@@ -288,3 +288,9 @@
 .filter_indent, .last{
 	padding-bottom: 12px;
 }
+
+.img-double-border {
+   padding:1px;
+   border:1px solid #021a40;
+   background-color:white;
+}

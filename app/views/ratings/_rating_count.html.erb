@@ -1,0 +1,7 @@
+<span style="color:grey;">
+	<% if prod.rating_count > 1 %>
+		<%= " ("+ prod.rating_count.to_s + " user ratings)" %>
+	<% else %>
+		<%= " ("+ prod.rating_count.to_s + " user rating)" %>
+	<% end %>
+</span>
