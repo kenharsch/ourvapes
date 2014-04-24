@@ -1202,8 +1202,24 @@ mouthpiece.set_compat_with(find(Tank, 8), CompatPair::WORKS_WELL)
 mouthpiece.set_compat_with(find(Tank, 9), CompatPair::WORKS_WELL)
 mouthpiece.save
 
+kit = Kit.create(name: "Georg's super fun kit")
+kit.tank = find(Tank, 8)
+kit.wick = find(Wick, 18)
+kit.button = find(Button, 25)
+kit.charger = find(Charger, 48)
+kit.save
 
+kit = Kit.create(name: "Fader-Ator")
+kit.tank = find(Tank, 11)
+kit.button = find(Button, 31)
+kit.battery = find(Battery, 39)
+kit.save
 
+kit = Kit.create(name: "Hu's are you?")
+kit.tank = find(Tank, 2)
+kit.button = find(Button, 22)
+kit.charger = find(Charger, 48)
+kit.save
 
 
 # set all yet undefined compatibilities as INCOMPATIBLE ========================
