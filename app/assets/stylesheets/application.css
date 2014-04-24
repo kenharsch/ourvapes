@@ -294,3 +294,9 @@
    border:1px solid #021a40;
    background-color:white;
 }
+
+#prod_type{
+	color: #2929A6;
+	font-size: 12px;
+	padding-left: 10px;
+}

@@ -8,8 +8,8 @@
 	</div>
 	<div class = "row filter_indent">
 		<dl>
-			<dt>Product Type</dt>
-			<% ["all_types", "mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
+			<dt>Product Type <%= label_tag "clear", nil, id: "prod_type" %></dt>
+			<% ["mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
 			<dd><%= radio_button_tag :prod_type, type %><%= label_tag(type, nil, class: "type_list") %></dd>
 			<% end %>
 		</dl>
