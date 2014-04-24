@@ -19,6 +19,9 @@ $ sudo apt-get install postgresql-9.3 libpq-dev
 $ sudo su - postgres
 $ create role vaperater with createdb login password 'password1'
 $ exit
+$ rake db:create:all
+$ rake db:migrate
+$ rake db:seed
 ```
 
 
