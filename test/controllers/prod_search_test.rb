@@ -26,9 +26,9 @@ class ProdSearchTest < ActiveSupport::TestCase
 	describe "results sorting" do
 
 		it "shows title matchings higher than description matchings" do
-			search = ProdSearch.full_text('VapeRater')
-			# binding.pry
-			search[0].name.must_equal "keyword VapeRater in name"
+			ProdSearch.full_text('VapeRater', nil, nil, nil) do |results, manu_facets|
+				results[0].name.must_equal "keyword VapeRater in name"
+			end
 		end
 	end
 end
