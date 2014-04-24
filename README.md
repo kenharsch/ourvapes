@@ -251,6 +251,7 @@ rake assets:precompile
 all the rake tasks like `rake db:seed` can be started like this:
 ```
 RAILS_ENV=production rake db:seed
+RAILS_ENV=production rake db:migrate
 ```
 
 Finally, running the server in production mode is

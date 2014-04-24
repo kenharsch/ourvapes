@@ -17,8 +17,8 @@
 	<div class = "row filter_indent last">
 		<dl>
 			<dt>Manufacturers</dt>
-			<% @manus.each do |manu| %>
-			<dd><%= check_box_tag(:manufacturer, manu.manufacturer) %><%= label_tag(manu.manufacturer, nil, class: "type_list") %></dd>
+			<% @manu_facets.each do |manu_facet| %>
+			<dd><%= check_box_tag(:manufacturer, manu_facet.value) %><%= label_tag("#{manu_facet.value} (#{manu_facet.count})", nil, class: "type_list") %></dd>
 			<% end %>
 		</dl>
 	</div>
@@ -26,7 +26,7 @@
 
 <div class = "col-md-10 product_listing">
 	<h1 class = "left"><%= @title %></h1><br/>
-	<% unless @query.nil? %>
+	<% unless @query.blank? %>
 		<span class = "query">for <b><%= @query %></b>
 			in <b><%= @searched_in %></b></span>
 	<% end %>

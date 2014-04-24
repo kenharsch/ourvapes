@@ -19,6 +19,7 @@ class Product < ActiveRecord::Base
 
 			# the fields used for text filtering
 			string :type
+			string :manufacturer
 
 			# text :comments do
 			# 	comments.map { |comment| comment.body }

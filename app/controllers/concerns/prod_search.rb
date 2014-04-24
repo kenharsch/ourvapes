@@ -2,17 +2,29 @@ class ProdSearch
 
 	RESULTS_PER_PAGE = 10
 
-	# returns a Sunspot::Search::StandardSearch object with our current search settings
-	# query:: the search query as entered by the user (as string)
+	# use like the following:
+	# ProdSearch.full_text("davide", "Tank", "", 2) {|results, manus| ...}
+	# query:: the search query as entered by the user (as string), or _nil_ for "all products"
 	# type:: the product type as upper case String, such as "Wick", or _nil_ for "all products"
 	# page:: the current page of a paginated result set
-	def self.full_text(query, type = nil, page = nil)
+	# manus:: a list of the selected manufacturers, an empty list, or _nill_
+	def self.full_text(query, type, manus, page)
 		search = Product.search do
 
-			# exclude kits because we are not handling them as products yet
-			without(:type, "Kit") if type.blank?
+			facet :manufacturer
 
-			with(:type, type) unless type.blank?
+			if type.blank?
+				# exclude kits because we are not handling them as products yet
+				without(:type, "Kit")
+			else
+				with(:type, type)
+			end
+
+			manus = [] if manus.blank?
+
+			any_of do
+				manus.each {|manu| with(:manufacturer, manu)}
+			end
 
 			fulltext query do
 				boost_fields :name => 2.0
@@ -25,6 +37,12 @@ class ProdSearch
 			paginate :page => page, :per_page => RESULTS_PER_PAGE
 		end
 
-		return search.results
+		yield(search.results, sorted_facets(search, :manufacturer))
+	end
+
+	private
+
+	def self.sorted_facets(search, facet_name)
+		search.facet(facet_name).rows.sort {|left, right| left.value <=> right.value}
 	end
 end
