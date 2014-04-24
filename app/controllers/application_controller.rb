@@ -8,5 +8,7 @@ class ApplicationController < ActionController::Base
 
 	def ensure_my_config
 		session[Constants::SESS_MY_CONFIG] ||= MyConfig.new
+		my_config = session[Constants::SESS_MY_CONFIG]
+		@my_config_label = "My Configuration (#{my_config.size})"
 	end
 end

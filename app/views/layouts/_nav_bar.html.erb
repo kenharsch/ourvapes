@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">VapeRater</a>
+			<a class="navbar-brand" href="/">VapeRater</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,9 +20,9 @@
 			</ul>
 
 			<%= form_tag "/product_list/list", method: "get", class: "navbar-form navbar-left" do %>
-				<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
-				<%= hidden_field_tag "type", @params_type %>
-				<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
+			<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
+			<%= hidden_field_tag "type", @params_type %>
+			<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 			<% end %>
 
 			<!--
@@ -33,27 +33,17 @@
 				<button type="submit" class="btn btn-default">GO</button>
 			</form>
 		-->
-		<% if user_signed_in? %>
-			<ul class="nav navbar-nav img-responsive">
-				<li>		
-	  				<%= image_tag gravatar_url(current_user, 48) %>
-				</li>
-			</ul>
-		<% end %>
-		<ul class="nav navbar-nav">
-			<li>
-				<%= render 'shared/registration_items' %>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav">
-			<li>
-				<%= render 'shared/login_items' %>
-			</li>
-		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li <%= "class = active" if @page == Constants::PAGE_CONFIG%>>
-				<%= link_to "My Configuration", {action: "index", controller: "/configuration"} %>
+				<%= link_to @my_config_label, {action: "index", controller: "/configuration"} %>
 			</li>
+			<% if user_signed_in? %>
+				<li class="img-responsive">
+					<%= image_tag gravatar_url(current_user, 48)%>
+				</li>
+			<% end %>
+				<li><%= render 'shared/registration_items' %></li>
+				<li><%= render 'shared/login_items' %></li>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
