@@ -3,14 +3,20 @@
 	<div class = "row filter_indent compatibility_filt">
 		<dl>
 			<dt>Compatibility</dt>
-			<dd><%= check_box_tag(:compatible_filt) %><%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %></dd>
+			<dd>
+				<%= check_box_tag(:compatible_filt) %>
+				<%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %>
+			</dd>
 		</dl>
 	</div>
 	<div class = "row filter_indent">
 		<dl>
 			<dt>Product Type</dt>
 			<% ["all_types", "mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
-			<dd><%= radio_button_tag :prod_type, type %><%= label_tag(type, nil, class: "type_list") %></dd>
+			<dd>
+				<%= radio_button_tag :prod_type, type %>
+				<%= label_tag(type, nil, class: "type_list") %>
+			</dd>
 			<% end %>
 		</dl>
 	</div>
@@ -18,7 +24,9 @@
 		<dl>
 			<dt>Manufacturers</dt>
 			<% @manu_facets.each do |manu_facet| %>
-			<dd><%= check_box_tag(:manufacturer, manu_facet.value) %><%= label_tag("#{manu_facet.value} (#{manu_facet.count})", nil, class: "type_list") %></dd>
+			<dd>
+				<%= manu_filter(manu_facet) %>
+			</dd>
 			<% end %>
 		</dl>
 	</div>

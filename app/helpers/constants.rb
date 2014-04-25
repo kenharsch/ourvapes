@@ -3,9 +3,10 @@ class Constants
 	PAGE_PROD_LIST = :page_prod_list
 	PAGE_CONFIG = :page_config
 
-	# used as key to retrieve the MyConfig object representing the current data in
-	# "My Configuration": session[SESS_MY_CONFIG]
+	# used as keys to retrieve from session, e.g.:
+	# my_config = session[Constants::SESS_MY_CONFIG]
 	SESS_MY_CONFIG = :my_config
+	SESS_LAST_SEARCH_PARAMS = :last_search_params
 
 	ABOUT_US = "VapeRater was created out of a desire to find trustworthy, useful
 information about vaping, vaping supplies and vaping health

@@ -1,5 +1,7 @@
 class ProdSearch
 
+	attr_accessor :results, :manu_facets
+
 	RESULTS_PER_PAGE = 10
 
 	# use like the following:
@@ -9,7 +11,21 @@ class ProdSearch
 	# page:: the current page of a paginated result set
 	# manus:: a list of the selected manufacturers, an empty list, or _nill_
 	def self.full_text(query, type, manus, page)
-		search = Product.search do
+		prod_search = ProdSearch.new
+
+		search = create_search(query, type, manus, page)
+		prod_search.results = search.results
+
+		search_all_manus = create_search(query, type, [], page)
+		prod_search.manu_facets = sorted_facets(search_all_manus, :manufacturer)
+
+		return prod_search
+	end
+
+	private
+
+	def self.create_search(query, type, manus, page)
+		return Product.search do
 
 			facet :manufacturer
 
@@ -36,11 +52,7 @@ class ProdSearch
 
 			paginate :page => page, :per_page => RESULTS_PER_PAGE
 		end
-
-		yield(search.results, sorted_facets(search, :manufacturer))
 	end
-
-	private
 
 	def self.sorted_facets(search, facet_name)
 		search.facet(facet_name).rows.sort {|left, right| left.value <=> right.value}
