@@ -39,7 +39,7 @@ class ConfigurationController < ApplicationController
 	end
 
 	def create_url
-		url = "http://vaperater.herokuapp.com/configuration?"
+		url = "#{root_url}configuration?"
 		session[Constants::SESS_MY_CONFIG].each_slot do |part_type, part_object|
 			if !part_object.nil?
 				url += "&ids[]=" + part_object.id.to_s
