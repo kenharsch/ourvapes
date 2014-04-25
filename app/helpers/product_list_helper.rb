@@ -18,18 +18,27 @@ module ProductListHelper
 
 	def type_filter_clear_button()
 		return "" if @type_filter.blank?
-		return span("- Clear", class: 'type-filter clickable-text', filter_name: 'none')
+		html = " - "
+		html << span("Clear", class: 'type-filter clickable-text', filter_name: 'none')
+		return html.html_safe
 	end
 
 	def type_filter(type)
 		radio_btn = radio_button_tag(:prod_type, type, @type_filter == type,
 			class: "type-filter", filter_name: type)
-			label = span(type, class: "type-filter clickable-text", filter_name: type)
+		label = span(type, class: "type-filter clickable-text", filter_name: type)
 
-			return "#{radio_btn} #{label}".html_safe
-		end
+		return "#{radio_btn} #{label}".html_safe
+	end
 
-		private
+	def manus_filter_clear_button()
+		return if @sel_manus.empty?
+		html = " - "
+		html << span("Clear", class: 'clickable-text', id: 'manu-filter-clear')
+		return html.html_safe
+	end
+
+	private
 
 	# returns a safe html span
 	# body:: what to show on the page

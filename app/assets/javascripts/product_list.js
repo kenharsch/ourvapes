@@ -4,6 +4,9 @@ $(document).on('ready page:load', function() {
 
 	// set the manufacturer filter click listeners
 	$('.manu-filter').click(function(){updateManus(this);});
+
+	// set the manufacturer clear button click listener
+	$('#manu-filter-clear').click(clearManusFunction());
 });
 
 function setType(filter_el) {
@@ -14,4 +17,10 @@ function updateManus(filter_el) {
 	var key_prefix = $(filter_el).is("[selected]") ? "remove" : "add";
 	var url = "update?"+key_prefix+"_manu="+$(filter_el).attr("filter_name");
 	window.location = url
+}
+
+function clearManusFunction() {
+	return function() {
+		window.location = "update?clear_manus=true";
+	};
 }

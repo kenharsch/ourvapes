@@ -11,7 +11,7 @@
 	</div>
 	<div class = "row filter_indent">
 		<dl>
-			<dt>Product Type <%= type_filter_clear_button() %></dt>
+			<dt>Product Type<%= type_filter_clear_button() %></dt>
 			<% Kit::PART_TYPES.each do |type| %>
 			<dd><%= type_filter(type) %></dd>
 			<% end %>
@@ -19,11 +19,9 @@
 	</div>
 	<div class = "row filter_indent last">
 		<dl>
-			<dt>Manufacturers</dt>
+			<dt>Manufacturers<%= manus_filter_clear_button() %></dt>
 			<% @manu_facets.each do |manu_facet| %>
-			<dd>
-				<%= manu_filter(manu_facet) %>
-			</dd>
+			<dd><%= manu_filter(manu_facet) %></dd>
 			<% end %>
 		</dl>
 	</div>

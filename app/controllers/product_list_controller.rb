@@ -30,7 +30,7 @@ class ProductListController < ApplicationController
 	def update
 		last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
 
-		[:add_manu, :remove_manu, :set_type].each do |action|
+		[:add_manu, :remove_manu, :set_type, :clear_manus].each do |action|
 			method(action).call(last_params) if params[action].present?
 		end
 
@@ -46,6 +46,10 @@ class ProductListController < ApplicationController
 
 	def remove_manu(last_params)
 		last_params[:manus].delete(params[:remove_manu])
+	end
+
+	def clear_manus(last_params)
+		last_params.delete(:manus)
 	end
 
 	def set_type(last_params)
