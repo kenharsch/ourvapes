@@ -11,7 +11,7 @@
 	</div>
 	<div class = "row filter_indent">
 		<dl>
-			<dt>Product Type <%= label_tag "clear", nil, id: "prod_type" %></dt>
+			<dt>Product Type <%= label_tag "clear", nil, id: "prod_type", class: "clickable-text" %></dt>
 			<% ["mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
 			<dd>
 			<%= radio_button_tag :prod_type, type %>
