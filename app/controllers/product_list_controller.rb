@@ -34,6 +34,9 @@ class ProductListController < ApplicationController
 			method(action).call(last_params) if params[action].present?
 		end
 
+		# after each search refinement the list should start at page 1
+		last_params[:page] = 1
+
 		redirect_to last_params
 	end
 
