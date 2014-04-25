@@ -21,7 +21,6 @@
 
 			<%= form_tag "/product_list/list", method: "get", class: "navbar-form navbar-left" do %>
 			<%= text_field_tag :query, @query, class: "form-control", placeholder: "Search" %>
-			<%= hidden_field_tag "type", @params_type %>
 			<%= submit_tag "GO", class: "btn btn-default", role: "button" %>
 			<% end %>
 

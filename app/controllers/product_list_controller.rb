@@ -7,12 +7,12 @@ class ProductListController < ApplicationController
 		@page = Constants::PAGE_PROD_LIST
 		@add_or_change = "Add"
 
-		@params_type = params[:type]
+		@type_filter = params[:type]
 
-		if @params_type.blank?
+		if @type_filter.blank?
 			@title = "All Products"
 		else
-			@title = @params_type.pluralize
+			@title = @type_filter.pluralize
 		end
 
 		@query = params[:query]
@@ -22,7 +22,7 @@ class ProductListController < ApplicationController
 			@title = "Search Results"
 		end
 
-		search = ProdSearch.full_text(@query, @params_type, params[:manus], params[:page])
+		search = ProdSearch.full_text(@query, @type_filter, params[:manus], params[:page])
 		@prods = search.results
 		@manu_facets = search.manu_facets
 		@sel_manus = params[:manus] || []

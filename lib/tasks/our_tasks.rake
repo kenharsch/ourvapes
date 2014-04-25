@@ -26,3 +26,9 @@ namespace :solr do
 		system("rake sunspot:solr:stop")
 	end
 end
+
+# start in production mode
+task :p do
+	system("rake assets:precompile")
+	system("rails s -e production")
+end
