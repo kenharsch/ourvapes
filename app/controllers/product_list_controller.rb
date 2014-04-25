@@ -29,34 +29,27 @@ class ProductListController < ApplicationController
 	end
 
 	def update
-		if params[:add_manu].present?
-			add_manu
-		elsif params[:remove_manu].present?
-			remove_manu
+		last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
+
+		[:add_manu, :remove_manu, :set_type].each do |action|
+			method(action).call(last_params) if params[action].present?
 		end
+
+		redirect_to last_params
 	end
 
 	private
 
-	def add_manu
-		last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
+	def add_manu(last_params)
 		last_params[:manus] = [] unless last_params.has_key?(:manus)
 		last_params[:manus] << params[:add_manu]
-		redirect_to last_params
 	end
 
-	def remove_manu
-		last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
+	def remove_manu(last_params)
 		last_params[:manus].delete(params[:remove_manu])
-		redirect_to last_params
 	end
 
-	def set_type
-		# TODO
-		# last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
-		# last_params[:manus] ||= []
-		# last_params[:manus] << params[:manu]
-		# # redirect_to "/product_list/list?#{last_params.to_url}"
-		# redirect_to "list?#{last_params.to_url}"
+	def set_type(last_params)
+		last_params[:type] = params[:set_type]
 	end
 end

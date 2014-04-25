@@ -4,5 +4,5 @@ $(document).on('ready page:load', function() {
 });
 
 function setType(filter_el) {
-	window.location = "?type="+$(filter_el).attr("filter_name");
+	window.location = "update?set_type="+$(filter_el).attr("filter_name");
 }
