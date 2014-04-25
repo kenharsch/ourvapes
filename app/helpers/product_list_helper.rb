@@ -12,4 +12,26 @@ module ProductListHelper
 
 		return "#{chck_box} #{link}".html_safe
 	end
+
+	def type_filter_clear_button()
+		return "" if @type_filter.blank?
+		return span("- Clear", class: 'type-filter clickable-text', filter_name: 'none')
+	end
+
+	def type_filter(type)
+		radio_btn = radio_button_tag(:prod_type, type, @type_filter == type,
+			class: "type-filter", filter_name: type)
+		label = span(type, class: "type-filter clickable-text", filter_name: type)
+
+		return "#{radio_btn} #{label}".html_safe
+	end
+
+	private
+
+	# returns a safe html span
+	# body:: what to show on the page
+	# options:: a hash with options like class and filter_name
+	def span(body, options)
+		return content_tag(:span, body, options)
+	end
 end

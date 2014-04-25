@@ -1,7 +1,6 @@
 class ProductListController < ApplicationController
 
 	def list
-		# binding.pry
 		session[Constants::SESS_LAST_SEARCH_PARAMS] = params.clone
 
 		@page = Constants::PAGE_PROD_LIST
@@ -50,6 +49,10 @@ class ProductListController < ApplicationController
 	end
 
 	def set_type(last_params)
-		last_params[:type] = params[:set_type]
+		if params[:set_type] == "none"
+			last_params.delete(:type)
+		else
+			last_params[:type] = params[:set_type]
+		end
 	end
 end

@@ -11,12 +11,9 @@
 	</div>
 	<div class = "row filter_indent">
 		<dl>
-			<dt>Product Type <%= label_tag "clear", nil, class: "type-filter clickable-text", filter_name: "" %></dt>
+			<dt>Product Type <%= type_filter_clear_button() %></dt>
 			<% Kit::PART_TYPES.each do |type| %>
-			<dd>
-			<%= radio_button_tag(:prod_type, type, @type_filter == type, class: "type-filter", filter_name: type) %>
-			<%= label_tag(type, nil, class: "type-filter clickable-text", filter_name: type) %>
-			</dd>
+			<dd><%= type_filter(type) %></dd>
 			<% end %>
 		</dl>
 	</div>
@@ -35,12 +32,12 @@
 <div class = "col-md-10 product_listing">
 	<h1 class = "left"><%= @title %></h1><br/>
 	<% unless @query.blank? %>
-		<span class = "query">for <b><%= @query %></b>
-			in <b><%= @searched_in %></b></span>
-	<% end %>
-	<div class = "left"><%= paginate @prods %></div>
+	<span class = "query">for <b><%= @query %></b>
+		in <b><%= @searched_in %></b></span>
+		<% end %>
+		<div class = "left"><%= paginate @prods %></div>
 
-	<% @prods.each do |prod| %>
+		<% @prods.each do |prod| %>
 		<div class = "row">
 			<div class = "col-sm-11">
 				<%= render 'shared/product_list_entry', prod: prod %>
@@ -56,6 +53,6 @@
 				<hr>
 			</div>
 		</div>
-	<% end %>
-	<div class = "left"><%= paginate @prods %></div>
-</div>
+		<% end %>
+		<div class = "left"><%= paginate @prods %></div>
+	</div>
