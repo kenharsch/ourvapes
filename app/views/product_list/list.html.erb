@@ -3,22 +3,25 @@
 	<div class = "row filter_indent compatibility_filt">
 		<dl>
 			<dt>Compatibility</dt>
-			<dd><%= check_box_tag(:compatible_filt) %><%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %></dd>
+			<dd>
+				<%= check_box_tag(:compatible_filt) %>
+				<%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %>
+			</dd>
 		</dl>
 	</div>
 	<div class = "row filter_indent">
 		<dl>
-			<dt>Product Type <%= label_tag "clear", nil, id: "prod_type" %></dt>
-			<% ["mouthpiece", "tank", "wick", "button", "battery", "charger"].each do |type| %>
-			<dd><%= radio_button_tag :prod_type, type %><%= label_tag(type, nil, class: "type_list") %></dd>
+			<dt>Product Type<%= type_filter_clear_button() %></dt>
+			<% Kit::PART_TYPES.each do |type| %>
+			<dd><%= type_filter(type) %></dd>
 			<% end %>
 		</dl>
 	</div>
 	<div class = "row filter_indent last">
 		<dl>
-			<dt>Manufacturers</dt>
+			<dt>Manufacturers<%= manus_filter_clear_button() %></dt>
 			<% @manu_facets.each do |manu_facet| %>
-			<dd><%= check_box_tag(:manufacturer, manu_facet.value) %><%= label_tag("#{manu_facet.value} (#{manu_facet.count})", nil, class: "type_list") %></dd>
+			<dd><%= manu_filter(manu_facet) %></dd>
 			<% end %>
 		</dl>
 	</div>
@@ -27,12 +30,12 @@
 <div class = "col-md-10 product_listing">
 	<h1 class = "left"><%= @title %></h1><br/>
 	<% unless @query.blank? %>
-		<span class = "query">for <b><%= @query %></b>
-			in <b><%= @searched_in %></b></span>
-	<% end %>
-	<div class = "left"><%= paginate @prods %></div>
+	<span class = "query">for <b><%= @query %></b>
+		in <b><%= @searched_in %></b></span>
+		<% end %>
+		<div class = "left"><%= paginate @prods %></div>
 
-	<% @prods.each do |prod| %>
+		<% @prods.each do |prod| %>
 		<div class = "row">
 			<div class = "col-sm-11">
 				<%= render 'shared/product_list_entry', prod: prod %>
@@ -48,6 +51,6 @@
 				<hr>
 			</div>
 		</div>
-	<% end %>
-	<div class = "left"><%= paginate @prods %></div>
-</div>
+		<% end %>
+		<div class = "left"><%= paginate @prods %></div>
+	</div>

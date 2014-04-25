@@ -9,6 +9,7 @@ Src::Application.routes.draw do
 
   get "product_list/list"
   post "product_list/list"
+  get "product_list/update"
 
   post "configuration/add"
   post "configuration/remove"
