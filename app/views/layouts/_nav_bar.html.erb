@@ -6,15 +6,17 @@
 			<span class="user-search-nav">
 				<span>
 				<span class="user-item">
+					<% if user_signed_in? %>
+
 						<%= image_tag gravatar_url(current_user, 48)%>
+					<% end %>
+						
 					</span>
 					<%= render 'shared/login_items' %>
 					<%= render 'shared/registration_items' %>
 					<%= link_to @my_config_label, {action: "index", controller: "/configuration"}, class: "user-item" %>
 
-					<% if user_signed_in? %>
 					
-					<% end %>
 					<br />
 				</span>
 
@@ -22,7 +24,7 @@
 				<span class = "search-bar">
 					<%= form_tag "/product_list/list", method: "get", class: "" do %>
 					<%= text_field_tag :query, @query, class: "form-control search-bar search-field", placeholder: "Search" %>
-					<%= submit_tag "GO", class: "btn btn-default search-bar", role: "button" %>
+					<%= submit_tag "GO", class: "btn btn-primary search-bar", role: "button" %>
 					<% end %>
 				</span>
 			</span>
@@ -41,7 +43,7 @@
 		</div>
 
 		<div class = "nav-button-holder">
-			<a class="nav-button" href="/">Science</a>
+			<a class="nav-button" href="/science">Science</a>
 		</div>
 
 		<div class = "nav-button-holder">
@@ -53,7 +55,7 @@
 		</div>
 
 		<div class = "nav-button-holder">
-			<a class="nav-button" href="/">Stories</a>
+			<a class="nav-button" href="/about">About</a>
 		</div>
 
 

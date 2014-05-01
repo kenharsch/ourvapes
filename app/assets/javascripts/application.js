@@ -29,3 +29,9 @@ function toggleMessageIndicator(part_type)
 	$("#message-indicator-"+part_type+"-light").toggle();
 	$("#message-indicator-"+part_type+"-dark").toggle();
 }
+
+function toggleCitation(id)
+{
+	$("#citation-"+id+"-show").toggle();
+	$("#citation-"+id+"-hide").toggle();
+}
