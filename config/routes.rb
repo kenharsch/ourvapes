@@ -6,8 +6,10 @@ Src::Application.routes.draw do
   root "main#splash"
   get "configuration" => "configuration#index"
   get "configuration/show"
+
   get "science" => "main#science"
   get "about" => "main#about"
+  get "news" => "main#news"
 
   get "product_list/list"
   post "product_list/list"

@@ -1,56 +1,64 @@
-<%= stylesheet_link_tag "product_list_entry" %>
-<div class = "col-md-2 left_filters">
-	<div class = "row filter_indent compatibility_filt">
-		<dl>
-			<dt>Compatibility</dt>
-			<dd>
-				<%= check_box_tag(:compatible_filt) %>
-				<%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %>
-			</dd>
-		</dl>
-	</div>
-	<div class = "row filter_indent">
-		<dl>
-			<dt>Product Type<%= type_filter_clear_button() %></dt>
-			<% Kit::PART_TYPES.each do |type| %>
-			<dd><%= type_filter(type) %></dd>
-			<% end %>
-		</dl>
-	</div>
-	<div class = "row filter_indent last">
-		<dl>
-			<dt>Manufacturers<%= manus_filter_clear_button() %></dt>
-			<% @manu_facets.each do |manu_facet| %>
-			<dd><%= manu_filter(manu_facet) %></dd>
-			<% end %>
-		</dl>
-	</div>
-</div>
+<div class = "container">
 
-<div class = "col-md-10 product_listing">
-	<h1 class = "left"><%= @title %></h1><br/>
-	<% unless @query.blank? %>
-	<span class = "query">for <b><%= @query %></b>
-		in <b><%= @searched_in %></b></span>
+	<%= stylesheet_link_tag "product_list_entry" %>
+	<div class = "col-xs-2 left_filters">
+		<div class = "row filter_indent compatibility_filt">
+			<dl>
+				<dt>Compatibility</dt>
+				<dd>
+					<%= check_box_tag(:compatible_filt) %>
+					<%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %>
+				</dd>
+			</dl>
+		</div>
+		<div class = "row filter_indent">
+			<dl>
+				<dt>Product Type<%= type_filter_clear_button() %></dt>
+				<% Kit::PART_TYPES.each do |type| %>
+				<dd><%= type_filter(type) %></dd>
+				<% end %>
+			</dl>
+		</div>
+		<div class = "row filter_indent last">
+			<dl>
+				<dt>Manufacturers<%= manus_filter_clear_button() %></dt>
+				<% @manu_facets.each do |manu_facet| %>
+				<dd><%= manu_filter(manu_facet) %></dd>
+				<% end %>
+			</dl>
+		</div>
+	</div>
+
+	<div class = "col-xs-10 product_listing">
+		<h1 class = "left"><%= @title %></h1><br/>
+		<% unless @query.blank? %>
+		<span class = "query">for <b><%= @query %></b>
+			in <b><%= @searched_in %></b>
+		</span>
 		<% end %>
-		<div class = "left"><%= paginate @prods %></div>
+		<div class = "left">
+			<%= paginate @prods %>
+		</div>
 
 		<% @prods.each do |prod| %>
 		<div class = "row">
-			<div class = "col-sm-11">
+			<div class = "col-xs-11">
 				<%= render 'shared/product_list_entry', prod: prod %>
 			</div>
-			<div class = "col-sm-1">
+			<div class = "col-sm-12 col-md-1" >
 				<% if prod.type != "Juice" %>
 				<%= render 'shared/add_product_button', prod: prod %>
 				<% end %>
 			</div>
 		</div>
 		<div class = "row">
-			<div class = "col-sm-12">
+			<div class = "col-xs-12">
 				<hr>
 			</div>
 		</div>
 		<% end %>
-		<div class = "left"><%= paginate @prods %></div>
+		<div class = "left">
+			<%= paginate @prods %>
+		</div>
 	</div>
+</div>
