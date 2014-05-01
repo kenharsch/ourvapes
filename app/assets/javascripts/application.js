@@ -23,3 +23,9 @@
 $(document).ready(function() {        
 	$('.carousel').carousel()
 });
+
+function toggleMessageIndicator(part_type)
+{
+	$("#message-indicator-"+part_type+"-light").toggle();
+	$("#message-indicator-"+part_type+"-dark").toggle();
+}

@@ -10,7 +10,7 @@ module ProductListHelper
 		chck_box = check_box_tag(("manufacturer_" + manu_facet.value).to_sym, manu_facet.value, selected, common_options)
 
 		common_options[:class] << " clickable-text"
-		chck_box_label = label(:manufacturer, manu_facet.value)
+		chck_box_label = label(:manufacturer, manu_facet.value.gsub("\s", "_"))
 
 		return "#{chck_box} #{chck_box_label} (#{manu_facet.count})".html_safe
 	end

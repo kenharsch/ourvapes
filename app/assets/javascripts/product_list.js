@@ -6,7 +6,7 @@ $(document).on('ready page:load', function() {
 	$('.manu-filter').click(function(){updateManus(this);});
 
 	// set the manufacturer clear button click listener
-	$('#manu-filter-clear').click(clearManusFunction());
+	$('#manu-filter-clear').click(function(){clearManusFunction();});
 });
 
 function setType(filter_el) {
@@ -20,7 +20,5 @@ function updateManus(filter_el) {
 }
 
 function clearManusFunction() {
-	return function() {
-		window.location = "update?clear_manus=true";
-	};
+	window.location = "update?clear_manus=true";
 }
