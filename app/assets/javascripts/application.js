@@ -19,3 +19,7 @@
 //= require jquery_ujs
 //= require jquery.raty.min.js
 //= require jquery.ui.all
+
+$(document).ready(function() {        
+	$('.carousel').carousel()
+});
