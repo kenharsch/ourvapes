@@ -31,7 +31,7 @@ class CompatPair < ActiveRecord::Base
 	def compatibility_must_be_one_of_the_constants
 		# UNKNOWN is not regarded as a valid compatibility in this sense.
 		# All UNKNOWN compatibilities are expressed by not having the corresponding
-		# pair stored in the database.
+		# pair stored in the database.†
 		if ![INCOMPATIBLE, WORKS_BADLY, WORKS_WELL].include? compatibility
 			errors.add(:compatibility, "must be one of the CompatPair constants")
 		end

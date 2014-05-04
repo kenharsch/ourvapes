@@ -10,13 +10,13 @@
 
 						<%= image_tag gravatar_url(current_user, 48)%>
 					<% end %>
-						
+
 					</span>
 					<%= render 'shared/login_items' %>
 					<%= render 'shared/registration_items' %>
 					<%= link_to @my_config_label, {action: "index", controller: "/configuration"}, class: "user-item" %>
 
-					
+
 					<br />
 				</span>
 
@@ -32,14 +32,14 @@
 		</div>
 	</div>
 	<br />
-	
+
 	<div class = "row link-bar">
 		<div class = "nav-button-holder">
 			<a class="nav-button" href="/">Home</a>
 		</div>
 
 		<div class = "nav-button-holder">
-			<a class="nav-button" href="/">Switching</a>
+			<%= link_to "Configurator", {action: "index", controller: "configuration"}, class: "nav-button" %>
 		</div>
 
 		<div class = "nav-button-holder">
@@ -47,7 +47,7 @@
 		</div>
 
 		<div class = "nav-button-holder">
-			<%= link_to "Products", {action: "list", controller: "/product_list"}, class: "nav-button" %>
+			<%= link_to "Products", {action: "list", controller: "product_list"}, class: "nav-button" %>
 		</div>
 
 		<div class = "nav-button-holder">
