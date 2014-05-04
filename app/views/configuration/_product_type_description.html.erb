@@ -5,11 +5,11 @@
 	<%= Constants::DESCRIPTIONS_LONG[part_type] %>	
 </div>
 <div>
-	<a type="button" class="" data-toggle="collapse" data-target="#desc-<%= part_type %>" onclick="toggleArrow('<%= part_type %>')">
-		<span id="desc-<%= part_type %>-more" >
+	<a type="button" class="expand-link" data-toggle="collapse" data-target="#desc-<%= part_type %>" onclick="toggleArrow('<%= part_type %>')">
+		<span class = "expand-link" id="desc-<%= part_type %>-more" >
 			learn more&#x25BC;
 		</span>
-		<span id="desc-<%= part_type %>-less" style="display:none;">
+		<span class = "expand-link" id="desc-<%= part_type %>-less" style="display:none;">
 			show less&#x25B2;
 		</span>
 	</a>

@@ -7,13 +7,12 @@ module ProductListHelper
 		common_options = {class: "manu-filter", filter_name: manu_facet.value, selected: selected}
 
 		chck_box_options = common_options.clone
-		chck_box = check_box_tag(:manufacturer, manu_facet.value, selected, common_options)
+		chck_box = check_box_tag(("manufacturer_" + manu_facet.value).to_sym, manu_facet.value, selected, common_options)
 
-		label_body = "#{manu_facet.value} (#{manu_facet.count})"
 		common_options[:class] << " clickable-text"
-		label = span(label_body, common_options)
+		chck_box_label = label(:manufacturer, manu_facet.value.gsub("\s", "_"))
 
-		return "#{chck_box} #{label}".html_safe
+		return "#{chck_box} #{chck_box_label} (#{manu_facet.count})".html_safe
 	end
 
 	def type_filter_clear_button()
@@ -26,9 +25,8 @@ module ProductListHelper
 	def type_filter(type)
 		radio_btn = radio_button_tag(:prod_type, type, @type_filter == type,
 			class: "type-filter", filter_name: type)
-		label = span(type, class: "type-filter clickable-text", filter_name: type)
-
-		return "#{radio_btn} #{label}".html_safe
+		radio_label = label(:prod_type, type, class: "type-filter");
+		return "#{radio_btn} #{radio_label}".html_safe
 	end
 
 	def manus_filter_clear_button()

@@ -3,59 +3,112 @@
 <div class = "container" id = "configurator">
 
 	<div class = "row">
-		<h1>
+		<h1 class = "col-xs-12">
 			Configuration
 		</h1>
 	</div>
+	<div class = "row">
+		<div class = "col-xs-12">
+		<div>
+		Select parts to see if they are compatible. Save and share your favorite kit.
+		</div>
+		<div id = "desc-configurator" class="collapse out">
+		<strong><a type="button" class="expand-link" data-toggle="collapse" data-target="#desc-configurator" onclick="toggleArrow('configurator')">Instructions</a></strong>
+<br />
+
+<strong>1.</strong> Click 'choose' any product type to begin building your kit. You will be sent to a list of every 
+product we've found that fits the type class. Pick from the list, click 'add', and you will be back 
+here with your choice added to your kit.
+<br />
+<strong>2.</strong> You're back! Now pick another type and add it to your kit.
+<br />
+
+<strong>3.</strong> You're back again, but now you see some advice on color bars. If all show green - you're good 
+to go! If you see yellow, the parts listed don't work well together according to our users. If you 
+see red, the parts you've chosen don't fit together at all. 
+<br />
+
+<strong>4.</strong> Now you have a choices to make. Click 'remove' or 'change' on one of the products to try something 
+else. 
+<br />
+
+<strong>5.</strong> Having trouble finding a good match? Try using the sort function on the sidebar to limit selections 
+to only products that work well with your current kit or check out some of our user's favorite 
+kits. 
+<br />
+
+<strong>6.</strong> Got a kit you like? Share it with your friends by copying the link at the bottom of this page,
+ or give it a name and share it with everyone at VapeRater!
+		</div>
+			<div>
+				<a type="button" class="expand-link" data-toggle="collapse" data-target="#desc-configurator" onclick="toggleArrow('configurator')">
+					<span class = "expand-link" id="desc-configurator-more" >
+						How to use&#x25BC;
+					</span>
+					<span class = "expand-link" id="desc-configurator-less" style="display:none;">
+						Hide&#x25B2;
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
 
 	<%= render "pair_compat_messages" %>
 
 	<% session[Constants::SESS_MY_CONFIG].each_slot do |part_type, part_object| %>
 
-	<div class = "product-tile row">
+	<div class = "product-tile row ">
 
 		<% present = !part_object.nil? %>
 
-		<div class="padded-5 bg-white-gray">
+		<div class="padded-5 bg-white-gray message-container">
+			<%= render 'configuration/compat_message_indicator', part_type: part_type, present: present %>
 			<strong>
 				<%= part_type %>
 			</strong>
 			<%= render 'configuration/product_type_description', part_type: part_type %>
 		</div>
 
+
+		<% if present %>
+		<div class = "row">
+			<div class = "col-xs-12 collapse out" id = "single-compat-messages-<%=part_type%>">
+				<%= render "single_compat_messages", {part_type: part_type} %>
+			</div>
+		</div>
+		<% end %>
+
+
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
 			<% if present %><%= render 'shared/product_list_entry', prod: part_object %>
-				<% @add_or_change = "Change" %>
+			<% @add_or_change = "Change" %>
 			<% else %>
-				<% @add_or_change = "Choose" %>
+			<% @add_or_change = "Choose" %>
 			<% end %>
 		</div>
 
 		<div class = "col-sm-2 col-xs-12">
 			<% if present %>
-				<%= button_to "Remove", {action: "remove",
+			<%= button_to "Remove", {action: "remove",
 				controller: "configuration", remove: part_type},
 				class: "btn btn-default btn-block"%>
+				<% end %>
+				<%= button_to @add_or_change, {action: "list", controller: "product_list",
+					type: part_type}, class: "btn btn-default btn-block"%>
+				</div>
+
+			</div>
+
+			<% if present %><% else %> <% end %>
 			<% end %>
-		<%= button_to @add_or_change, {action: "list", controller: "product_list",
-			type: part_type}, class: "btn btn-default btn-block"%>
+
+			<div class = "col-xs-2">
+				<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
+				data: {confirm: "Are you sure you want to clear all products?"}%>
+			</div>
+			<div class = "col-xs-10 center">
+				Share your Configuration!  
+				<%= text_field_tag(:url, @url, :readonly => true, :size => 90, :onclick => "$(url).select()") %>
+			</div>
 		</div>
-
-		<% if present %>
-			<%= render "single_compat_messages", {part_type: part_type} %>
-		<% end %>
-
-	</div>
-
-	<% if present %><% else %> <% end %>
-	<% end %>
-
-	<div class = "col-xs-2">
-		<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
-		data: {confirm: "Are you sure you want to clear all products?"}%>
-	</div>
-	<div class = "col-xs-10 center">
-		Share your Configuration!  
-		<%= text_field_tag(:url, @url, :readonly => true, :size => 90, :onclick => "$(url).select()") %>
-	</div>
-</div>

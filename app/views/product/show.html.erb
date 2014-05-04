@@ -1,52 +1,62 @@
-<div class="container-fluid">
-	<%= link_to_function "<< Go Back", "history.back()", class: "prod_all_items" %>
-	<h1><%= @product.name + " " + @product.type.capitalize %></h1>
-	<%= image_tag(@product.picture_path, class: 'img-responsive') %><br/><br/>
-	<strong>Name:</strong> <%= @product.name %><br/>
-	<strong>Manufacturer:</strong> <%= @product.manufacturer %><br/>
-	<strong>Price:</strong> $<%= "%.2f" % @product.price unless @product.price.blank? %><br/>
-	<strong>Type:</strong> <%= @product.type %><br/>
-	<strong>Averate Rating: </strong>
-	<% if user_signed_in? %>
-		<span id="star"></span>
-		<%= render 'ratings/rating_count', prod: @product %><br/>
-		<strong>Your Rating: </strong>
-		<span id="user_star"></span><br/><br/>
-	<% else %>
-		<span id="star_prod<%= @product.id %>"></span>
-		<%= render 'ratings/rating_count', prod: @product %><br/><br/>
-	<% end %>
-	<strong>Description:</strong> <%= @product.description %><br/><br/>
-	<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
-	<%= render 'shared/add_product_button', prod: @product, button: "Add to Configuration"%>
-	<% end %>
-	<br>
-	<%= render partial: 'the_comments/tree', locals: { commentable: @post, comments_tree: @comments } %>
+<div class="container">
+	<div class="row">
+		<div class = "col-sm-12 col-md-8">
+			<%= link_to_function "<< Go Back", "history.back()", class: "prod_all_items" %>
+			<h1><%= @product.name + " " + @product.type.capitalize %></h1>
+			<%= image_tag(@product.picture_path, class: 'img-responsive') %>
+			<br/><br/>
+			<strong>Name:</strong> <%= @product.name %>
+			<br/>
+			<strong>Manufacturer:</strong> <%= @product.manufacturer %><br/>
+			<strong>Price:</strong> $<%= "%.2f" % @product.price unless @product.price.blank? %>
+			<br/>
+			<strong>Type:</strong> <%= @product.type %>
+			<br/>
+			<strong>Averate Rating: </strong>
+			<% if user_signed_in? %>
+			<span id="star"></span>
+			<%= render 'ratings/rating_count', prod: @product %><br/>
+			<strong>Your Rating: </strong>
+			<span id="user_star"></span>
+			<br/><br/>
+			<% else %>
+			<span id="star_prod<%= @product.id %>"></span>
+			<%= render 'ratings/rating_count', prod: @product %>
+			<br/><br/>
+			<% end %>
+			<strong>Description:</strong> <%= @product.description %>
+			<br/><br/>
+			<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
+			<%= render 'shared/add_product_button', prod: @product, button: "Add to Configuration"%>
+			<% end %>
+			<br>
+			<%= render partial: 'the_comments/tree', locals: { commentable: @post, comments_tree: @comments } %>
+		</div>
+	</div>
 </div>
-
 <script>
-$('#star_prod<%= @product.id %>').raty({
-	readOnly: true,
-	score: <%= @product.average_rating %>,
-	path: '/assets'
-});
+	$('#star_prod<%= @product.id %>').raty({
+		readOnly: true,
+		score: <%= @product.average_rating %>,
+		path: '/assets'
+	});
 </script>
 <script>
-$('#star').raty({
-	readOnly: true,
-	score: <%= @product.average_rating %>,
-	path: '/assets'
-});
+	$('#star').raty({
+		readOnly: true,
+		score: <%= @product.average_rating %>,
+		path: '/assets'
+	});
 
-$('#user_star').raty({
-	score: <%= @rating.score %>,
-	path: '/assets',
-	click: function(score, evt) {
-		$.ajax({
-			url: '/ratings/' + <%= @rating.id %>,
-			type: 'PATCH',
-			data: { score: score }
-		});
-	}
-});
+	$('#user_star').raty({
+		score: <%= @rating.score %>,
+		path: '/assets',
+		click: function(score, evt) {
+			$.ajax({
+				url: '/ratings/' + <%= @rating.id %>,
+				type: 'PATCH',
+				data: { score: score }
+			});
+		}
+	});
 </script>

@@ -7,6 +7,10 @@ Src::Application.routes.draw do
   get "configuration" => "configuration#index"
   get "configuration/show"
 
+  get "science" => "main#science"
+  get "about" => "main#about"
+  get "news" => "main#news"
+
   get "product_list/list"
   post "product_list/list"
   get "product_list/update"

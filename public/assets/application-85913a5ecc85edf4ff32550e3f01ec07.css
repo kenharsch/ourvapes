@@ -1,5 +1,95 @@
+div.rateit
+{
+    display: -moz-inline-box;
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+div.rateit div.rateit-range
+{
+    position: relative;
+    display: -moz-inline-box;
+    display: inline-block;
+    background: url(/assets/star.gif);
+    height: 16px;
+}
+
+/* for IE 6 */
+* html div.rateit, * html div.rateit div.rateit-range
+{
+    display: inline;
+}
+
+/* for IE 7 */
+* + html div.rateit, * + html div.rateit div.rateit-range
+{
+    display: inline;
+}
+
+div.rateit div.rateit-hover, div.rateit div.rateit-selected
+{
+    position: absolute;
+    left: 0px;
+}
+
+div.rateit div.rateit-hover-rtl, div.rateit div.rateit-selected-rtl
+{
+    left: auto;
+    right: 0px;
+}
+
+div.rateit div.rateit-hover
+{
+    background: url(/assets/star.gif) left -32px;
+}
+
+div.rateit div.rateit-hover-rtl
+{
+    background-position: right -32px;
+}
+
+div.rateit div.rateit-selected
+{
+    background: url(/assets/star.gif) left -16px;
+}
+
+div.rateit div.rateit-selected-rtl
+{
+    background-position: right -16px;
+}
+
+div.rateit div.rateit-preset
+{
+    background: url(/assets/star.gif) left -48px;
+}
+
+div.rateit div.rateit-preset-rtl
+{
+    background: url(/assets/star.gif) left -48px;
+}
+
+div.rateit div.rateit-reset
+{
+    background: url(/assets/delete.gif) 0 0;
+    width: 16px;
+    height: 16px;
+    display: -moz-inline-box;
+    display: inline-block;
+    float: left;
+}
+
+div.rateit div.rateit-reset:hover
+{
+    background-position: 0 -16px;
+}
 /*
-*= require rateit
+
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -9,10 +99,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
- *= require the_comments
+
+
+
  */
+
 
  .fixed
  {
@@ -82,6 +173,8 @@
  	background:none;
  	margin-left: 0.5em;
  	margin-right: 0.5em;
+
+
  }
  .user-item:hover
  {
@@ -523,19 +616,335 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	font-size: 12px;
 	padding-left: 10px;
 }
-
-.link
-{
-	color: #276CB2 !important;
-}
-.link:hover
-{
-	color: #009CF0 !important;
-	text-decoration: none;
-	background:none;
+.flash {
+    text-align: center;
+    padding:	.3em .4em;
+    margin:		0 auto .5em;
+    clear:		both;
+    max-width:	46.923em; /* 610/13 */  
+    *max-width:	45.750em; /* 610/13.3333 - for IE */
 }
 
-.citation
-{
-	font-size: 0.8em;
+.flash.error {
+    border: thin solid #8b0000;
+    background: #ffc0cb;
 }
+
+.flash.notice, .flash.info {
+    border: thin solid #ff0;
+    background: #ffe;
+}
+
+.flash.warning {
+    border: thin solid #b8860b;
+    background: #ff0;
+}
+
+.flash .close {
+    float:	right;
+}
+
+.flash .close a {
+    color:				#f00;
+    text-decoration:	none;
+}
+
+.tooltip {
+  position: relative; /*this is the key*/
+    background-color: #ffa;
+}
+
+.tooltip:hover{
+    background-color: #ff6;
+}
+
+.tooltip span {
+    display: none
+}
+
+.tooltip:hover span { /*the span will display just on :hover state*/
+    z-index:		1; 
+    display:    	block;
+    position:   	absolute;
+    top:    		1.6em; 
+    left:			0;
+    border:			thin solid #ff0;
+    background:		#ffe;
+    padding:		.3em .6em;
+    text-align:		left;
+    white-space:	nowrap;
+}
+.clickable-text {
+  cursor: pointer;
+  color: #808080; }
+
+.clickable-text:hover {
+  text-decoration: underline; }
+.imageBox {
+	width: 160px;
+	height: 160px;
+	margin-right: 20px;
+	float: left;
+	/*max-width:100%;*/
+}
+
+.details {
+	text-align: left;
+}
+
+.prod_title {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #004B91;
+}
+
+.prod_price {
+	font-size: 14px;
+	color: #900;
+	font-weight: bold;
+}
+
+.prod_type {
+	color: #C60;
+	font-weight: bold;
+}
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000; }
+  a:visited {
+    color: #666; }
+  a:hover {
+    color: #fff;
+    background-color: #000; }
+
+div.field, div.actions {
+  margin-bottom: 10px; }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #error_explanation ul li {
+    font-size: 12px;
+    list-style: square; }
+.comments_tree, .comments_list {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px; }
+  .comments_tree *, .comments_list * {
+    margin: 0;
+    padding: 0;
+    font-size: inherit; }
+  .comments_tree a, .comments_list a {
+    text-decoration: none; }
+  .comments_tree a:hover, .comments_list a:hover {
+    text-decoration: underline; }
+  .comments_tree ol, .comments_list ol {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: none outside none; }
+  .comments_tree li, .comments_list li {
+    margin-bottom: 5px;
+    position: relative;
+    list-style: none outside none; }
+
+.comments, .comments_tree {
+  font-family: Arial;
+  font-size: 13px; }
+  .comments h3, .comments_tree h3 {
+    font-size: 1.6em; }
+  .comments .error_notifier, .comments_tree .error_notifier {
+    background-color: #F2DEDE;
+    border: 1px solid #B94A48;
+    color: #B94A48;
+    border-radius: 4px;
+    margin: 0 0 15px 0;
+    padding: 10px 10px 0 10px;
+    overflow: hidden; }
+    .comments .error_notifier p, .comments_tree .error_notifier p {
+      margin: 0 0 10px 0; }
+  .comments form, .comments_tree form {
+    background: #e0e4f5;
+    border: 1px solid #c6cff5;
+    border-radius: 5px;
+    padding: 10px; }
+    .comments form p, .comments_tree form p {
+      margin: 0 0 10px 0; }
+    .comments form input[type=text], .comments_tree form input[type=text] {
+      border: 1px solid gray;
+      padding: 4px;
+      width: 75%; }
+    .comments form label, .comments_tree form label {
+      font-size: 15px; }
+    .comments form textarea, .comments_tree form textarea {
+      border: 1px solid gray;
+      font-family: Arial;
+      font-size: 13px;
+      height: 150px;
+      padding: 4px;
+      width: 75%; }
+    .comments form .trap, .comments_tree form .trap {
+      margin: 0;
+      padding: 0;
+      filter: alpha(opacity=0.001);
+      height: 0.1px;
+      opacity: 0.001;
+      overflow: hidden; }
+
+.comments_tree .nested_set {
+  border-left: 1px dotted lightGray; }
+.comments_tree li .comment.draft {
+  border: 1px solid gray;
+  background: #eff5f3;
+  padding: 10px; }
+.comments_tree .form_holder {
+  margin-left: 40px; }
+.comments_tree .edit, .comments_tree .delete {
+  margin-bottom: 3px;
+  text-align: center;
+  line-height: 130%;
+  background: #336;
+  color: white;
+  padding: 1px; }
+.comments_tree .delete {
+  background: gray; }
+.comments_tree .comment {
+  overflow: hidden;
+  zoom: 1; }
+  .comments_tree .comment .userpic {
+    overflow: hidden;
+    zoom: 1;
+    float: left;
+    width: 50px; }
+    .comments_tree .comment .userpic img {
+      margin-bottom: 10px;
+      width: 42px;
+      height: 42px; }
+  .comments_tree .comment .userbar, .comments_tree .comment .cbody {
+    margin: 0 0 5px 55px;
+    padding: 3px; }
+  .comments_tree .comment .userbar {
+    background: #eff5f3;
+    border-radius: 3px;
+    padding-left: 7px; }
+  .comments_tree .comment.draft .userbar {
+    background: #ffa768; }
+  .comments_tree .comment.draft .to_draft {
+    display: none; }
+  .comments_tree .comment.published .to_published {
+    display: none; }
+  .comments_tree .comment .cbody {
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    line-height: 135%;
+    margin-bottom: 3px;
+    overflow: hidden; }
+  .comments_tree .comment .reply {
+    margin: 0 0 5px 55px;
+    font-size: 12px; }
+.comments_tree .controls {
+  position: absolute;
+  top: 53px;
+  left: 5px; }
+  .comments_tree .controls a {
+    font-size: 11px;
+    display: block; }
+.comments_tree .comment {
+  margin-bottom: 10px; }
+  .comments_tree .comment.published, .comments_tree .comment.draft {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 5px; }
+  .comments_tree .comment.highlighted {
+    border: 1px dashed #ff6633 !important; }
+.comments_tree .form_holder form {
+  margin: 10px 0; }
+
+.new_comment .btn {
+  padding: 7px;
+  margin-top: 5px;
+  cursor: pointer; }
+
+.comments_list li {
+  margin-bottom: 20px; }
+  .comments_list li .item {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px; }
+  .comments_list li .draft {
+    border-left: 5px solid orange; }
+    .comments_list li .draft .controls a.to_draft {
+      display: none; }
+  .comments_list li .published {
+    border-left: 5px solid green; }
+    .comments_list li .published .controls a.to_published {
+      display: none; }
+  .comments_list li .deleted {
+    border-left: 5px solid red; }
+    .comments_list li .deleted .controls a.to_deleted, .comments_list li .deleted .controls a.to_spam {
+      display: none; }
+  .comments_list li .comment div {
+    margin: 0 0 10px 0; }
+  .comments_list li .comment label {
+    width: 75px;
+    font-weight: bold;
+    display: inline-block; }
+  .comments_list li .comment input[type=text] {
+    width: 70%;
+    padding: 4px; }
+  .comments_list li .comment input[type=submit] {
+    padding: 5px;
+    cursor: pointer; }
+  .comments_list li .comment textarea {
+    width: 70%;
+    padding: 4px;
+    height: 150px; }
+  .comments_list li .comment .content {
+    line-height: 130%;
+    background: #ddd;
+    padding: 10px; }
+  .comments_list li .comment .commentable {
+    margin-bottom: 10px; }
+  .comments_list li .comment .controls {
+    background: lightgray;
+    padding: 3px; }
+    .comments_list li .comment .controls a {
+      margin-right: 15px; }

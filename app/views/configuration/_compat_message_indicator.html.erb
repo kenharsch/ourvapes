@@ -1,0 +1,25 @@
+<% if present %>
+<% if @checker.compat_conflicts(part_type).any? %>
+<% color = "red" %>
+<% glyph = "remove" %>
+<% elsif @checker.works_badly_conflicts(part_type).any? %>
+<% color = "yellow" %>
+<% glyph = "exclamation-sign" %>
+<% else %>
+<% color = "green" %>
+<% glyph = "ok" %>
+<% end %>
+
+<a type="button" data-toggle="collapse" data-target="#single-compat-messages-<%=part_type%>" onclick="toggleMessageIndicator('<%= part_type %>')">
+	<div id="message-indicator-<%= part_type %>-light" class="bg-<%= color %> message-indicator">
+		<span class = "message-indicator-icon">
+			<span class =  "glyphicon glyphicon-<%= glyph %>"></span>
+		</span>
+	</div>
+	<div id="message-indicator-<%= part_type %>-dark" class="bg-<%= color %>-dark message-indicator" style="display:none;">
+		<span class = "message-indicator-icon">
+			<span class =  "glyphicon glyphicon-<%= glyph %>"></span>
+		</span>
+	</div>
+</a>
+<% end %>
