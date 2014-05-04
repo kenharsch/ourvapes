@@ -48,6 +48,8 @@ class ProdSearch
 				phrase_fields :name => 2.0
 				phrase_fields :description => 2.0
 				phrase_fields :manufacturer => 2.0
+
+				#TODO let products with better rating score better
 			end
 
 			paginate :page => page, :per_page => RESULTS_PER_PAGE
