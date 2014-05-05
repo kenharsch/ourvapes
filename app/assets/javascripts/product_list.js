@@ -26,5 +26,5 @@ function clear(type) {
 }
 
 function setType(filter_el) {
-	window.location = "update?set_type="+$(filter_el).attr("filter_name");
+	window.location = "update?set_type="+$(filter_el).attr("filter_name") + "&claer_manus=true";
 }
