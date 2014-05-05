@@ -14,10 +14,10 @@ class User < ActiveRecord::Base
   end
 
   def comments_admin?
-    admin?
+    self == User.root
   end
 
   def comments_moderator? comment
-    true 
+    comments_admin? || id == comment.holder_id
   end
 end
