@@ -17,12 +17,8 @@ class ProdSearch
 		compat_ids = compat_ids(compats, my_config)
 		manus = [] if manus.nil?
 
-		if (!compat_ids.nil? && compat_ids.empty?)
-			prod_search.results = Product.none
-		else
-			solr_search = create_search(query, type, manus, compat_ids, page)
-			prod_search.results = solr_search.results
-		end
+		solr_search = create_search(query, type, manus, compat_ids, page)
+		prod_search.results = solr_search.results
 
 		search_all_manus = create_search(query, type, [], nil, nil)
 		prod_search.manu_facets = sorted_facets(search_all_manus, :manufacturer)
@@ -77,17 +73,30 @@ class ProdSearch
 		# (empty list)
 		return nil if compats.nil? || compats.empty? || my_config.nil?
 
+		if my_config.size == 0
+			if compats.member?(CompatPair::WORKS_WELL)
+				# if there is nothing in MyConfig, all products "work well" with it
+				return nil
+			else
+				# however if MyConfig is empty no produc does not "work well" with it
+				return []
+			end
+		end
+
+		relation = compat_id_relation(compats, my_config.ids, free_types(my_config))
+
+		return relation.pluck(:id)
+	end
+
+	def self.free_types(my_config)
 		free_types = Product::ALL_TYPES.clone
+
 		CompatPair.rules do |type1, type2|
 			free_types.delete(type1) if my_config.part(type2).present?
 			free_types.delete(type2) if my_config.part(type1).present?
 		end
 
-		my_config_ids = my_config.ids
-
-		relation = compat_id_relation(compats, my_config_ids, free_types)
-
-		return relation.pluck(:id)
+		return free_types
 	end
 
 	def self.compat_id_relation(compats, my_config_ids, free_types)
