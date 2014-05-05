@@ -40,11 +40,8 @@ class ConfigurationController < ApplicationController
 
 	def create_url
 		url = "#{root_url}configuration?"
-		session[Constants::SESS_MY_CONFIG].each_slot do |part_type, part_object|
-			if !part_object.nil?
-				url += "&ids[]=" + part_object.id.to_s
-			end
-		end 
+		# instead of using ...ids.to_query('ids'): creates '...[]=' instead of '%5B%5D='
+		session[Constants::SESS_MY_CONFIG].ids.each {|id| url += "&ids[]=" + id.to_s}
 		return url
 	end
 end

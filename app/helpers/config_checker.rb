@@ -23,7 +23,7 @@ class ConfigChecker
 		@pair_works_badly_conflicts = []
 		@single_works_badly_conflicts = Hash.new { |hash, key| hash[key] = [] }
 
-		CompatPair::TYPE_PAIRS.each do |type1, type2|
+		CompatPair.rules do |type1, type2|
 			check(my_config.part(type1), my_config.part(type2))
 		end
 	end

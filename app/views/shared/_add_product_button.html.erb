@@ -3,8 +3,6 @@
 <% else %>
 <% confirm_message = "Do you want to overwrite your existing #{prod.type}?" %>
 <% end %>
-<% if !defined? button # TODO not DRY %>
-	<%= button_to "Add", {action: "add", controller: "configuration", add_id: prod.id}, class: "btn btn-default btn-block", confirm: confirm_message %>
-<% else %>
-	<%= button_to button, {action: "add", controller: "configuration", add_id: prod.id}, class: "btn btn-default btn-block", confirm: confirm_message %>
-<% end %>
+<%= button_to "Add to My Kit",
+	{action: "add", controller: "configuration", add_id: prod.id},
+	class: "btn btn-default btn-block", confirm: confirm_message %>

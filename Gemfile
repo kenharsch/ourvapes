@@ -40,9 +40,10 @@ group :doc do
 end
 
 # Full text search
-# works differently in production mode, moved here for now
+#gem 'sunspot'
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+
 # gem 'sunspot-rails-tester'
 gem 'progress_bar'
 

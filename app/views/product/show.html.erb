@@ -27,7 +27,7 @@
 			<strong>Description:</strong> <%= @product.description %>
 			<br/><br/>
 			<% if request.env['PATH_INFO'] != "/configuration"  && @product.type != "Juice"%>
-			<%= render 'shared/add_product_button', prod: @product, button: "Add to Configuration"%>
+			<%= render 'shared/add_product_button', prod: @product %>
 			<% end %>
 			<br>
 			<%= render partial: 'the_comments/tree', locals: { commentable: @post, comments_tree: @comments } %>
