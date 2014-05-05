@@ -4,7 +4,15 @@ class CompatPair < ActiveRecord::Base
 	WORKS_BADLY = 2
 	WORKS_WELL = 3
 
-	def self.type_pairs
+	# This are the compatibility checking rules for Kit components.
+	# The mouthpiece must be compatible with the tank, and the tank
+	# with the wick; but neither mouthpiece not tank can be incompatible
+	# with eth battery ...
+	# usage:
+	# CompatPair.rules do |type1, type2|
+	# # do something with the current rule
+	# end
+	def self.rules
 		yield(Product::TYPE_MOUTHPIECE, Product::TYPE_TANK)
 		yield(Product::TYPE_TANK, Product::TYPE_WICK)
 		yield(Product::TYPE_TANK, Product::TYPE_BUTTON)
@@ -38,7 +46,7 @@ class CompatPair < ActiveRecord::Base
 	end
 
 	def types_must_correspond_to_a_rule
-		CompatPair.type_pairs do |type1, type2|
+		CompatPair.rules do |type1, type2|
 			return if prod1.type == type1 && prod2.type == type2
 			return if prod1.type == type2 && prod2.type == type1
 		end
