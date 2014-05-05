@@ -78,12 +78,12 @@ class ProdSearch
 
 		my_config_ids = my_config.ids
 
-		relation = Product.select("products.id").distinct.
+		relation = Product.select("products.id").
 		joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
 		where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))
-			AND compatibility IN (:compats)
-			AND products.id NOT IN (:my_config_ids)",
-			my_config_ids: my_config_ids, compats: compats)
+			AND products.id NOT IN (:my_config_ids)", my_config_ids: my_config_ids).
+		group("products.id").
+		having("MIN(compatibility) IN (?)", compats)
 
 		return relation.pluck(:id)
 	end
