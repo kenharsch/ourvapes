@@ -4,9 +4,6 @@ class ProdSearch
 
 	RESULTS_PER_PAGE = 10
 
-	# use like the following:
-	# ProdSearch.full_text("davide", nil, "Tank", nil,
-	#	session[Constants::SESS_MY_CONFIG], 2) {|results, manus| ...}
 	# query:: the search query as entered by the user (as string), or _nil_ for "all products"
 	# compats:: list of numbers representing the selected compatibility filters or _nil_
 	# (according to the constants in CompatPair like CompatPait::WORKS_WELL)
@@ -20,9 +17,12 @@ class ProdSearch
 		compat_ids = compat_ids(compats, my_config)
 		manus = [] if manus.nil?
 
-		solr_search = create_search(query, type, manus, compat_ids, page)
-
-		prod_search.results = solr_search.results
+		if (!compat_ids.nil? && compat_ids.empty?)
+			prod_search.results = Product.none
+		else
+			solr_search = create_search(query, type, manus, compat_ids, page)
+			prod_search.results = solr_search.results
+		end
 
 		search_all_manus = create_search(query, type, [], nil, nil)
 		prod_search.manu_facets = sorted_facets(search_all_manus, :manufacturer)
@@ -37,7 +37,7 @@ class ProdSearch
 
 			facet :manufacturer
 
-			with(:id, compat_ids) if compat_ids.present?
+			with(:id, compat_ids) unless compat_ids.nil?
 
 			if type.blank?
 				# exclude kits because we are not handling them as products yet
@@ -78,12 +78,13 @@ class ProdSearch
 
 		my_config_ids = my_config.ids
 
-		return Product.select("products.id").distinct.
-			joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
-			where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))
-				AND compatibility IN (:compats)
-				AND products.id NOT IN (:my_config_ids)",
-				my_config_ids: my_config_ids, compats: compats).
-			pluck(:id)
+		relation = Product.select("products.id").distinct.
+		joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
+		where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))
+			AND compatibility IN (:compats)
+			AND products.id NOT IN (:my_config_ids)",
+			my_config_ids: my_config_ids, compats: compats)
+
+		return relation.pluck(:id)
 	end
 end
