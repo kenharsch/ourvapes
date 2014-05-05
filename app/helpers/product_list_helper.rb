@@ -5,7 +5,7 @@ module ProductListHelper
 		chck_box = check_box_tag(("manufacturer_" + manu_facet.value).to_sym,
 			manu_facet.value, selected, class: "manu-filter", filter_name: manu_facet.value)
 
-		chck_box_label = label(:manufacturer, manu_facet.value.gsub("\s", "_"))
+		chck_box_label = label(:manufacturer, manu_facet.value.gsub("\s", "_"), class: "type_list")
 
 		# return "#{chck_box} #{chck_box_label} (#{manu_facet.count})".html_safe
 		return "#{chck_box} #{chck_box_label}".html_safe
@@ -21,7 +21,7 @@ module ProductListHelper
 	def type_filter(type)
 		radio_btn = radio_button_tag(:prod_type, type, @type_filter == type,
 			class: "type-filter", filter_name: type)
-		radio_label = label(:prod_type, type);
+		radio_label = label(:prod_type, type, class: "type_list");
 		return "#{radio_btn} #{radio_label}".html_safe
 	end
 
