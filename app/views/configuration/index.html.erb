@@ -52,7 +52,18 @@ kits.
 			</div>
 		</div>
 	</div>
-
+	<div class = "row">
+		<% if session[Constants::SESS_MY_CONFIG].size > 0 %> 
+			<div class = "col-xs-2">
+				<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
+				data: {confirm: "Are you sure you want to clear all products?"}%>
+			</div>
+		<% end %>
+		<div class = "col-xs-10">
+			Share your Configuration!
+			<%= text_field_tag(:url, @url, :readonly => true, :size => 90, :onclick => "$(url).select()") %>
+		</div>
+	</div>
 
 	<%= render "pair_compat_messages" %>
 
@@ -79,7 +90,6 @@ kits.
 		</div>
 		<% end %>
 
-
 		<div class = "<% if present %>col-sm-9 col-xs-12<% else %>col-sm-1<% end %>">
 			<% if present %><%= render 'shared/product_list_entry', prod: part_object %>
 			<% @add_or_change = "Change" %>
@@ -104,12 +114,4 @@ kits.
 			<% if present %><% else %> <% end %>
 			<% end %>
 
-			<div class = "col-xs-2">
-				<%= button_to "Clear", "configuration/clear", method: :get, class: "btn btn-default",
-				data: {confirm: "Are you sure you want to clear all products?"}%>
-			</div>
-			<div class = "col-xs-10 center">
-				Share your Configuration!
-				<%= text_field_tag(:url, @url, :readonly => true, :size => 90, :onclick => "$(url).select()") %>
-			</div>
 		</div>
