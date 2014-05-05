@@ -52,21 +52,21 @@ class ProdSearchTest < ActiveSupport::TestCase
 			search.results[0].must_equal @vr_wick
 		end
 
-		it "lets products pass if no compat rule affects them with the current MyConfig" do
-			# there is a rule checking tank-wick compatibility; there is a tank in MyConfig
-			# which is not set as compatible to anything
-			# therefore none of the wicks should pass the WORKS_WELL compat. filter;
-			# however there is no rule for tank-battery checking; therefore the battery
-			# is the only product which should pass the filter
-			b = Battery.create
+		# it "lets products pass if no compat rule affects them with the current MyConfig" do
+		# 	# there is a rule checking tank-wick compatibility; there is a tank in MyConfig
+		# 	# which is not set as compatible to anything
+		# 	# therefore none of the wicks should pass the WORKS_WELL compat. filter;
+		# 	# however there is no rule for tank-battery checking; therefore the battery
+		# 	# is the only product which should pass the filter
+		# 	b = Battery.create
 
-			update_solr_indices
+		# 	update_solr_indices
 
-			search = ProdSearch.full_text(nil, [CompatPair::WORKS_WELL],
-				nil, nil, @my_config, nil)
+		# 	search = ProdSearch.full_text(nil, [CompatPair::WORKS_WELL],
+		# 		nil, nil, @my_config, nil)
 
-			search.results.size.must_equal 1
-			search.results[0].must_equal b
-		end
+		# 	search.results.size.must_equal 1
+		# 	search.results[0].must_equal b
+		# end
 	end
 end
