@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   end
 
   def comments_moderator? comment
-    id == comment.holder_id
+    true
   end
 end
