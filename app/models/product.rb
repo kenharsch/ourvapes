@@ -14,29 +14,23 @@ class Product < ActiveRecord::Base
 	validates :details, presence: true
 
 	searchable do
-			# the fields used for fulltext search
-			text :name, :description, :type, :manufacturer
+		# the fields used for fulltext search
+		text :name, :description, :type, :manufacturer
 
-			# the fields used for text filtering
-			string :type
-			string :manufacturer
+		# the fields used for text filtering
+		string :type
+		string :manufacturer
 
-			# text :comments do
-			# 	comments.map { |comment| comment.body }
-			# end
+		# joining with compat_pair for compatibility filters
+		integer :id
 
-			# boolean :featured
-			# integer :blog_id
-			# integer :author_id
-			# integer :category_ids, :multiple => true
-			# double  :average_rating
-			# time    :published_at
-			# time    :expired_at
+		#join(:prod1_id, :type => :integer, :join_string => 'from=prod2_id to=id')
+		# join(:prod1_id, type: :integer, join_string: 'from=prod2_id to=id', as: 'compat_prod1_id')
+		# join(:prod2_id, type: :integer, join_string: 'from=prod1_id to=id', as: 'compat_prod2_id')
 
-			# string  :sort_title do
-			# 	title.downcase.gsub(/^(an?|the)/, '')
-			# end
-		end
+		# join(:compatibility, type: :integer, join_string: 'from=prod1_id to=id', as: 'compat1')
+		# join(:compatibility, type: :integer, join_string: 'from=prod2_id to=id', as: 'compat2')
+	end
 
 	# needed to use the def_delegators method
 	extend Forwardable

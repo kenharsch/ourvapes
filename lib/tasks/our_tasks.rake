@@ -1,6 +1,6 @@
 namespace :solr do
 	task :test, :single_test_path do |t, args|
-		system("RAILS_ENV=test rake sunspot:solr:start")
+		# system("RAILS_ENV=test rake sunspot:solr:start")
 
 		system("rake test:prepare")
 
@@ -11,7 +11,7 @@ namespace :solr do
 			system("bundle exec ruby -I test test/#{test_path}")
 		end
 
-		system("RAILS_ENV=test rake sunspot:solr:stop")
+		# system("RAILS_ENV=test rake sunspot:solr:stop")
 	end
 
 	task :s do

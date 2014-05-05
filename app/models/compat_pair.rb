@@ -4,7 +4,15 @@ class CompatPair < ActiveRecord::Base
 	WORKS_BADLY = 2
 	WORKS_WELL = 3
 
-	def self.type_pairs
+	# This are the compatibility checking rules for Kit components.
+	# The mouthpiece must be compatible with the tank, and the tank
+	# with the wick; but neither mouthpiece not tank can be incompatible
+	# with eth battery ...
+	# usage:
+	# CompatPair.rules do |type1, type2|
+	# # do something with the current rule
+	# end
+	def self.rules
 		yield(Product::TYPE_MOUTHPIECE, Product::TYPE_TANK)
 		yield(Product::TYPE_TANK, Product::TYPE_WICK)
 		yield(Product::TYPE_TANK, Product::TYPE_BUTTON)
@@ -31,18 +39,23 @@ class CompatPair < ActiveRecord::Base
 	def compatibility_must_be_one_of_the_constants
 		# UNKNOWN is not regarded as a valid compatibility in this sense.
 		# All UNKNOWN compatibilities are expressed by not having the corresponding
-		# pair stored in the database.†
+		# pair stored in the database.
 		if ![INCOMPATIBLE, WORKS_BADLY, WORKS_WELL].include? compatibility
 			errors.add(:compatibility, "must be one of the CompatPair constants")
 		end
 	end
 
 	def types_must_correspond_to_a_rule
-		CompatPair.type_pairs do |type1, type2|
+		CompatPair.rules do |type1, type2|
 			return if prod1.type == type1 && prod2.type == type2
 			return if prod1.type == type2 && prod2.type == type1
 		end
 		errors.add(:base,
 			"the two product types must correspond to a rule in TYPE_PAIRS")
+	end
+
+	# allows to join with this table during Sunspot full_text searches
+	searchable do
+		integer :prod1_id, :prod2_id, :compatibility
 	end
 end
