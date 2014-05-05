@@ -95,7 +95,7 @@ class ProdSearch
 		joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
 		where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))",
 			my_config_ids: my_config_ids).
-		group("products.id, type").
+		group("products.id").
 		having("MIN(compatibility) IN (?)", compats)
 
 		relation = Product.select("id").

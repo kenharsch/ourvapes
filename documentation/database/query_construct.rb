@@ -1,5 +1,7 @@
 my_config_ids = [53, 17, 25, 48]
 compats = [3, 2]
+my_config = MyConfig.new
+my_config_ids.each {|id| my_config.add_by_id(id)}
 
 r = Product.connection.select_values("
 	SELECT DISTINCT products.id

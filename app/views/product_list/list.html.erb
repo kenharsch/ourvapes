@@ -4,24 +4,24 @@
 	<div class = "col-xs-2 left_filters">
 		<div class = "row filter_indent compatibility_filt">
 			<dl>
-				<dt>Compatibility</dt>
-				<dd>
-					<%= check_box_tag(:compatible_filt) %>
-					<%= label_tag(:compatible_filt, "With My Configuration", class: "type_list") %>
-				</dd>
+				<dt>Compatibility<%= compat_filter_clear_button() %></dt>
+				<dd>with <a href="/configuration">My Kit</a></dd>
+				<%= compat_filter("Works Well", CompatPair::WORKS_WELL) %>
+				<%= compat_filter("Works Badly", CompatPair::WORKS_BADLY) %>
+				<%= compat_filter("Incompatible", CompatPair::INCOMPATIBLE) %>
 			</dl>
 		</div>
 		<div class = "row filter_indent">
 			<dl>
 				<dt>Product Type<%= type_filter_clear_button() %></dt>
-				<% Kit::PART_TYPES.each do |type| %>
+				<% Product::ALL_TYPES.each do |type| %>
 				<dd><%= type_filter(type) %></dd>
 				<% end %>
 			</dl>
 		</div>
 		<div class = "row filter_indent last">
 			<dl>
-				<dt>Manufacturers<%= manus_filter_clear_button() %></dt>
+				<dt>Manufacturers<%= manu_filter_clear_button() %></dt>
 				<% @manu_facets.each do |manu_facet| %>
 				<dd><%= manu_filter(manu_facet) %></dd>
 				<% end %>
