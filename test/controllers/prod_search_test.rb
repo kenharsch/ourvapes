@@ -9,7 +9,7 @@ class ProdSearchTest < ActiveSupport::TestCase
 				description: "but here we have VapeRater is in the description")
 		end
 
-		Wick.create(
+		@vr_wick = Wick.create(
 			name: "keyword VapeRater in name",
 			description: "something without the important keyword")
 
@@ -23,11 +23,26 @@ class ProdSearchTest < ActiveSupport::TestCase
 	end
 
 
-	describe "results sorting" do
+	describe "product search" do
 
 		it "shows title matchings higher than description matchings" do
-			ProdSearch.full_text('VapeRater', nil, nil, nil) do |results, manu_facets|
-				results[0].name.must_equal "keyword VapeRater in name"
+			ProdSearch.full_text('VapeRater', nil, nil, nil, nil, nil) do |results, manu_facets|
+				results[0].must_equal @vr_wick
+			end
+		end
+
+		it "filters by compatibility" do
+			t = Tank.create
+			t.set_compat_with(@vr_wick, CompatPair::WORKS_WELL)
+
+			my_config = MyConfig.new
+			my_config.add_by_id(t.id)
+
+			ProdSearch.full_text(nil, [CompatPair::WORKS_WELL],
+				nil, nil, my_config, nil) do |results, manu_facets|
+
+				results.size.must_equal 1
+				results[0].must_equal @vr_wick
 			end
 		end
 	end

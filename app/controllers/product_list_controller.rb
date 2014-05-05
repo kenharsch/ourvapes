@@ -21,7 +21,9 @@ class ProductListController < ApplicationController
 			@title = "Search Results"
 		end
 
-		search = ProdSearch.full_text(@query, @type_filter, params[:manus], params[:page])
+		search = ProdSearch.full_text(@query, params[:compats], @type_filter, params[:manus],
+			session[Constants::SESS_MY_CONFIG], params[:page])
+
 		@prods = search.results
 		@manu_facets = search.manu_facets
 		@sel_manus = params[:manus] || []

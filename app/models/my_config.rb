@@ -28,4 +28,11 @@ class MyConfig
 	def each_slot
 		Kit::PART_TYPES.each {|type| yield(type, @parts[type])}
 	end
+
+	# returns an array of IDs representing the contained parts
+	def ids
+		result = []
+		@parts.values.each {|prod| result << prod.id unless prod.nil?}
+		return result
+	end
 end
