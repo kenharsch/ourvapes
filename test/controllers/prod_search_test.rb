@@ -90,7 +90,7 @@ class ProdSearchTest < ActiveSupport::TestCase
 			update_solr_indices
 
 			search = ProdSearch.full_text(nil, [CompatPair::WORKS_WELL],
-				nil, nil, my_config, nil)
+				Product::TYPE_TANK, nil, my_config, nil)
 
 			search.results.size.must_equal 1
 			search.results[0].must_equal t2

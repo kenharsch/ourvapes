@@ -6,6 +6,11 @@ class Product < ActiveRecord::Base
 	TYPE_BUTTON = "Button"
 	TYPE_BATTERY = "Battery"
 	TYPE_CHARGER = "Charger"
+	TYPE_KIT = "Kit"
+	TYPE_JUICE = "Juice"
+
+	ALL_TYPES = [TYPE_MOUTHPIECE, TYPE_TANK, TYPE_WICK, TYPE_BUTTON, TYPE_BATTERY,
+		TYPE_CHARGER, TYPE_KIT, TYPE_JUICE]
 
 	has_many :ratings
 	belongs_to :user
