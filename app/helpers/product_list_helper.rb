@@ -7,7 +7,8 @@ module ProductListHelper
 
 		chck_box_label = label(:manufacturer, manu_facet.value.gsub("\s", "_"))
 
-		return "#{chck_box} #{chck_box_label} (#{manu_facet.count})".html_safe
+		# return "#{chck_box} #{chck_box_label} (#{manu_facet.count})".html_safe
+		return "#{chck_box} #{chck_box_label}".html_safe
 	end
 
 	def type_filter_clear_button()
