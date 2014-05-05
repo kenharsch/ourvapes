@@ -2,7 +2,7 @@ class ConfigurationController < ApplicationController
 	def index
 		@page = Constants::PAGE_CONFIG
 
-		@add_or_change = "Add"
+		@add_or_change
 		# TODO introduce session key constants
 		# TODO use MY_CONFIG instead of :kit_obj
 		@checker = ConfigChecker.new(session[Constants::SESS_MY_CONFIG])
