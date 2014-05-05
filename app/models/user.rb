@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   end
 
   def comments_moderator? comment
-    true
+    true 
   end
 end
