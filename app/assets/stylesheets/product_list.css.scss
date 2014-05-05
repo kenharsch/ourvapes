@@ -10,3 +10,17 @@
 .clickable-text:hover {
 	text-decoration: underline;
 }
+
+.super-clickable-text {
+	font-weight:bold;
+	cursor: pointer;
+	color: #808080;
+	font-size:50% !important;
+	margin-left:25px;
+}
+.super-clickable-text:hover {
+	font-weight: bold;
+	text-decoration: underline;
+	background:none !important;
+	color: #808080 !important;
+}

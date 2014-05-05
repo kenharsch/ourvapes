@@ -68,7 +68,11 @@
  	background: none;
  	color: #2760B2;
  	text-shadow: 0 0 10px #C1DBFF;
+ }
 
+ .white
+ {
+ 	background-color: white !important;
  }
  .nav-button-holder
  {
