@@ -68,23 +68,40 @@ class ProdSearch
 
 	# compats:: list of numbers representing the selected compatibility filters or nil
 	# according to the constants in CompatPair
-	# returns:: _nil_ if compats is nil or empty, otherwise a list of IDs which represent products
-	# which correspond to the, given compatibility filters given the current MyConfig
+	# returns:: _nil_ if my_config is nil or compats is nil or empty, otherwise a list of IDs which
+	# 	represent products which correspond to the, given compatibility filters given the current
+	# 	MyConfig
 	def self.compat_ids(compats, my_config)
 		# returns nil instead of an empty list in order to distinguish between the situation
 		# where no compatibility filtering is selected (nil) and no compatible products exist
 		# (empty list)
 		return nil if compats.nil? || compats.empty? || my_config.nil?
 
+		free_types = Product::ALL_TYPES.clone
+		CompatPair.rules do |type1, type2|
+			free_types.delete(type1) if my_config.part(type2).present?
+			free_types.delete(type2) if my_config.part(type1).present?
+		end
+
 		my_config_ids = my_config.ids
 
-		relation = Product.select("products.id").distinct.
-		joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
-		where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))
-			AND compatibility IN (:compats)
-			AND products.id NOT IN (:my_config_ids)",
-			my_config_ids: my_config_ids, compats: compats)
+		relation = compat_id_relation(compats, my_config_ids, free_types)
 
 		return relation.pluck(:id)
+	end
+
+	def self.compat_id_relation(compats, my_config_ids, free_types)
+		checked_types_ids = Product.select("products.id").
+		joins("JOIN compat_pairs ON (products.id = prod1_id OR products.id = prod2_id)").
+		where("(prod1_id IN (:my_config_ids) OR prod2_id IN (:my_config_ids))",
+			my_config_ids: my_config_ids).
+		group("products.id").
+		having("MIN(compatibility) IN (?)", compats)
+
+		relation = Product.select("id").
+		where("id NOT IN (?) AND (type IN (?) OR id IN (?))",
+			my_config_ids, free_types, checked_types_ids.pluck(:id))
+
+		return relation
 	end
 end

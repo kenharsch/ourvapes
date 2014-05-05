@@ -27,12 +27,15 @@ class ProductListController < ApplicationController
 		@prods = search.results
 		@manu_facets = search.manu_facets
 		@sel_manus = params[:manus] || []
+		@compats = params[:compats] || []
 	end
 
 	def update
 		last_params = session[Constants::SESS_LAST_SEARCH_PARAMS]
 
-		[:add_manu, :remove_manu, :set_type, :clear_manus].each do |action|
+		[:add_compat, :remove_compat, :clear_compats,
+			:add_manu, :remove_manu, :clear_manus,
+			:set_type].each do |action|
 			method(action).call(last_params) if params[action].present?
 		end
 
@@ -43,6 +46,19 @@ class ProductListController < ApplicationController
 	end
 
 	private
+
+	def add_compat(last_params)
+		last_params[:compats] = [] unless last_params.has_key?(:compats)
+		last_params[:compats] << params[:add_compat]
+	end
+
+	def remove_compat(last_params)
+		last_params[:compats].delete(params[:remove_compat])
+	end
+
+	def clear_compats(last_params)
+		last_params.delete(:compats)
+	end
 
 	def add_manu(last_params)
 		last_params[:manus] = [] unless last_params.has_key?(:manus)
