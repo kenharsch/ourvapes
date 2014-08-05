@@ -80,5 +80,5 @@ Src::Application.configure do
 
   # tells Solr where to run / find the server (needed for Heroku)
   # Sunspot.config.solr.url = ENV['WEBSOLR_URL']
-  Sunspot.config.solr.url = 'http://uyqthuambdgsnt:Np-SSNRVOe-WblcBgHkQVucQ2M@ec2-54-225-101-202.compute-1.amazonaws.com:5432/d3rc9r1meet1ig'
+  Sunspot.config.solr.url = 'http://index.websolr.com/solr/c4b294e7ed4'
 end
