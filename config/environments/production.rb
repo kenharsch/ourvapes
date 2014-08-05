@@ -79,6 +79,6 @@ Src::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # tells Solr where to run / find the server (needed for Heroku)
-  #Sunspot.config.solr.url = ENV['WEBSOLR_URL']
-  Sunspot.config.solr.url = 'postgres://uyqthuambdgsnt:Np-SSNRVOe-WblcBgHkQVucQ2M@ec2-54-225-101-202.compute-1.amazonaws.com:5432/d3rc9r1meet1ig'
+  # Sunspot.config.solr.url = ENV['WEBSOLR_URL']
+  Sunspot.config.solr.url = 'http://uyqthuambdgsnt:Np-SSNRVOe-WblcBgHkQVucQ2M@ec2-54-225-101-202.compute-1.amazonaws.com:5432/d3rc9r1meet1ig'
 end
